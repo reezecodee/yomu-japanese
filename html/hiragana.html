@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiragana Chart - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#ffdecc', 
+                        'pop-accent': '#ff6b6b', 
+                        'pop-blue': '#4ecdc4',
+                        'pop-text': '#334155' 
+                    },
+                    boxShadow: {
+                        'card': '8px 8px 0px rgba(0, 0, 0, 0.1)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)',
+                        'modal': '12px 12px 0px rgba(0, 0, 0, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #ffdecc;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#fff 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Char Card Style */
+        .char-card {
+            background: white;
+            border: 3px solid #334155;
+            border-radius: 20px;
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .char-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 6px 6px 0px #334155;
+            background-color: #fff5f5;
+            border-color: #ff6b6b;
+        }
+
+        .char-card:hover .romaji {
+            background: #ff6b6b;
+            color: white;
+            border-color: #ff6b6b;
+        }
+
+        .char-main {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #334155;
+        }
+
+        .romaji {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-top: 4px;
+            border: 2px solid #e2e8f0;
+            padding: 2px 12px;
+            border-radius: 99px;
+            transition: all 0.15s;
+        }
+
+        /* Tabs Styling */
+        .tab-btn {
+            padding: 12px 24px;
+            border: 3px solid #334155;
+            background: white;
+            border-radius: 16px;
+            font-weight: 800;
+            box-shadow: 4px 4px 0px #334155;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #ff6b6b;
+            color: white;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #334155;
+        }
+
+        .tab-btn:not(.active):hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #334155;
+        }
+
+        /* Empty Grid Slot */
+        .empty-slot {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            opacity: 0.5;
+        }
+
+        /* Modal Animation */
+        #detailModal {
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-4xl mx-auto bg-white border-4 border-slate-800 rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-slate-800 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-slate-800">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-slate-800">HIRAGANA <span class="text-pop-accent">CHART</span></h1>
+            <div class="w-8"></div> </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4">
+        
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
+            <button onclick="switchTab('seion')" id="btn-seion" class="tab-btn active">DASAR (Seion)</button>
+            <button onclick="switchTab('dakuten')" id="btn-dakuten" class="tab-btn">DAKUTEN (″)</button>
+            <button onclick="switchTab('yoon')" id="btn-yoon" class="tab-btn">GABUNGAN (Yoon)</button>
+        </div>
+
+        <div id="tab-seion" class="grid-section">
+            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
+                <div class="grid grid-cols-5 gap-3 md:gap-4">
+                    <div class="char-card" onclick="openModal('あ', 'a', 'Arigatou (Terima kasih)')">
+                        <span class="char-main">あ</span>
+                        <span class="romaji">a</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('い', 'i', 'Inu (Anjing)')">
+                        <span class="char-main">い</span>
+                        <span class="romaji">i</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('う', 'u', 'Umi (Laut)')">
+                        <span class="char-main">う</span>
+                        <span class="romaji">u</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('え', 'e', 'Eki (Stasiun)')">
+                        <span class="char-main">え</span>
+                        <span class="romaji">e</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('お', 'o', 'Onigiri (Nasi Kepal)')">
+                        <span class="char-main">お</span>
+                        <span class="romaji">o</span>
+                    </div>
+
+                    <div class="char-card" onclick="openModal('か', 'ka', 'Kasa (Payung)')">
+                        <span class="char-main">か</span>
+                        <span class="romaji">ka</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('き', 'ki', 'Ki (Pohon)')">
+                        <span class="char-main">き</span>
+                        <span class="romaji">ki</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('く', 'ku', 'Kuma (Beruang)')">
+                        <span class="char-main">く</span>
+                        <span class="romaji">ku</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('け', 'ke', 'Keshigomu (Penghapus)')">
+                        <span class="char-main">け</span>
+                        <span class="romaji">ke</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('こ', 'ko', 'Kodomo (Anak)')">
+                        <span class="char-main">こ</span>
+                        <span class="romaji">ko</span>
+                    </div>
+
+                    <div class="char-card"><span class="char-main">さ</span><span class="romaji">sa</span></div>
+                    <div class="char-card"><span class="char-main">し</span><span class="romaji">shi</span></div>
+                    <div class="char-card"><span class="char-main">す</span><span class="romaji">su</span></div>
+                    <div class="char-card"><span class="char-main">せ</span><span class="romaji">se</span></div>
+                    <div class="char-card"><span class="char-main">そ</span><span class="romaji">so</span></div>
+
+                    <div class="char-card"><span class="char-main">わ</span><span class="romaji">wa</span></div>
+                    <div class="empty-slot"></div>
+                    <div class="empty-slot"></div>
+                    <div class="empty-slot"></div>
+                    <div class="char-card"><span class="char-main">を</span><span class="romaji">wo</span></div>
+                    
+                    <div class="char-card col-span-5 bg-slate-100 border-dashed">
+                        <span class="char-main">ん</span>
+                        <span class="romaji">n</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-dakuten" class="grid-section hidden">
+            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
+                <h3 class="text-center font-bold text-slate-400 mb-6 uppercase tracking-widest">Ga - Za - Da - Ba - Pa</h3>
+                <div class="grid grid-cols-5 gap-3 md:gap-4">
+                    <div class="char-card"><span class="char-main">が</span><span class="romaji">ga</span></div>
+                    <div class="char-card"><span class="char-main">ぎ</span><span class="romaji">gi</span></div>
+                    <div class="char-card"><span class="char-main">ぐ</span><span class="romaji">gu</span></div>
+                    <div class="char-card"><span class="char-main">げ</span><span class="romaji">ge</span></div>
+                    <div class="char-card"><span class="char-main">ご</span><span class="romaji">go</span></div>
+
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">ぱ</span><span class="romaji text-pop-accent border-pop-accent">pa</span></div>
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">ぴ</span><span class="romaji text-pop-accent border-pop-accent">pi</span></div>
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">ぷ</span><span class="romaji text-pop-accent border-pop-accent">pu</span></div>
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">ぺ</span><span class="romaji text-pop-accent border-pop-accent">pe</span></div>
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">ぽ</span><span class="romaji text-pop-accent border-pop-accent">po</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-yoon" class="grid-section hidden">
+            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
+                 <div class="grid grid-cols-3 gap-3 md:gap-4">
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">きゃ</span><span class="romaji">kya</span></div>
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">きゅ</span><span class="romaji">kyu</span></div>
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">きょ</span><span class="romaji">kyo</span></div>
+                    
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">しゃ</span><span class="romaji">sha</span></div>
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">しゅ</span><span class="romaji">shu</span></div>
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">しょ</span><span class="romaji">sho</span></div>
+                 </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="detailModal" class="fixed inset-0 z-50 hidden bg-slate-900/50 flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="modal-content bg-white border-4 border-slate-800 rounded-[32px] w-full max-w-sm overflow-hidden shadow-modal" onclick="event.stopPropagation()">
+            <div class="bg-pop-accent p-6 text-center relative border-b-4 border-slate-800">
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-white text-slate-800 w-8 h-8 rounded-full font-bold border-2 border-slate-800 hover:bg-slate-100">✕</button>
+                <h2 id="modal-char" class="text-8xl font-black text-white drop-shadow-md mt-2">あ</h2>
+                <span id="modal-romaji" class="inline-block bg-white text-pop-accent px-4 py-1 rounded-full font-bold border-2 border-slate-800 -mb-9 relative z-10 shadow-sm text-lg">a</span>
+            </div>
+            
+            <div class="p-8 pt-10 text-center">
+                <p class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-2">CONTOH KATA</p>
+                <div class="bg-pop-bg/50 p-4 rounded-xl border-2 border-dashed border-pop-accent">
+                    <p id="modal-example" class="text-xl font-bold text-slate-800">Arigatou</p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 mt-6">
+                    <button class="bg-white border-2 border-slate-200 py-2 rounded-xl font-bold text-slate-500 text-sm hover:border-pop-accent hover:text-pop-accent transition-colors">🔊 Audio</button>
+                    <button class="bg-white border-2 border-slate-200 py-2 rounded-xl font-bold text-slate-500 text-sm hover:border-pop-accent hover:text-pop-accent transition-colors">✍️ Stroke</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.grid-section').forEach(el => el.classList.add('hidden'));
+            // Show selected section
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            
+            // Reset tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Activate selected button
+            document.getElementById('btn-' + tabName).classList.add('active');
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('detailModal');
+        const modalChar = document.getElementById('modal-char');
+        const modalRomaji = document.getElementById('modal-romaji');
+        const modalExample = document.getElementById('modal-example');
+
+        function openModal(char, romaji, example = 'Belum ada contoh') {
+            modalChar.innerText = char;
+            modalRomaji.innerText = romaji;
+            modalExample.innerText = example;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

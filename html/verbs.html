@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbs (Doushi) - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#fff1f2', /* Rose pudar */
+                        'pop-accent': '#e11d48', /* Rose Red */
+                        'pop-dark': '#881337', /* Rose Dark */
+                        'pop-text': '#334155' 
+                    },
+                    boxShadow: {
+                        'card': '6px 6px 0px rgba(0, 0, 0, 0.1)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)',
+                        'action': '0px 4px 0px #9f1239'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fff1f2;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#e11d48 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Verb Card */
+        .verb-card {
+            background: white;
+            border: 3px solid #881337;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            position: relative;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .verb-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
+            border-color: #e11d48;
+        }
+
+        /* Bagian Transformasi (Arrow) */
+        .trans-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e11d48;
+            font-weight: 900;
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        /* Kotak Bentuk */
+        .form-box {
+            padding: 8px 12px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .form-dict { background: #f1f5f9; border: 2px solid #cbd5e1; color: #64748b; }
+        .form-masu { background: #ffe4e6; border: 2px solid #e11d48; color: #e11d48; }
+
+        /* Tab Style */
+        .tab-btn {
+            padding: 12px 20px;
+            border: 3px solid #881337;
+            background: white;
+            border-radius: 16px;
+            font-weight: 800;
+            color: #881337;
+            box-shadow: 4px 4px 0px #881337;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #e11d48;
+            color: white;
+            border-color: #881337;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #881337;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-6xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">ACTION <span class="text-pop-accent">VERBS</span></h1>
+            <div class="text-2xl">🏃</div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4">
+
+        <div class="max-w-3xl mx-auto bg-white border-4 border-dashed border-pop-dark rounded-2xl p-6 mb-8 text-center">
+            <h3 class="font-black text-xl text-pop-dark mb-2">💡 Tips Konjugasi</h3>
+            <p class="text-slate-600 font-medium text-sm md:text-base">
+                Bahasa Jepang punya 3 grup kata kerja. <br>
+                Kotak abu-abu adalah <b>Bentuk Kamus (Casual)</b>, kotak merah muda adalah <b>Bentuk Masu (Sopan)</b>.
+            </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button onclick="switchGroup('g1')" id="btn-g1" class="tab-btn active">Grup 1 (Godan)</button>
+            <button onclick="switchGroup('g2')" id="btn-g2" class="tab-btn">Grup 2 (Ichidan)</button>
+            <button onclick="switchGroup('g3')" id="btn-g3" class="tab-btn">Grup 3 (Irregular)</button>
+        </div>
+
+        <div id="group-g1" class="verb-section grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            
+            <div class="verb-card p-5">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">🚶</span>
+                    <span class="text-xs font-black bg-slate-200 text-slate-600 px-2 py-1 rounded">u &rarr; imasu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Pergi</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">行く</span>
+                        <span class="text-xs font-bold uppercase">Iku</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">行きます</span>
+                        <span class="text-xs font-bold uppercase">Ikimasu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verb-card p-5">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">🍺</span>
+                    <span class="text-xs font-black bg-slate-200 text-slate-600 px-2 py-1 rounded">mu &rarr; mimasu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Minum</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">飲む</span>
+                        <span class="text-xs font-bold uppercase">Nomu</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">飲みます</span>
+                        <span class="text-xs font-bold uppercase">Nomimasu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verb-card p-5">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">✍️</span>
+                    <span class="text-xs font-black bg-slate-200 text-slate-600 px-2 py-1 rounded">ku &rarr; kimasu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Menulis</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">書く</span>
+                        <span class="text-xs font-bold uppercase">Kaku</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">書きます</span>
+                        <span class="text-xs font-bold uppercase">Kakimasu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verb-card p-5">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">🗣️</span>
+                    <span class="text-xs font-black bg-slate-200 text-slate-600 px-2 py-1 rounded">su &rarr; shimasu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Bicara</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">話す</span>
+                        <span class="text-xs font-bold uppercase">Hanasu</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">話します</span>
+                        <span class="text-xs font-bold uppercase">Hanashimasu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verb-card p-5">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">⌚</span>
+                    <span class="text-xs font-black bg-slate-200 text-slate-600 px-2 py-1 rounded">tsu &rarr; chimasu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Tunggu</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">待つ</span>
+                        <span class="text-xs font-bold uppercase">Matsu</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">待ちます</span>
+                        <span class="text-xs font-bold uppercase">Machimasu</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="group-g2" class="verb-section hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            
+            <div class="verb-card p-5 border-pop-accent">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">🍱</span>
+                    <span class="text-xs font-black bg-pink-100 text-pink-600 px-2 py-1 rounded">ru &rarr; masu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Makan</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">食べる</span>
+                        <span class="text-xs font-bold uppercase">Taberu</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">食べます</span>
+                        <span class="text-xs font-bold uppercase">Tabemasu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verb-card p-5 border-pop-accent">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">👀</span>
+                    <span class="text-xs font-black bg-pink-100 text-pink-600 px-2 py-1 rounded">ru &rarr; masu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Melihat</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">見る</span>
+                        <span class="text-xs font-bold uppercase">Miru</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">見ます</span>
+                        <span class="text-xs font-bold uppercase">Mimasu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="verb-card p-5 border-pop-accent">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">😴</span>
+                    <span class="text-xs font-black bg-pink-100 text-pink-600 px-2 py-1 rounded">ru &rarr; masu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Tidur</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">寝る</span>
+                        <span class="text-xs font-bold uppercase">Neru</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">寝ます</span>
+                        <span class="text-xs font-bold uppercase">Nemasu</span>
+                    </div>
+                </div>
+            </div>
+
+             <div class="verb-card p-5 border-pop-accent">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">🌅</span>
+                    <span class="text-xs font-black bg-pink-100 text-pink-600 px-2 py-1 rounded">ru &rarr; masu</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Bangun</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict">
+                        <span class="block text-xl font-bold text-slate-800">起きる</span>
+                        <span class="text-xs font-bold uppercase">Okiru</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu">
+                        <span class="block text-xl font-bold">起きます</span>
+                        <span class="text-xs font-bold uppercase">Okimasu</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="group-g3" class="verb-section hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            
+            <div class="col-span-full mb-4 text-center">
+                <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-black border-2 border-yellow-400">Hanya ada 2 kata di grup ini! (Wajib Hafal)</span>
+            </div>
+
+            <div class="verb-card p-5 border-yellow-500 bg-yellow-50">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">⚽</span>
+                    <span class="text-xs font-black bg-white text-slate-600 px-2 py-1 rounded border border-slate-200">Spesial</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Melakukan</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict bg-white">
+                        <span class="block text-xl font-bold text-slate-800">する</span>
+                        <span class="text-xs font-bold uppercase">Suru</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu bg-yellow-100 border-yellow-500 text-yellow-800">
+                        <span class="block text-xl font-bold">します</span>
+                        <span class="text-xs font-bold uppercase">Shimasu</span>
+                    </div>
+                </div>
+                <p class="text-xs text-center mt-3 text-slate-500 font-bold">Digunakan untuk: Benkyou shimasu (Belajar), Tenisu shimasu (Main tenis), dll.</p>
+            </div>
+
+            <div class="verb-card p-5 border-yellow-500 bg-yellow-50">
+                <div class="flex justify-between items-start mb-4">
+                    <span class="text-4xl">👋</span>
+                    <span class="text-xs font-black bg-white text-slate-600 px-2 py-1 rounded border border-slate-200">Spesial</span>
+                </div>
+                <h3 class="text-center font-black text-2xl text-slate-700 mb-1">Datang</h3>
+                
+                <div class="mt-4 space-y-2">
+                    <div class="form-box form-dict bg-white">
+                        <span class="block text-xl font-bold text-slate-800">来る</span>
+                        <span class="text-xs font-bold uppercase">Kuru</span>
+                    </div>
+                    <div class="trans-arrow">↓</div>
+                    <div class="form-box form-masu bg-yellow-100 border-yellow-500 text-yellow-800">
+                        <span class="block text-xl font-bold">来ます</span>
+                        <span class="text-xs font-bold uppercase">Kimasu</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        function switchGroup(group) {
+            document.querySelectorAll('.verb-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById('group-' + group).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + group).classList.add('active');
+        }
+    </script>
+</body>
+</html>

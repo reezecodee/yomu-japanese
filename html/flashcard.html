@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Mode - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#e0e7ff', /* Indigo Muda */
+                        'pop-accent': '#6366f1', /* Indigo Cerah */
+                        'pop-dark': '#312e81', /* Indigo Gelap */
+                        'pop-text': '#334155' 
+                    },
+                    boxShadow: {
+                        'card': '8px 8px 0px rgba(0, 0, 0, 0.15)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.15)',
+                        'btn-active': '2px 2px 0px rgba(0, 0, 0, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #e0e7ff;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#6366f1 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Flashcard Container (Scene) */
+        .scene {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+
+        /* The Card Itself */
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* Front & Back Faces */
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 32px;
+            border: 6px solid #312e81;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.1);
+        }
+
+        .card-face-front {
+            z-index: 2;
+            transform: rotateY(0deg);
+        }
+
+        .card-face-back {
+            transform: rotateY(180deg);
+            background: #6366f1;
+            color: white;
+            border-color: #312e81;
+        }
+
+        /* Controls */
+        .ctrl-btn {
+            background: white;
+            border: 3px solid #312e81;
+            border-radius: 16px;
+            padding: 12px 24px;
+            font-weight: 800;
+            color: #312e81;
+            box-shadow: 4px 4px 0px #312e81;
+            transition: all 0.1s;
+        }
+
+        .ctrl-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #312e81;
+        }
+
+        .ctrl-btn.primary {
+            background: #facc15; /* Kuning Mencolok */
+            color: #312e81;
+        }
+
+        /* Deck Selector */
+        .deck-btn {
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .deck-btn.active {
+            background: #312e81;
+            color: white;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        }
+        .deck-btn:not(.active):hover {
+            background: rgba(255,255,255,0.5);
+            border-color: #312e81;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col pb-10">
+
+    <nav class="sticky top-4 z-40 px-4 mb-4">
+        <div class="max-w-xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark">Exit</span>
+            </a>
+            <h1 class="font-black text-xl tracking-tighter text-pop-dark">STUDY <span class="text-pop-accent">MODE</span></h1>
+            <div class="text-xl">⚡</div>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center px-4 w-full max-w-xl mx-auto">
+
+        <div class="flex gap-2 mb-6 bg-white/50 p-2 rounded-2xl border-2 border-white/50">
+            <button onclick="loadDeck('hiragana')" id="deck-hiragana" class="deck-btn active">Hiragana</button>
+            <button onclick="loadDeck('katakana')" id="deck-katakana" class="deck-btn">Katakana</button>
+            <button onclick="loadDeck('vocab')" id="deck-vocab" class="deck-btn">Vocab N5</button>
+        </div>
+
+        <div class="w-full flex justify-between items-end mb-4 px-4">
+            <span class="font-black text-pop-dark text-lg" id="card-counter">1 / 5</span>
+            <div class="flex gap-1">
+                <span class="w-3 h-3 rounded-full bg-pop-dark"></span>
+                <span class="w-3 h-3 rounded-full bg-pop-accent/30"></span>
+                <span class="w-3 h-3 rounded-full bg-pop-accent/30"></span>
+            </div>
+        </div>
+
+        <div class="scene">
+            <div class="card" id="flashcard" onclick="flipCard()">
+                
+                <div class="card-face card-face-front">
+                    <span class="absolute top-6 left-6 bg-pop-bg text-pop-dark px-3 py-1 rounded-full text-xs font-bold border-2 border-pop-dark" id="card-tag">KANA</span>
+                    
+                    <div class="flex flex-col items-center">
+                        <h2 class="text-9xl font-black text-pop-dark mb-4" id="front-text">あ</h2>
+                        <p class="text-slate-400 font-bold text-sm uppercase tracking-widest">Tap to flip ↺</p>
+                    </div>
+                </div>
+
+                <div class="card-face card-face-back">
+                    <div class="flex flex-col items-center text-center p-6">
+                        <h3 class="text-6xl font-black mb-2" id="back-romaji">A</h3>
+                        <div class="w-12 h-2 bg-white/30 rounded-full mb-4"></div>
+                        <p class="text-2xl font-bold" id="back-meaning">Huruf A</p>
+                        <p class="mt-8 text-sm font-medium opacity-80 border-2 border-white/30 px-4 py-2 rounded-xl" id="back-example">Contoh: Ari (Semut)</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 w-full mt-8">
+            <button onclick="prevCard()" class="ctrl-btn">
+                ← Prev
+            </button>
+            <button onclick="flipCard()" class="ctrl-btn primary text-xl">
+                ↺ FLIP
+            </button>
+            <button onclick="nextCard()" class="ctrl-btn">
+                Next →
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        // --- DATA DUMMY ---
+        const decks = {
+            hiragana: [
+                { front: 'あ', romaji: 'a', meaning: 'Huruf A', example: 'Ari (Semut)', tag: 'Hiragana' },
+                { front: 'い', romaji: 'i', meaning: 'Huruf I', example: 'Inu (Anjing)', tag: 'Hiragana' },
+                { front: 'う', romaji: 'u', meaning: 'Huruf U', example: 'Umi (Laut)', tag: 'Hiragana' },
+                { front: 'え', romaji: 'e', meaning: 'Huruf E', example: 'Eki (Stasiun)', tag: 'Hiragana' },
+                { front: 'お', romaji: 'o', meaning: 'Huruf O', example: 'Onigiri (Nasi Kepal)', tag: 'Hiragana' }
+            ],
+            katakana: [
+                { front: 'カ', romaji: 'ka', meaning: 'Huruf KA', example: 'Kamera', tag: 'Katakana' },
+                { front: 'キ', romaji: 'ki', meaning: 'Huruf KI', example: 'Kisu (Kiss)', tag: 'Katakana' },
+                { front: 'ク', romaji: 'ku', meaning: 'Huruf KU', example: 'Kurasu (Class)', tag: 'Katakana' },
+                { front: 'ケ', romaji: 'ke', meaning: 'Huruf KE', example: 'Keeki (Cake)', tag: 'Katakana' },
+                { front: 'コ', romaji: 'ko', meaning: 'Huruf KO', example: 'Koohii (Coffee)', tag: 'Katakana' }
+            ],
+            vocab: [
+                { front: '猫', romaji: 'Neko', meaning: 'Kucing', example: 'Meow', tag: 'Vocab N5' },
+                { front: '犬', romaji: 'Inu', meaning: 'Anjing', example: 'Woof', tag: 'Vocab N5' },
+                { front: '水', romaji: 'Mizu', meaning: 'Air', example: 'Nomimasu (Minum)', tag: 'Vocab N5' },
+                { front: '本', romaji: 'Hon', meaning: 'Buku', example: 'Yomimasu (Baca)', tag: 'Vocab N5' },
+                { front: '車', romaji: 'Kuruma', meaning: 'Mobil', example: 'Norimasu (Naik)', tag: 'Vocab N5' }
+            ]
+        };
+
+        let currentDeck = decks.hiragana;
+        let currentIndex = 0;
+
+        // --- ELEMENTS ---
+        const card = document.getElementById('flashcard');
+        const frontText = document.getElementById('front-text');
+        const backRomaji = document.getElementById('back-romaji');
+        const backMeaning = document.getElementById('back-meaning');
+        const backExample = document.getElementById('back-example');
+        const cardTag = document.getElementById('card-tag');
+        const counter = document.getElementById('card-counter');
+
+        // --- FUNCTIONS ---
+        function renderCard() {
+            const data = currentDeck[currentIndex];
+            
+            // Reset Flip
+            card.classList.remove('is-flipped');
+            
+            // Wait small delay for flip animation reset, then change content
+            setTimeout(() => {
+                frontText.innerText = data.front;
+                backRomaji.innerText = data.romaji;
+                backMeaning.innerText = data.meaning;
+                backExample.innerText = data.example;
+                cardTag.innerText = data.tag;
+                counter.innerText = `${currentIndex + 1} / ${currentDeck.length}`;
+            }, 150);
+        }
+
+        function flipCard() {
+            card.classList.toggle('is-flipped');
+        }
+
+        function nextCard() {
+            if (currentIndex < currentDeck.length - 1) {
+                currentIndex++;
+                renderCard();
+            } else {
+                // Loop back to start or show finish? For now loop.
+                currentIndex = 0;
+                renderCard();
+            }
+        }
+
+        function prevCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderCard();
+            } else {
+                currentIndex = currentDeck.length - 1;
+                renderCard();
+            }
+        }
+
+        function loadDeck(deckName) {
+            // Update active button style
+            document.querySelectorAll('.deck-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('deck-' + deckName).classList.add('active');
+
+            // Set Data
+            currentDeck = decks[deckName];
+            currentIndex = 0;
+            renderCard();
+        }
+
+        // Initialize
+        renderCard();
+
+        // Keyboard Shortcut
+        document.addEventListener('keydown', (e) => {
+            if(e.code === 'Space') flipCard();
+            if(e.code === 'ArrowRight') nextCard();
+            if(e.code === 'ArrowLeft') prevCard();
+        });
+
+    </script>
+</body>
+</html>

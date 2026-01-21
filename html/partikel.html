@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partikel (Particles) - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#dcfce7', /* Hijau Muda Segar */
+                        'pop-accent': '#22c55e', /* Hijau Rumput */
+                        'pop-dark': '#14532d', /* Hijau Hutan */
+                        'pop-text': '#334155' 
+                    },
+                    boxShadow: {
+                        'card': '8px 8px 0px rgba(0, 0, 0, 0.15)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.15)',
+                        'bubble': '4px 4px 0px #14532d'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #dcfce7;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#22c55e 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Particle Card */
+        .particle-card {
+            background: white;
+            border: 4px solid #14532d;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .particle-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background: #22c55e;
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid #14532d;
+        }
+
+        .example-bubble {
+            background: #f0fdf4;
+            border: 2px dashed #22c55e;
+            border-radius: 16px;
+            padding: 1rem;
+            margin-top: auto; /* Push to bottom */
+        }
+        
+        /* Highlight Romaji in example */
+        .hl {
+            color: #22c55e;
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-6xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">PARTIKEL <span class="text-pop-accent">JOSHI</span></h1>
+            <div class="hidden md:flex gap-2 text-xs font-bold text-pop-dark uppercase tracking-widest bg-green-100 px-3 py-1 rounded-lg border border-pop-dark">
+                Grammar N5
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4">
+        
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-black text-pop-dark mb-2">Penghubung Kalimat</h2>
+            <p class="font-bold text-slate-500">Partikel ibarat "lem" yang menyatukan kata-kata menjadi kalimat utuh. Tanpa partikel, kalimat Jepang akan berantakan!</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div class="particle-card">
+                <div class="card-header">
+                    <div class="text-5xl font-black">は</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">WA</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Topik</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Menandakan <b>topik</b> pembicaraan (subjek utama kalimat). Dibaca "Wa", bukan "Ha".</p>
+                    </div>
+                    <div class="example-bubble">
+                        <p class="font-black text-lg text-pop-dark mb-1">私<span class="text-pop-accent">は</span>アティラです。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Watashi <span class="hl">wa</span> Atyla desu.</p>
+                        <p class="text-sm font-bold text-slate-800">Saya adalah Atyla.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particle-card">
+                <div class="card-header">
+                    <div class="text-5xl font-black">を</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">WO / O</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Objek</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Menandai <b>objek</b> yang dikenai tindakan (kata kerja). Biasanya diletakkan sebelum kata kerja.</p>
+                    </div>
+                    <div class="example-bubble">
+                        <p class="font-black text-lg text-pop-dark mb-1">寿司<span class="text-pop-accent">を</span>食べます。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Sushi <span class="hl">o</span> tabemasu.</p>
+                        <p class="text-sm font-bold text-slate-800">Makan sushi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particle-card">
+                <div class="card-header">
+                    <div class="text-5xl font-black">も</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">MO</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Juga</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Berarti <b>"juga"</b> atau "pun". Menggantikan partikel "Wa" atau "Ga".</p>
+                    </div>
+                    <div class="example-bubble">
+                        <p class="font-black text-lg text-pop-dark mb-1">私<span class="text-pop-accent">も</span>学生です。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Watashi <span class="hl">mo</span> gakusei desu.</p>
+                        <p class="text-sm font-bold text-slate-800">Saya <b>juga</b> mahasiswa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particle-card">
+                <div class="card-header">
+                    <div class="text-5xl font-black">に</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">NI</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Waktu/Lokasi</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Menunjukkan <b>waktu</b> spesifik atau <b>lokasi keberadaan</b> (statis).</p>
+                    </div>
+                    <div class="example-bubble">
+                        <p class="font-black text-lg text-pop-dark mb-1">6時<span class="text-pop-accent">に</span>起きます。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Roku-ji <span class="hl">ni</span> okimasu.</p>
+                        <p class="text-sm font-bold text-slate-800">Bangun <b>pada</b> jam 6.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particle-card">
+                <div class="card-header">
+                    <div class="text-5xl font-black">で</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">DE</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Di/Dengan</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Menunjukkan <b>tempat kejadian</b> (aksi) atau <b>cara/alat</b> yang digunakan.</p>
+                    </div>
+                    <div class="example-bubble">
+                        <p class="font-black text-lg text-pop-dark mb-1">バス<span class="text-pop-accent">で</span>行きます。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Basu <span class="hl">de</span> ikimasu.</p>
+                        <p class="text-sm font-bold text-slate-800">Pergi <b>dengan</b> bus.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particle-card">
+                <div class="card-header">
+                    <div class="text-5xl font-black">へ</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">E</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Ke Arah</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Menunjukkan <b>arah tujuan</b>. Mirip "Ni" tapi lebih fokus ke arah pergerakan. Dibaca "E".</p>
+                    </div>
+                    <div class="example-bubble">
+                        <p class="font-black text-lg text-pop-dark mb-1">日本<span class="text-pop-accent">へ</span>行きたい。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Nihon <span class="hl">e</span> ikitai.</p>
+                        <p class="text-sm font-bold text-slate-800">Ingin pergi <b>ke</b> Jepang.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particle-card">
+                <div class="card-header">
+                    <div class="text-5xl font-black">の</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">NO</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Milik</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Menandakan <b>kepemilikan</b> atau menghubungkan dua kata benda. (Rumus: Pemilik + NO + Benda).</p>
+                    </div>
+                    <div class="example-bubble">
+                        <p class="font-black text-lg text-pop-dark mb-1">私<span class="text-pop-accent">の</span>本です。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Watashi <span class="hl">no</span> hon desu.</p>
+                        <p class="text-sm font-bold text-slate-800">Buku <b>milik</b> saya.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particle-card">
+                <div class="card-header">
+                    <div class="text-5xl font-black">と</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">TO</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Dan/Bersama</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Berarti <b>"dan"</b> (untuk daftar lengkap) atau <b>"bersama"</b> (jika diikuti orang).</p>
+                    </div>
+                    <div class="example-bubble">
+                        <p class="font-black text-lg text-pop-dark mb-1">猫<span class="text-pop-accent">と</span>犬。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Neko <span class="hl">to</span> inu.</p>
+                        <p class="text-sm font-bold text-slate-800">Kucing <b>dan</b> Anjing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particle-card bg-yellow-50 border-pop-accent/50">
+                <div class="card-header bg-yellow-400 border-yellow-600 text-pop-dark">
+                    <div class="text-5xl font-black">か</div>
+                    <div class="text-right">
+                        <div class="text-xl font-bold">KA</div>
+                        <div class="text-xs font-bold opacity-80 uppercase">Tanya (?)</div>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col gap-4">
+                    <div>
+                        <h3 class="font-bold text-pop-dark mb-1">Fungsi:</h3>
+                        <p class="text-sm text-slate-600 font-medium">Diletakkan di akhir kalimat untuk mengubahnya menjadi <b>pertanyaan</b>.</p>
+                    </div>
+                    <div class="example-bubble bg-white border-yellow-400">
+                        <p class="font-black text-lg text-pop-dark mb-1">元気です<span class="text-yellow-500 font-black">か</span>。</p>
+                        <p class="text-sm font-bold text-slate-500 italic mb-1">Genki desu <span class="text-yellow-500 font-bold">ka</span>?</p>
+                        <p class="text-sm font-bold text-slate-800">Apa kabar?</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 bg-white border-4 border-pop-dark rounded-[32px] p-8 shadow-card">
+            <h3 class="text-2xl font-black text-pop-dark mb-6 border-b-2 border-slate-100 pb-4">Partikel Penting Lainnya</h3>
+            
+            <div class="grid gap-4">
+                <div class="flex flex-col md:flex-row gap-4 p-4 rounded-xl hover:bg-pop-bg transition-colors border-2 border-transparent hover:border-pop-accent">
+                    <div class="md:w-16 h-16 bg-pop-dark text-white rounded-xl flex items-center justify-center font-black text-2xl flex-shrink-0">から</div>
+                    <div>
+                        <h4 class="font-bold text-lg text-pop-dark">Kara (Dari / Karena)</h4>
+                        <p class="text-sm text-slate-600 mb-1">Menunjukkan titik awal waktu/tempat.</p>
+                        <p class="text-xs font-bold text-pop-accent">Contoh: Senin <b>kara</b> (Dari senin).</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4 p-4 rounded-xl hover:bg-pop-bg transition-colors border-2 border-transparent hover:border-pop-accent">
+                    <div class="md:w-16 h-16 bg-pop-dark text-white rounded-xl flex items-center justify-center font-black text-2xl flex-shrink-0">まで</div>
+                    <div>
+                        <h4 class="font-bold text-lg text-pop-dark">Made (Sampai)</h4>
+                        <p class="text-sm text-slate-600 mb-1">Menunjukkan batas akhir waktu/tempat.</p>
+                        <p class="text-xs font-bold text-pop-accent">Contoh: Jumat <b>made</b> (Sampai jumat).</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4 p-4 rounded-xl hover:bg-pop-bg transition-colors border-2 border-transparent hover:border-pop-accent">
+                    <div class="md:w-16 h-16 bg-pop-dark text-white rounded-xl flex items-center justify-center font-black text-2xl flex-shrink-0">ね</div>
+                    <div>
+                        <h4 class="font-bold text-lg text-pop-dark">Ne (Ya? / Kan?)</h4>
+                        <p class="text-sm text-slate-600 mb-1">Di akhir kalimat untuk mencari persetujuan lawan bicara.</p>
+                        <p class="text-xs font-bold text-pop-accent">Contoh: Oishii desu <b>ne</b> (Enak ya?).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

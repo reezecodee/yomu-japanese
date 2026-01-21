@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects (Mono) - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#f8fafc', 
+                        'pop-dark': '#334155',
+                        /* Location Colors */
+                        'loc-home': '#f97316',
+                        'loc-school': '#3b82f6',
+                        'loc-nature': '#22c55e',
+                        'loc-hospital': '#ef4444',
+                        'loc-sport': '#a855f7'
+                    },
+                    boxShadow: {
+                        'card': '6px 6px 0px rgba(0, 0, 0, 0.1)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)',
+                        'inset': 'inset 0 2px 4px 0 rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Object Card */
+        .obj-card {
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .obj-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+            border-color: currentColor; /* Border ikut warna text saat hover */
+        }
+
+        .icon-box {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 4px 0 rgba(0,0,0,0.1));
+        }
+
+        /* Tab Style */
+        .tab-btn {
+            padding: 10px 20px;
+            border: 3px solid #334155;
+            background: white;
+            border-radius: 14px;
+            font-weight: 800;
+            color: #334155;
+            box-shadow: 4px 4px 0px #334155;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            color: white;
+            border-color: #334155;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #334155;
+        }
+
+        /* Active Colors per Section */
+        #btn-home.active { background: #f97316; }
+        #btn-school.active { background: #3b82f6; }
+        #btn-nature.active { background: #22c55e; }
+        #btn-hospital.active { background: #ef4444; }
+        #btn-sport.active { background: #a855f7; }
+
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-6xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-slate-600 transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">OBJECT <span class="text-slate-400">INVENTORY</span></h1>
+            <div class="text-2xl">🎒</div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4">
+
+        <div class="flex overflow-x-auto pb-4 mb-6 gap-3 md:justify-center no-scrollbar">
+            <button onclick="switchLoc('home')" id="btn-home" class="tab-btn active">🏠 Rumah</button>
+            <button onclick="switchLoc('school')" id="btn-school" class="tab-btn">🏫 Sekolah</button>
+            <button onclick="switchLoc('nature')" id="btn-nature" class="tab-btn">🌳 Alam</button>
+            <button onclick="switchLoc('hospital')" id="btn-hospital" class="tab-btn">🏥 RS</button>
+            <button onclick="switchLoc('sport')" id="btn-sport" class="tab-btn">⚽ Olahraga</button>
+        </div>
+
+        <div id="loc-home" class="loc-section">
+            <div class="bg-orange-50 border-4 border-orange-200 rounded-[32px] p-6 md:p-8">
+                <h2 class="text-2xl font-black text-orange-800 mb-6 flex items-center gap-2">
+                    <span class="bg-white w-10 h-10 rounded-full flex items-center justify-center border-2 border-orange-300">🏠</span>
+                    Benda di Rumah (Ie)
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    
+                    <div class="obj-card text-orange-600">
+                        <div class="icon-box">📺</div>
+                        <div class="text-2xl font-black text-slate-700">テレビ</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Terebi</div>
+                        <div class="text-sm font-bold text-slate-400">Televisi</div>
+                    </div>
+
+                    <div class="obj-card text-orange-600">
+                        <div class="icon-box">🪑</div>
+                        <div class="text-2xl font-black text-slate-700">椅子</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Isu</div>
+                        <div class="text-sm font-bold text-slate-400">Kursi</div>
+                    </div>
+
+                    <div class="obj-card text-orange-600">
+                        <div class="icon-box">🪵</div>
+                        <div class="text-2xl font-black text-slate-700">机</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Tsukue</div>
+                        <div class="text-sm font-bold text-slate-400">Meja</div>
+                    </div>
+
+                    <div class="obj-card text-orange-600">
+                        <div class="icon-box">⏰</div>
+                        <div class="text-2xl font-black text-slate-700">時計</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Tokei</div>
+                        <div class="text-sm font-bold text-slate-400">Jam</div>
+                    </div>
+
+                    <div class="obj-card text-orange-600">
+                        <div class="icon-box">🔑</div>
+                        <div class="text-2xl font-black text-slate-700">鍵</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Kagi</div>
+                        <div class="text-sm font-bold text-slate-400">Kunci</div>
+                    </div>
+
+                    <div class="obj-card text-orange-600">
+                        <div class="icon-box">🛏️</div>
+                        <div class="text-2xl font-black text-slate-700">ベッド</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Beddo</div>
+                        <div class="text-sm font-bold text-slate-400">Kasur</div>
+                    </div>
+
+                    <div class="obj-card text-orange-600">
+                        <div class="icon-box">🚪</div>
+                        <div class="text-2xl font-black text-slate-700">ドア</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Doa</div>
+                        <div class="text-sm font-bold text-slate-400">Pintu</div>
+                    </div>
+
+                    <div class="obj-card text-orange-600">
+                        <div class="icon-box">🖼️</div>
+                        <div class="text-2xl font-black text-slate-700">部屋</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Heya</div>
+                        <div class="text-sm font-bold text-slate-400">Kamar</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="loc-school" class="loc-section hidden">
+            <div class="bg-blue-50 border-4 border-blue-200 rounded-[32px] p-6 md:p-8">
+                <h2 class="text-2xl font-black text-blue-800 mb-6 flex items-center gap-2">
+                    <span class="bg-white w-10 h-10 rounded-full flex items-center justify-center border-2 border-blue-300">🏫</span>
+                    Benda di Sekolah (Gakkou)
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    
+                    <div class="obj-card text-blue-600">
+                        <div class="icon-box">✏️</div>
+                        <div class="text-2xl font-black text-slate-700">鉛筆</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Enpitsu</div>
+                        <div class="text-sm font-bold text-slate-400">Pensil</div>
+                    </div>
+
+                    <div class="obj-card text-blue-600">
+                        <div class="icon-box">🖊️</div>
+                        <div class="text-2xl font-black text-slate-700">ペン</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Pen</div>
+                        <div class="text-sm font-bold text-slate-400">Pulpen</div>
+                    </div>
+
+                    <div class="obj-card text-blue-600">
+                        <div class="icon-box">📖</div>
+                        <div class="text-2xl font-black text-slate-700">本</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Hon</div>
+                        <div class="text-sm font-bold text-slate-400">Buku</div>
+                    </div>
+
+                    <div class="obj-card text-blue-600">
+                        <div class="icon-box">🎒</div>
+                        <div class="text-2xl font-black text-slate-700">鞄</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Kaban</div>
+                        <div class="text-sm font-bold text-slate-400">Tas</div>
+                    </div>
+
+                    <div class="obj-card text-blue-600">
+                        <div class="icon-box">📓</div>
+                        <div class="text-2xl font-black text-slate-700">辞書</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Jisho</div>
+                        <div class="text-sm font-bold text-slate-400">Kamus</div>
+                    </div>
+
+                    <div class="obj-card text-blue-600">
+                        <div class="icon-box">🪟</div>
+                        <div class="text-2xl font-black text-slate-700">窓</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Mado</div>
+                        <div class="text-sm font-bold text-slate-400">Jendela</div>
+                    </div>
+
+                    <div class="obj-card text-blue-600">
+                        <div class="icon-box">🟩</div>
+                        <div class="text-2xl font-black text-slate-700">黒板</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Kokuban</div>
+                        <div class="text-sm font-bold text-slate-400">Papan Tulis</div>
+                    </div>
+
+                    <div class="obj-card text-blue-600">
+                        <div class="icon-box">✂️</div>
+                        <div class="text-2xl font-black text-slate-700">鋏</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Hasami</div>
+                        <div class="text-sm font-bold text-slate-400">Gunting</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="loc-nature" class="loc-section hidden">
+            <div class="bg-green-50 border-4 border-green-200 rounded-[32px] p-6 md:p-8">
+                <h2 class="text-2xl font-black text-green-800 mb-6 flex items-center gap-2">
+                    <span class="bg-white w-10 h-10 rounded-full flex items-center justify-center border-2 border-green-300">🌳</span>
+                    Benda di Alam (Shizen)
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    
+                    <div class="obj-card text-green-600">
+                        <div class="icon-box">⛰️</div>
+                        <div class="text-2xl font-black text-slate-700">山</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Yama</div>
+                        <div class="text-sm font-bold text-slate-400">Gunung</div>
+                    </div>
+
+                    <div class="obj-card text-green-600">
+                        <div class="icon-box">🌊</div>
+                        <div class="text-2xl font-black text-slate-700">川</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Kawa</div>
+                        <div class="text-sm font-bold text-slate-400">Sungai</div>
+                    </div>
+
+                    <div class="obj-card text-green-600">
+                        <div class="icon-box">🌸</div>
+                        <div class="text-2xl font-black text-slate-700">花</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Hana</div>
+                        <div class="text-sm font-bold text-slate-400">Bunga</div>
+                    </div>
+
+                    <div class="obj-card text-green-600">
+                        <div class="icon-box">🌲</div>
+                        <div class="text-2xl font-black text-slate-700">木</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Ki</div>
+                        <div class="text-sm font-bold text-slate-400">Pohon</div>
+                    </div>
+
+                    <div class="obj-card text-green-600">
+                        <div class="icon-box">🌤️</div>
+                        <div class="text-2xl font-black text-slate-700">空</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Sora</div>
+                        <div class="text-sm font-bold text-slate-400">Langit</div>
+                    </div>
+
+                    <div class="obj-card text-green-600">
+                        <div class="icon-box">⭐</div>
+                        <div class="text-2xl font-black text-slate-700">星</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Hoshi</div>
+                        <div class="text-sm font-bold text-slate-400">Bintang</div>
+                    </div>
+
+                    <div class="obj-card text-green-600">
+                        <div class="icon-box">🌕</div>
+                        <div class="text-2xl font-black text-slate-700">月</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Tsuki</div>
+                        <div class="text-sm font-bold text-slate-400">Bulan</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="loc-hospital" class="loc-section hidden">
+            <div class="bg-red-50 border-4 border-red-200 rounded-[32px] p-6 md:p-8">
+                <h2 class="text-2xl font-black text-red-800 mb-6 flex items-center gap-2">
+                    <span class="bg-white w-10 h-10 rounded-full flex items-center justify-center border-2 border-red-300">🏥</span>
+                    Rumah Sakit (Byouin)
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    
+                    <div class="obj-card text-red-600">
+                        <div class="icon-box">💊</div>
+                        <div class="text-2xl font-black text-slate-700">薬</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Kusuri</div>
+                        <div class="text-sm font-bold text-slate-400">Obat</div>
+                    </div>
+
+                    <div class="obj-card text-red-600">
+                        <div class="icon-box">😷</div>
+                        <div class="text-2xl font-black text-slate-700">マスク</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Masuku</div>
+                        <div class="text-sm font-bold text-slate-400">Masker</div>
+                    </div>
+
+                    <div class="obj-card text-red-600">
+                        <div class="icon-box">👓</div>
+                        <div class="text-2xl font-black text-slate-700">眼鏡</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Megane</div>
+                        <div class="text-sm font-bold text-slate-400">Kacamata</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loc-sport" class="loc-section hidden">
+            <div class="bg-purple-50 border-4 border-purple-200 rounded-[32px] p-6 md:p-8">
+                <h2 class="text-2xl font-black text-purple-800 mb-6 flex items-center gap-2">
+                    <span class="bg-white w-10 h-10 rounded-full flex items-center justify-center border-2 border-purple-300">⚽</span>
+                    Tempat Olahraga (Supootsu)
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    
+                    <div class="obj-card text-purple-600">
+                        <div class="icon-box">🏐</div>
+                        <div class="text-2xl font-black text-slate-700">ボール</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Booru</div>
+                        <div class="text-sm font-bold text-slate-400">Bola</div>
+                    </div>
+
+                    <div class="obj-card text-purple-600">
+                        <div class="icon-box">🏊</div>
+                        <div class="text-2xl font-black text-slate-700">プール</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Puuru</div>
+                        <div class="text-sm font-bold text-slate-400">Kolam Renang</div>
+                    </div>
+
+                    <div class="obj-card text-purple-600">
+                        <div class="icon-box">👕</div>
+                        <div class="text-2xl font-black text-slate-700">ユニ</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Yunifoomu</div>
+                        <div class="text-sm font-bold text-slate-400">Seragam</div>
+                    </div>
+
+                    <div class="obj-card text-purple-600">
+                        <div class="icon-box">🏟️</div>
+                        <div class="text-2xl font-black text-slate-700">体育館</div>
+                        <div class="text-xs font-bold uppercase tracking-widest mt-1">Taiikukan</div>
+                        <div class="text-sm font-bold text-slate-400">Gedung OR</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-white border-4 border-pop-dark rounded-[32px] p-6 text-center shadow-card">
+            <h3 class="font-black text-xl text-pop-dark mb-4">Contoh Kalimat</h3>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <div class="bg-pop-bg p-4 rounded-2xl border-2 border-slate-200">
+                    <p class="text-slate-500 font-bold uppercase text-xs mb-1">Menunjuk Benda (Dekat)</p>
+                    <p class="font-black text-lg">これ は [Benda] です。</p>
+                    <p class="text-pop-dark font-medium">Kore wa <span class="text-slate-500 font-bold">[Benda]</span> desu.</p>
+                    <p class="text-sm text-slate-400">Ini adalah [Benda].</p>
+                </div>
+                <div class="bg-pop-bg p-4 rounded-2xl border-2 border-slate-200">
+                    <p class="text-slate-500 font-bold uppercase text-xs mb-1">Keberadaan Benda</p>
+                    <p class="font-black text-lg">[Benda] が あります。</p>
+                    <p class="text-pop-dark font-medium"><span class="text-slate-500 font-bold">[Benda]</span> ga arimasu.</p>
+                    <p class="text-sm text-slate-400">Ada [Benda].</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchLoc(locName) {
+            // Hide all sections
+            document.querySelectorAll('.loc-section').forEach(el => el.classList.add('hidden'));
+            // Show selected section
+            document.getElementById('loc-' + locName).classList.remove('hidden');
+            
+            // Reset buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Activate button
+            document.getElementById('btn-' + locName).classList.add('active');
+        }
+    </script>
+</body>
+</html>

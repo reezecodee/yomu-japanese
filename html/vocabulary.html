@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary (Kotoba) - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#f3f4f6', 
+                        'pop-dark': '#1f2937', 
+                        /* Palet Warna Bento */
+                        'bento-red': '#fecaca',
+                        'bento-blue': '#bfdbfe',
+                        'bento-green': '#bbf7d0',
+                        'bento-yellow': '#fef08a',
+                        'bento-purple': '#e9d5ff',
+                        'bento-orange': '#fed7aa'
+                    },
+                    boxShadow: {
+                        'card': '6px 6px 0px rgba(0, 0, 0, 0.1)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)',
+                        'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#94a3b8 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Bento Card Base Style */
+        .bento-card {
+            background: white;
+            border: 3px solid #1f2937;
+            border-radius: 24px;
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        /* Typography */
+        .jp-text { font-weight: 900; line-height: 1.2; }
+        .romaji { font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; color: #4b5563; }
+        .meaning { font-weight: 600; font-size: 0.8rem; color: #6b7280; }
+
+        /* Color Circle */
+        .color-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid #1f2937;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-6xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-slate-700 transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">THEMATIC <span class="text-indigo-500">KOTOBA</span></h1>
+            <div class="text-2xl">🍱</div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4">
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-auto">
+
+            <div class="bento-card md:col-span-2 bg-indigo-500 border-indigo-900 text-white justify-center items-start min-h-[160px]">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold mb-2 border border-white/30">VOCABULARY LIST</span>
+                <h2 class="text-4xl font-black mb-1">言葉 (Kotoba)</h2>
+                <p class="font-bold opacity-80 text-sm">Kumpulan kosakata penting sehari-hari.</p>
+                <div class="absolute -right-4 -bottom-4 text-8xl opacity-10 font-black rotate-12">辞書</div>
+            </div>
+
+            <div class="bento-card md:col-span-2 bg-white">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-black text-pop-dark flex items-center gap-2">🎨 Warna (Iro)</h3>
+                </div>
+                <div class="flex flex-wrap gap-4 justify-around">
+                    <div class="text-center group cursor-pointer">
+                        <div class="color-dot bg-red-500 group-hover:scale-110 transition-transform"></div>
+                        <p class="font-bold text-xs mt-1">Aka</p>
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <div class="color-dot bg-blue-500 group-hover:scale-110 transition-transform"></div>
+                        <p class="font-bold text-xs mt-1">Ao</p>
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <div class="color-dot bg-yellow-400 group-hover:scale-110 transition-transform"></div>
+                        <p class="font-bold text-xs mt-1">Kiiro</p>
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <div class="color-dot bg-black group-hover:scale-110 transition-transform"></div>
+                        <p class="font-bold text-xs mt-1">Kuro</p>
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <div class="color-dot bg-white group-hover:scale-110 transition-transform"></div>
+                        <p class="font-bold text-xs mt-1">Shiro</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card md:row-span-2 bg-yellow-50 border-yellow-600">
+                <h3 class="text-lg font-black text-yellow-800 mb-3 flex items-center gap-2">📅 Hari (Youbi)</h3>
+                <div class="space-y-2 flex-grow overflow-y-auto pr-1 text-sm">
+                    <div class="flex justify-between items-center border-b border-yellow-200 pb-1">
+                        <div><div class="jp-text text-base">月曜日</div><div class="romaji text-yellow-700">Getsu</div></div>
+                        <div class="meaning">Senin</div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-yellow-200 pb-1">
+                        <div><div class="jp-text text-base">火曜日</div><div class="romaji text-yellow-700">Ka</div></div>
+                        <div class="meaning">Selasa</div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-yellow-200 pb-1">
+                        <div><div class="jp-text text-base">水曜日</div><div class="romaji text-yellow-700">Sui</div></div>
+                        <div class="meaning">Rabu</div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-yellow-200 pb-1">
+                        <div><div class="jp-text text-base">木曜日</div><div class="romaji text-yellow-700">Moku</div></div>
+                        <div class="meaning">Kamis</div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-yellow-200 pb-1">
+                        <div><div class="jp-text text-base">金曜日</div><div class="romaji text-yellow-700">Kin</div></div>
+                        <div class="meaning">Jumat</div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-yellow-200 pb-1">
+                        <div class="text-blue-600"><div class="jp-text text-base">土曜日</div><div class="romaji text-blue-500">Do</div></div>
+                        <div class="meaning text-blue-500 font-bold">Sabtu</div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-red-500"><div class="jp-text text-base">日曜日</div><div class="romaji text-red-400">Nichi</div></div>
+                        <div class="meaning text-red-500 font-bold">Minggu</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card bg-green-50 border-green-600">
+                <h3 class="text-lg font-black text-green-800 mb-2">🌳 Alam</h3>
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                    <div class="bg-white p-1 rounded-lg border border-green-200 text-center">
+                        <div class="text-xl">花</div><div class="romaji text-green-600">Hana</div>
+                    </div>
+                    <div class="bg-white p-1 rounded-lg border border-green-200 text-center">
+                        <div class="text-xl">雨</div><div class="romaji text-green-600">Ame</div>
+                    </div>
+                    <div class="bg-white p-1 rounded-lg border border-green-200 text-center">
+                        <div class="text-xl">空</div><div class="romaji text-green-600">Sora</div>
+                    </div>
+                     <div class="bg-white p-1 rounded-lg border border-green-200 text-center">
+                        <div class="text-xl">海</div><div class="romaji text-green-600">Umi</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card bg-orange-50 border-orange-400">
+                <h3 class="text-lg font-black text-orange-800 mb-2">🍂 Musim</h3>
+                <div class="grid grid-cols-2 gap-2 mt-auto">
+                    <div class="bg-pink-100 p-1 rounded-lg border border-pink-200 text-center">
+                        <div class="text-xl">春</div><div class="romaji text-pink-600">Haru</div><div class="text-[9px] text-slate-500">Semi</div>
+                    </div>
+                    <div class="bg-green-100 p-1 rounded-lg border border-green-200 text-center">
+                        <div class="text-xl">夏</div><div class="romaji text-green-600">Natsu</div><div class="text-[9px] text-slate-500">Panas</div>
+                    </div>
+                    <div class="bg-orange-100 p-1 rounded-lg border border-orange-200 text-center">
+                        <div class="text-xl">秋</div><div class="romaji text-orange-600">Aki</div><div class="text-[9px] text-slate-500">Gugur</div>
+                    </div>
+                    <div class="bg-blue-100 p-1 rounded-lg border border-blue-200 text-center">
+                        <div class="text-xl">冬</div><div class="romaji text-blue-600">Fuyu</div><div class="text-[9px] text-slate-500">Dingin</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card bg-blue-50 border-blue-400 items-center justify-center relative p-1">
+                <h3 class="text-lg font-black text-blue-800 absolute top-3 left-4 z-10">🧭 Arah</h3>
+                <div class="grid grid-cols-3 grid-rows-3 gap-1 w-full h-full pt-6">
+                    <div></div>
+                    <div class="flex flex-col items-center justify-center"><span class="text-lg font-black text-slate-700">北</span><span class="text-[9px] font-bold text-blue-600">KITA (U)</span></div>
+                    <div></div>
+                    <div class="flex flex-col items-center justify-center"><span class="text-lg font-black text-slate-700">西</span><span class="text-[9px] font-bold text-blue-600">NISHI (B)</span></div>
+                    <div class="flex items-center justify-center"><div class="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow-sm"></div></div>
+                    <div class="flex flex-col items-center justify-center"><span class="text-lg font-black text-slate-700">東</span><span class="text-[9px] font-bold text-blue-600">HIGASHI (T)</span></div>
+                    <div></div>
+                    <div class="flex flex-col items-center justify-center"><span class="text-lg font-black text-slate-700">南</span><span class="text-[9px] font-bold text-blue-600">MINAMI (S)</span></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <div class="bento-card md:col-span-2 bg-red-50 border-red-400">
+                <h3 class="text-lg font-black text-red-800 mb-3 flex items-center gap-2">🍔 Makanan & Minuman</h3>
+                <div class="grid grid-cols-2 gap-4 h-full">
+                    <div class="space-y-2">
+                        <p class="text-xs font-bold text-red-500 uppercase tracking-widest border-b border-red-200 mb-2">Tabemono (Makan)</p>
+                        <div class="flex justify-between items-center bg-white p-2 rounded-lg border border-red-100">
+                            <div><span class="text-lg mr-2">ご飯</span><span class="romaji text-red-400">Gohan</span></div>
+                            <span class="text-xs font-bold text-slate-500">Nasi</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-2 rounded-lg border border-red-100">
+                            <div><span class="text-lg mr-2">パン</span><span class="romaji text-red-400">Pan</span></div>
+                            <span class="text-xs font-bold text-slate-500">Roti</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-2 rounded-lg border border-red-100">
+                            <div><span class="text-lg mr-2">肉</span><span class="romaji text-red-400">Niku</span></div>
+                            <span class="text-xs font-bold text-slate-500">Daging</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-xs font-bold text-blue-500 uppercase tracking-widest border-b border-blue-200 mb-2">Nomimono (Minum)</p>
+                        <div class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                            <div><span class="text-lg mr-2">水</span><span class="romaji text-blue-400">Mizu</span></div>
+                            <span class="text-xs font-bold text-slate-500">Air</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                            <div><span class="text-lg mr-2">お茶</span><span class="romaji text-blue-400">Ocha</span></div>
+                            <span class="text-xs font-bold text-slate-500">Teh</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-2 rounded-lg border border-blue-100">
+                            <div><span class="text-lg mr-2">牛乳</span><span class="romaji text-blue-400">Gyuunyuu</span></div>
+                            <span class="text-xs font-bold text-slate-500">Susu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card md:col-span-2 bg-purple-50 border-purple-400">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-lg font-black text-purple-800">📅 Nama Bulan (Tsuki)</h3>
+                    <span class="text-xs bg-purple-200 text-purple-800 px-2 py-1 rounded font-bold">Angka + Gatsu</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">1</span><span class="text-xs font-bold text-purple-500">Ichigatsu</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">2</span><span class="text-xs font-bold text-purple-500">Nigatsu</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">3</span><span class="text-xs font-bold text-purple-500">Sangatsu</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">4</span><span class="text-xs font-bold text-red-500">Shigatsu ⚠️</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">5</span><span class="text-xs font-bold text-purple-500">Gogatsu</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">6</span><span class="text-xs font-bold text-purple-500">Rokugatsu</span>
+                    </div>
+                     <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">7</span><span class="text-xs font-bold text-red-500">Shichigatsu ⚠️</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">8</span><span class="text-xs font-bold text-purple-500">Hachigatsu</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">9</span><span class="text-xs font-bold text-red-500">Kugatsu ⚠️</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">10</span><span class="text-xs font-bold text-purple-500">Juugatsu</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">11</span><span class="text-xs font-bold text-purple-500">Juuichigatsu</span>
+                    </div>
+                    <div class="bg-white px-3 py-1 rounded-lg border border-purple-100 flex justify-between items-center">
+                        <span class="font-bold text-slate-700">12</span><span class="text-xs font-bold text-purple-500">Juunigatsu</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card md:col-span-2 bg-pink-50 border-pink-400">
+                 <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-black text-pink-800">🏠 Keluarga (Kazoku)</h3>
+                    <span class="text-xs bg-pink-200 text-pink-800 px-2 py-1 rounded-md font-bold">Saya vs Orang Lain</span>
+                </div>
+                <div class="grid grid-cols-2 gap-4 h-full items-center">
+                    <div class="bg-white p-3 rounded-xl border-2 border-pink-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-2 text-center">Keluarga Saya</p>
+                        <div class="flex justify-between mb-1"><span class="font-bold text-slate-700">Chichi</span> <span class="text-xs text-slate-400">Ayah</span></div>
+                        <div class="flex justify-between mb-1"><span class="font-bold text-slate-700">Haha</span> <span class="text-xs text-slate-400">Ibu</span></div>
+                        <div class="flex justify-between"><span class="font-bold text-slate-700">Ani</span> <span class="text-xs text-slate-400">Kakak (Lk)</span></div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border-2 border-pink-100">
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-2 text-center">Keluarga Orang</p>
+                        <div class="flex justify-between mb-1"><span class="font-bold text-pink-500">Otou-san</span> <span class="text-xs text-slate-400">Ayah</span></div>
+                        <div class="flex justify-between mb-1"><span class="font-bold text-pink-500">Okaa-san</span> <span class="text-xs text-slate-400">Ibu</span></div>
+                        <div class="flex justify-between"><span class="font-bold text-pink-500">Onii-san</span> <span class="text-xs text-slate-400">Kakak (Lk)</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+</body>
+</html>

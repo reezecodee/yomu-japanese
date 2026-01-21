@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjectives (Keiyoushi) - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#ecfeff', 
+                        'pop-accent': '#06b6d4', 
+                        'pop-dark': '#164e63', 
+                        'pop-text': '#334155' 
+                    },
+                    boxShadow: {
+                        'card': '6px 6px 0px rgba(0, 0, 0, 0.1)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #ecfeff;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#06b6d4 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* VS Card Container */
+        .vs-card {
+            background: white;
+            border: 3px solid #164e63;
+            border-radius: 24px;
+            /* HAPUS overflow:hidden jika masih bug, tapi biasanya border-radius butuh ini */
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            height: 100%; /* Pastikan kartu mengisi tinggi grid */
+        }
+
+        .vs-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Bagian Setengah Kartu */
+        .half-card {
+            padding: 1.5rem; /* Padding lega */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-grow: 1; /* Biarkan mengisi ruang kosong */
+        }
+
+        .bg-top { background-color: #ffffff; }
+        .bg-bottom { background-color: #f0fdfa; }
+
+        /* Divider Style */
+        .divider {
+            height: 2px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0; /* Reset margin */
+            flex-shrink: 0; /* Jangan sampai garis ini gepeng */
+        }
+
+        .divider-badge {
+            background: #164e63;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-size: 0.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 10;
+        }
+
+        /* Typography */
+        .jp-word { 
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            color: #334155; 
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+        .romaji { 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            color: #06b6d4; 
+            margin-bottom: 2px;
+        }
+        .meaning { 
+            font-size: 0.85rem; 
+            font-weight: 700; 
+            color: #94a3b8; 
+            line-height: 1.2;
+        }
+        
+        /* Emoji Container */
+        .emoji-box {
+            font-size: 2.5rem;
+            flex-shrink: 0; /* PENTING: Supaya emoji gak kepenet */
+            margin-left: 12px;
+        }
+
+        /* Tab Style */
+        .tab-btn {
+            padding: 12px 20px;
+            border: 3px solid #164e63;
+            background: white;
+            border-radius: 16px;
+            font-weight: 800;
+            color: #164e63;
+            box-shadow: 4px 4px 0px #164e63;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #06b6d4;
+            color: white;
+            border-color: #164e63;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #164e63;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-6xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">DESCRIBE <span class="text-pop-accent">IT</span></h1>
+            <div class="text-2xl">✨</div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4">
+
+        <div class="max-w-3xl mx-auto bg-white border-4 border-dashed border-pop-dark rounded-2xl p-5 mb-8 text-center">
+            <h3 class="font-black text-xl text-pop-dark mb-1">Dua Jenis Kata Sifat</h3>
+            <div class="flex justify-center gap-4 text-sm font-bold mt-2">
+                <span class="text-pink-500">Kata Sifat-I (Akhiran 'i')</span>
+                <span class="text-slate-300">|</span>
+                <span class="text-green-600">Kata Sifat-NA (Akhiran bebas)</span>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button onclick="switchTab('i-adj')" id="btn-i-adj" class="tab-btn active">Kata Sifat-I</button>
+            <button onclick="switchTab('na-adj')" id="btn-na-adj" class="tab-btn">Kata Sifat-NA</button>
+        </div>
+
+        <div id="tab-i-adj" class="adj-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+
+            <div class="vs-card">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">大きい</span>
+                        <span class="romaji">Ookii</span>
+                        <span class="meaning">Besar</span>
+                    </div>
+                    <span class="emoji-box">🐘</span>
+                </div>
+                <div class="divider"><span class="divider-badge">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">小さい</span>
+                        <span class="romaji">Chiisai</span>
+                        <span class="meaning">Kecil</span>
+                    </div>
+                    <span class="emoji-box">🐜</span>
+                </div>
+            </div>
+
+            <div class="vs-card">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">暑い</span>
+                        <span class="romaji">Atsui</span>
+                        <span class="meaning">Panas (Cuaca)</span>
+                    </div>
+                    <span class="emoji-box">🥵</span>
+                </div>
+                <div class="divider"><span class="divider-badge">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">寒い</span>
+                        <span class="romaji">Samui</span>
+                        <span class="meaning">Dingin (Cuaca)</span>
+                    </div>
+                    <span class="emoji-box">🥶</span>
+                </div>
+            </div>
+
+            <div class="vs-card">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">高い</span>
+                        <span class="romaji">Takai</span>
+                        <span class="meaning">Mahal / Tinggi</span>
+                    </div>
+                    <span class="emoji-box">💸</span>
+                </div>
+                <div class="divider"><span class="divider-badge">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">安い</span>
+                        <span class="romaji">Yasui</span>
+                        <span class="meaning">Murah</span>
+                    </div>
+                    <span class="emoji-box">🏷️</span>
+                </div>
+            </div>
+
+            <div class="vs-card">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">新しい</span>
+                        <span class="romaji">Atarashii</span>
+                        <span class="meaning">Baru</span>
+                    </div>
+                    <span class="emoji-box">✨</span>
+                </div>
+                <div class="divider"><span class="divider-badge">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">古い</span>
+                        <span class="romaji">Furui</span>
+                        <span class="meaning">Lama / Kuno</span>
+                    </div>
+                    <span class="emoji-box">🕸️</span>
+                </div>
+            </div>
+
+            <div class="vs-card">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">美味しい</span>
+                        <span class="romaji">Oishii</span>
+                        <span class="meaning">Enak</span>
+                    </div>
+                    <span class="emoji-box">😋</span>
+                </div>
+                <div class="divider"><span class="divider-badge">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">不味い</span>
+                        <span class="romaji">Mazui</span>
+                        <span class="meaning">Tidak Enak</span>
+                    </div>
+                    <span class="emoji-box">🤢</span>
+                </div>
+            </div>
+
+            <div class="vs-card">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">面白い</span>
+                        <span class="romaji">Omoshiroi</span>
+                        <span class="meaning">Menarik</span>
+                    </div>
+                    <span class="emoji-box">🤣</span>
+                </div>
+                <div class="divider"><span class="divider-badge">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">つまらない</span>
+                        <span class="romaji">Tsumaranai</span>
+                        <span class="meaning">Membosankan</span>
+                    </div>
+                    <span class="emoji-box">😑</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="tab-na-adj" class="adj-section hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            
+            <div class="col-span-full bg-yellow-50 border-2 border-yellow-400 rounded-2xl p-4 flex items-center gap-4 mb-2">
+                <span class="text-2xl">⚠️</span>
+                <div>
+                    <h4 class="font-bold text-yellow-800">Pengecualian Penting!</h4>
+                    <p class="text-sm text-yellow-700"><b>Kirei</b> & <b>Kirai</b> berakhiran 'i' tapi termasuk <b>NA-Adjective</b>.</p>
+                </div>
+            </div>
+
+            <div class="vs-card border-green-700">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">好き</span>
+                        <span class="romaji text-green-600">Suki</span>
+                        <span class="meaning">Suka</span>
+                    </div>
+                    <span class="emoji-box">😍</span>
+                </div>
+                <div class="divider bg-green-100"><span class="divider-badge bg-green-700">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">嫌い</span>
+                        <span class="romaji text-green-600">Kirai</span>
+                        <span class="meaning">Benci</span>
+                    </div>
+                    <span class="emoji-box">😤</span>
+                </div>
+            </div>
+
+            <div class="vs-card border-green-700">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">元気</span>
+                        <span class="romaji text-green-600">Genki</span>
+                        <span class="meaning">Sehat</span>
+                    </div>
+                    <span class="emoji-box">💪</span>
+                </div>
+                <div class="divider bg-green-100"><span class="divider-badge bg-green-700">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">病気</span>
+                        <span class="romaji text-green-600">Byouki</span>
+                        <span class="meaning">Sakit</span>
+                    </div>
+                    <span class="emoji-box">🤒</span>
+                </div>
+            </div>
+
+            <div class="vs-card border-green-700">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">暇</span>
+                        <span class="romaji text-green-600">Hima</span>
+                        <span class="meaning">Senggang</span>
+                    </div>
+                    <span class="emoji-box">🛌</span>
+                </div>
+                <div class="divider bg-green-100"><span class="divider-badge bg-green-700">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">忙しい</span>
+                        <span class="romaji text-pop-accent">Isogashii (i)</span>
+                        <span class="meaning">Sibuk</span>
+                    </div>
+                    <span class="emoji-box">🏃‍♂️</span>
+                </div>
+            </div>
+
+            <div class="vs-card border-green-700">
+                <div class="half-card bg-top">
+                    <div class="flex flex-col">
+                        <span class="jp-word">賑やか</span>
+                        <span class="romaji text-green-600">Nigiyaka</span>
+                        <span class="meaning">Ramai</span>
+                    </div>
+                    <span class="emoji-box">🎉</span>
+                </div>
+                <div class="divider bg-green-100"><span class="divider-badge bg-green-700">VS</span></div>
+                <div class="half-card bg-bottom">
+                    <div class="flex flex-col">
+                        <span class="jp-word">静か</span>
+                        <span class="romaji text-green-600">Shizuka</span>
+                        <span class="meaning">Sepi</span>
+                    </div>
+                    <span class="emoji-box">🤫</span>
+                </div>
+            </div>
+
+            <div class="vs-card border-green-700">
+                <div class="p-6 flex flex-col items-center text-center h-full justify-center bg-white">
+                    <span class="text-5xl mb-2">✨</span>
+                    <h3 class="jp-word text-3xl">綺麗</h3>
+                    <p class="romaji text-lg text-green-600">Kirei</p>
+                    <p class="meaning mt-2 text-base">Cantik / Bersih</p>
+                    <span class="mt-2 text-[10px] bg-red-100 text-red-600 px-2 py-1 rounded border border-red-200">NA-Adj</span>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        function switchTab(type) {
+            document.querySelectorAll('.adj-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + type).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + type).classList.add('active');
+        }
+    </script>
+</body>
+</html>

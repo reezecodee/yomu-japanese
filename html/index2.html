@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NihongoPop - Belajar Bahasa Jepang Seru!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#ffdecc', 
+                        'pop-accent': '#ff6b6b', 
+                        'pop-blue': '#4ecdc4',
+                        'pop-yellow': '#ffe66d',
+                        'pop-text': '#334155',
+                        /* Warna Zona */
+                        'zone-red': '#ef4444',
+                        'zone-yellow': '#f59e0b',
+                        'zone-blue': '#3b82f6'
+                    },
+                    boxShadow: {
+                        'card': '12px 12px 0px rgba(0, 0, 0, 0.1), inset -6px -6px 0px rgba(0, 0, 0, 0.05)',
+                        'btn': '6px 6px 0px rgba(0, 0, 0, 0.1)',
+                        'menu': '8px 8px 0px rgba(0,0,0,0.1)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #ffdecc;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#fff 2px, transparent 2px);
+            background-size: 40px 40px;
+        }
+
+        /* Menu Card Style */
+        .menu-card {
+            background: white;
+            border: 4px solid white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--hover-color);
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.1);
+        }
+
+        .menu-card:hover h3 {
+            color: var(--hover-color);
+        }
+
+        .menu-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Badge untuk Judul Section */
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            border: 3px solid white;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            background: white;
+            color: #334155;
+        }
+        
+        /* Animasi Judul */
+        .hero-title {
+             text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20 overflow-x-hidden">
+
+    <header class="relative pt-16 pb-12 px-4 text-center">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="inline-block transform -rotate-2 mb-4">
+                <span class="bg-pop-yellow text-slate-800 border-4 border-white px-6 py-2 rounded-2xl font-extrabold text-lg shadow-btn">
+                    PORTAL BELAJAR JEPANG 🇯🇵
+                </span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black text-slate-800 leading-tight tracking-tight mb-4 hero-title">
+                NIHONGO <span class="text-white" style="-webkit-text-stroke: 3px #ff6b6b;">POP!</span>
+            </h1>
+            <p class="text-xl font-bold text-slate-500 max-w-2xl mx-auto">
+                Pilih topik belajarmu dan mulailah petualangan bahasa Jepang sekarang juga!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 space-y-16">
+
+        <section>
+            <div class="text-center md:text-left">
+                <div class="section-badge">
+                    <span class="text-2xl">✍️</span>
+                    <span>Huruf & Angka</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="hiragana.html" class="menu-card" style="--hover-color: #ff6b6b;">
+                    <div>
+                        <div class="menu-icon">あ</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Hiragana</h3>
+                        <p class="font-bold text-slate-400 text-sm">Huruf dasar Jepang</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-red-100 text-red-600 px-2 py-1 rounded">DASAR</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="katakana.html" class="menu-card" style="--hover-color: #4ecdc4;">
+                    <div>
+                        <div class="menu-icon">ア</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Katakana</h3>
+                        <p class="font-bold text-slate-400 text-sm">Huruf kata asing</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-teal-100 text-teal-600 px-2 py-1 rounded">DASAR</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="kanji.html" class="menu-card" style="--hover-color: #8b5cf6;">
+                    <div>
+                        <div class="menu-icon">山</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Kanji</h3>
+                        <p class="font-bold text-slate-400 text-sm">Kartu N5 - N1</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-purple-100 text-purple-600 px-2 py-1 rounded">LEVEL UP</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="angka.html" class="menu-card" style="--hover-color: #f59e0b;">
+                    <div>
+                        <div class="menu-icon">123</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Angka</h3>
+                        <p class="font-bold text-slate-400 text-sm">Hitungan & Uang</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-yellow-100 text-yellow-600 px-2 py-1 rounded">LOGIKA</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <div class="text-center md:text-left">
+                <div class="section-badge">
+                    <span class="text-2xl">📚</span>
+                    <span>Kosakata (Vocabulary)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="vocabulary.html" class="menu-card" style="--hover-color: #6366f1;">
+                    <div>
+                        <div class="menu-icon">🍱</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Kotoba Umum</h3>
+                        <p class="font-bold text-slate-400 text-sm">Warna, Hari, Keluarga, dll.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-indigo-100 text-indigo-600 px-2 py-1 rounded">BENTO GRID</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="verbs.html" class="menu-card" style="--hover-color: #e11d48;">
+                    <div>
+                        <div class="menu-icon">🏃</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Kata Kerja</h3>
+                        <p class="font-bold text-slate-400 text-sm">Doushi & Konjugasi</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-rose-100 text-rose-600 px-2 py-1 rounded">PENTING</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="adjectives.html" class="menu-card" style="--hover-color: #06b6d4;">
+                    <div>
+                        <div class="menu-icon">✨</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Kata Sifat</h3>
+                        <p class="font-bold text-slate-400 text-sm">Keiyoushi (I & NA)</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-cyan-100 text-cyan-600 px-2 py-1 rounded">DESKRIPSI</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="food.html" class="menu-card" style="--hover-color: #f97316;">
+                    <div>
+                        <div class="menu-icon">🍜</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Makanan</h3>
+                        <p class="font-bold text-slate-400 text-sm">Food, Drinks & Taste</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-orange-100 text-orange-600 px-2 py-1 rounded">MENU</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="objects.html" class="menu-card" style="--hover-color: #22c55e;">
+                    <div>
+                        <div class="menu-icon">🎒</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Benda</h3>
+                        <p class="font-bold text-slate-400 text-sm">Rumah, Sekolah, Alam</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-green-100 text-green-600 px-2 py-1 rounded">INVENTORY</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="profesi.html" class="menu-card" style="--hover-color: #2563eb;">
+                    <div>
+                        <div class="menu-icon">💼</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Profesi</h3>
+                        <p class="font-bold text-slate-400 text-sm">Pekerjaan & ID Card</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-blue-100 text-blue-600 px-2 py-1 rounded">ID CARD</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <div class="text-center md:text-left">
+                <div class="section-badge">
+                    <span class="text-2xl">🧩</span>
+                    <span>Tata Bahasa (Grammar)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <a href="grammar.html" class="menu-card" style="--hover-color: #1e293b;">
+                    <div>
+                        <div class="menu-icon">🏗️</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Bunpou</h3>
+                        <p class="font-bold text-slate-400 text-sm">Pola Kalimat Dasar</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-slate-200 text-slate-600 px-2 py-1 rounded">STRUKTUR</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="partikel.html" class="menu-card" style="--hover-color: #10b981;">
+                    <div>
+                        <div class="menu-icon">🔗</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Partikel</h3>
+                        <p class="font-bold text-slate-400 text-sm">Wa, Ga, Wo, Ni, De</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-emerald-100 text-emerald-600 px-2 py-1 rounded">JOSHI</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+
+                <a href="aisatsu.html" class="menu-card" style="--hover-color: #0ea5e9;">
+                    <div>
+                        <div class="menu-icon">💬</div>
+                        <h3 class="text-2xl font-black text-slate-700 transition-colors">Salam</h3>
+                        <p class="font-bold text-slate-400 text-sm">Aisatsu & Percakapan</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t-2 border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-black bg-sky-100 text-sky-600 px-2 py-1 rounded">KOMIK</span>
+                        <span class="font-black text-slate-300">→</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center mt-20 pb-10">
+        <div class="inline-block bg-white px-6 py-3 rounded-full border-4 border-white shadow-sm">
+            <p class="font-bold text-slate-400">© 2026 NihongoPop. Made with ❤️ & 🍱</p>
+        </div>
+    </footer>
+
+</body>
+</html>

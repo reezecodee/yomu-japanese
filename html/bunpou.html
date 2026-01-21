@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar (Bunpou) - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#f0f4f8', /* Blueprint Grayish */
+                        'pop-accent': '#facc15', /* Safety Yellow */
+                        'pop-dark': '#1e293b', /* Slate Dark */
+                        'block-noun': '#3b82f6', /* Biru (Benda) */
+                        'block-verb': '#ef4444', /* Merah (Kerja) */
+                        'block-particle': '#22c55e', /* Hijau (Partikel) */
+                        'block-adj': '#06b6d4' /* Cyan (Sifat) */
+                    },
+                    boxShadow: {
+                        'card': '6px 6px 0px rgba(0, 0, 0, 0.1)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)',
+                        'block': '4px 4px 0px rgba(0,0,0,0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            color: #1e293b;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#94a3b8 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Grammar Pattern Card */
+        .pattern-card {
+            background: white;
+            border: 3px solid #1e293b;
+            border-radius: 24px;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .pattern-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+        }
+
+        /* Puzzle Blocks */
+        .grammar-block {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            color: white;
+            border: 2px solid rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+            margin: 4px 2px;
+            font-size: 0.9rem;
+        }
+        
+        .block-particle { background-color: #22c55e; border-radius: 99px; padding: 8px 12px; }
+        .block-noun { background-color: #3b82f6; }
+        .block-verb { background-color: #ef4444; }
+        .block-adj { background-color: #06b6d4; }
+        .block-desu { background-color: #facc15; color: #1e293b; }
+
+        /* Connector Line */
+        .connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+            color: #94a3b8;
+            font-weight: 800;
+            gap: 1rem;
+        }
+
+        /* Tab Style */
+        .tab-btn {
+            padding: 10px 20px;
+            border: 3px solid #1e293b;
+            background: white;
+            border-radius: 14px;
+            font-weight: 800;
+            color: #1e293b;
+            box-shadow: 4px 4px 0px #1e293b;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #1e293b;
+            color: white;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #1e293b;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-5xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">GRAMMAR <span class="text-pop-accent">BLOCKS</span></h1>
+            <div class="text-2xl">🧩</div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4">
+
+        <div class="bg-pop-dark text-white rounded-[32px] p-6 md:p-8 mb-10 shadow-card border-4 border-pop-dark">
+            <h2 class="text-2xl font-black text-pop-accent mb-6 flex items-center gap-2">
+                ⚠️ Aturan Emas: Terbalik!
+            </h2>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                <div class="text-center w-full">
+                    <p class="font-bold text-slate-400 mb-2 uppercase text-xs tracking-widest">Bahasa Indonesia (S-P-O)</p>
+                    <div class="bg-white/10 p-4 rounded-xl border-2 border-dashed border-slate-500">
+                        <div class="flex justify-center flex-wrap gap-2">
+                            <span class="grammar-block bg-slate-600">Saya</span>
+                            <span class="grammar-block bg-slate-600">Makan</span>
+                            <span class="grammar-block bg-slate-600">Nasi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-3xl font-black text-pop-accent rotate-90 md:rotate-0">➔</div>
+
+                <div class="text-center w-full">
+                    <p class="font-bold text-pop-accent mb-2 uppercase text-xs tracking-widest">Bahasa Jepang (S-O-P)</p>
+                    <div class="bg-white p-4 rounded-xl border-4 border-pop-accent text-pop-dark">
+                        <div class="flex justify-center flex-wrap gap-1 items-center">
+                            <span class="grammar-block block-noun">Watashi</span>
+                            <span class="grammar-block block-particle">wa</span>
+                            <span class="grammar-block block-noun">Gohan</span>
+                            <span class="grammar-block block-particle">o</span>
+                            <span class="grammar-block block-verb">Tabemasu</span>
+                        </div>
+                        <p class="mt-2 font-bold text-sm">(Saya - Nasi - Makan)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-8">
+            <button onclick="switchTab('basic')" id="btn-basic" class="tab-btn active">Dasar (Basic)</button>
+            <button onclick="switchTab('desire')" id="btn-desire" class="tab-btn">Keinginan (~Tai)</button>
+            <button onclick="switchTab('request')" id="btn-request" class="tab-btn">Perintah (~Te)</button>
+            <button onclick="switchTab('tense')" id="btn-tense" class="tab-btn">Waktu (Lampau)</button>
+        </div>
+
+        <div id="tab-basic" class="grammar-section grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="pattern-card">
+                <div class="bg-slate-100 inline-block px-3 py-1 rounded-lg font-bold text-xs text-slate-500 mb-3">Pola 1</div>
+                <h3 class="text-xl font-black text-pop-dark mb-4">A adalah B (Identitas)</h3>
+                
+                <div class="bg-slate-50 p-4 rounded-xl border-2 border-slate-200 mb-4">
+                    <div class="flex flex-wrap items-center gap-1">
+                        <span class="grammar-block block-noun">A (Subjek)</span>
+                        <span class="grammar-block block-particle">wa</span>
+                        <span class="grammar-block block-noun">B (Keterangan)</span>
+                        <span class="grammar-block block-desu">desu</span>
+                    </div>
+                </div>
+
+                <p class="font-bold text-sm text-slate-600 mb-1">Contoh:</p>
+                <div class="flex flex-wrap items-center gap-1 text-sm">
+                    <span class="font-bold text-blue-600">Watashi</span>
+                    <span class="font-bold text-green-600">wa</span>
+                    <span class="font-bold text-blue-600">Gakusei</span>
+                    <span class="font-bold text-yellow-600 bg-yellow-100 px-1 rounded">desu</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">Saya adalah pelajar.</p>
+            </div>
+
+            <div class="pattern-card">
+                <div class="bg-slate-100 inline-block px-3 py-1 rounded-lg font-bold text-xs text-slate-500 mb-3">Pola 2</div>
+                <h3 class="text-xl font-black text-pop-dark mb-4">Apakah...? (Pertanyaan)</h3>
+                
+                <div class="bg-slate-50 p-4 rounded-xl border-2 border-slate-200 mb-4">
+                    <div class="flex flex-wrap items-center gap-1">
+                        <span class="grammar-block bg-white text-slate-400 border-dashed border-2 text-xs">[Kalimat]</span>
+                        <span class="grammar-block block-desu">desu</span>
+                        <span class="grammar-block block-particle bg-purple-500">ka</span>
+                        <span class="text-2xl font-black text-purple-500">?</span>
+                    </div>
+                </div>
+
+                <p class="font-bold text-sm text-slate-600 mb-1">Contoh:</p>
+                <div class="flex flex-wrap items-center gap-1 text-sm">
+                    <span class="font-bold text-blue-600">Anata</span>
+                    <span class="font-bold text-green-600">wa</span>
+                    <span class="font-bold text-blue-600">Sensei</span>
+                    <span class="font-bold text-yellow-600 bg-yellow-100 px-1 rounded">desu</span>
+                    <span class="font-bold text-purple-600">ka?</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">Apakah kamu guru?</p>
+            </div>
+
+        </div>
+
+        <div id="tab-desire" class="grammar-section hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="col-span-full bg-yellow-50 border-2 border-yellow-400 p-4 rounded-2xl flex gap-4 items-center mb-2">
+                <span class="text-3xl">💡</span>
+                <div>
+                    <h4 class="font-bold text-yellow-800">Rumus Ubah:</h4>
+                    <p class="text-sm text-yellow-700">Hapus 'masu', ganti dengan 'tai desu'.</p>
+                </div>
+            </div>
+
+            <div class="pattern-card border-pink-500">
+                <h3 class="text-xl font-black text-pink-600 mb-4">Ingin Melakukan Sesuatu</h3>
+                
+                <div class="bg-pink-50 p-4 rounded-xl border-2 border-pink-200 mb-4">
+                    <div class="flex flex-wrap items-center gap-1 justify-center">
+                        <span class="grammar-block block-verb">Kata Kerja</span>
+                        <span class="font-black text-slate-300">+</span>
+                        <span class="grammar-block bg-pink-500 text-white">tai desu</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <span class="text-slate-500">Tabe<s class="text-red-300">masu</s></span>
+                        <span class="font-black text-pink-600">Tabetai desu</span>
+                        <span class="text-xs text-slate-400">Ingin makan</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <span class="text-slate-500">Iki<s class="text-red-300">masu</s></span>
+                        <span class="font-black text-pink-600">Ikitai desu</span>
+                        <span class="text-xs text-slate-400">Ingin pergi</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="tab-request" class="grammar-section hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="pattern-card border-green-500">
+                <h3 class="text-xl font-black text-green-600 mb-4">Meminta Tolong (Sopan)</h3>
+                
+                <div class="bg-green-50 p-4 rounded-xl border-2 border-green-200 mb-4">
+                    <div class="flex flex-wrap items-center gap-1 justify-center">
+                        <span class="grammar-block block-verb">Bentuk-TE</span>
+                        <span class="font-black text-slate-300">+</span>
+                        <span class="grammar-block bg-green-500 text-white">kudasai</span>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-lg text-sm text-slate-600 mb-3">
+                    <p><b>Tabete</b> kudasai (Tolong makan)</p>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-lg text-sm text-slate-600">
+                    <p><b>Mite</b> kudasai (Tolong lihat)</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-tense" class="grammar-section hidden">
+            <div class="pattern-card">
+                <h3 class="text-xl font-black text-pop-dark mb-6 text-center">Mesin Waktu (Tenses)</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="text-center">
+                        <span class="text-4xl mb-2 block">☀️</span>
+                        <h4 class="font-bold text-blue-600 mb-2">Sekarang / Masa Depan</h4>
+                        <div class="bg-blue-50 p-4 rounded-xl border-2 border-blue-200 space-y-2">
+                            <div class="font-black text-lg text-slate-700">~MASU</div>
+                            <p class="text-xs text-slate-500">Positif (Tabemasu)</p>
+                            <div class="w-full h-[1px] bg-blue-200 my-2"></div>
+                            <div class="font-black text-lg text-slate-700">~MASEN</div>
+                            <p class="text-xs text-slate-500">Negatif (Tabemasen)</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center opacity-70 hover:opacity-100 transition-opacity">
+                        <span class="text-4xl mb-2 block">🕰️</span>
+                        <h4 class="font-bold text-slate-500 mb-2">Masa Lampau (Sudah)</h4>
+                        <div class="bg-slate-100 p-4 rounded-xl border-2 border-slate-300 space-y-2">
+                            <div class="font-black text-lg text-slate-700">~MASHITA</div>
+                            <p class="text-xs text-slate-500">Positif (Tabemashita)</p>
+                            <div class="w-full h-[1px] bg-slate-300 my-2"></div>
+                            <div class="font-black text-lg text-slate-700">~MASEN DESHITA</div>
+                            <p class="text-xs text-slate-500">Negatif (Tabemasen deshita)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.grammar-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + tabName).classList.add('active');
+        }
+    </script>
+</body>
+</html>

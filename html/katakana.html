@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katakana Chart - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        'pop-bg': '#e0f7fa', /* Background sedikit kebiruan supaya beda feel-nya */
+                        'pop-accent': '#4ecdc4', /* WARNA TEMA: Ganti jadi Biru Tosca */
+                        'pop-text': '#334155'
+                    },
+                    boxShadow: {
+                        'card': '8px 8px 0px rgba(0, 0, 0, 0.1)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)',
+                        'modal': '12px 12px 0px rgba(0, 0, 0, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #e0f7fa;
+            /* Background diganti menyesuaikan tema */
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#4ecdc4 2px, transparent 2px);
+            /* Dot pattern jadi biru */
+            background-size: 30px 30px;
+        }
+
+        /* Char Card Style (Sama persis) */
+        .char-card {
+            background: white;
+            border: 3px solid #334155;
+            border-radius: 20px;
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .char-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 6px 6px 0px #334155;
+            background-color: #e6fffa;
+            /* Hover color jadi kebiruan */
+            border-color: #4ecdc4;
+        }
+
+        .char-card:hover .romaji {
+            background: #4ecdc4;
+            color: white;
+            border-color: #4ecdc4;
+        }
+
+        .char-main {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #334155;
+        }
+
+        .romaji {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-top: 4px;
+            border: 2px solid #e2e8f0;
+            padding: 2px 12px;
+            border-radius: 99px;
+            transition: all 0.15s;
+        }
+
+        /* Tabs Styling */
+        .tab-btn {
+            padding: 12px 24px;
+            border: 3px solid #334155;
+            background: white;
+            border-radius: 16px;
+            font-weight: 800;
+            box-shadow: 4px 4px 0px #334155;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #4ecdc4;
+            /* Warna Aktif jadi Biru */
+            color: white;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #334155;
+        }
+
+        .tab-btn:not(.active):hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #334155;
+        }
+
+        .empty-slot {
+            border: 3px dashed #cbd5e1;
+            border-radius: 20px;
+            opacity: 0.5;
+        }
+
+        #detailModal {
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8) translateY(20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div
+            class="max-w-4xl mx-auto bg-white border-4 border-slate-800 rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div
+                    class="bg-slate-800 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">
+                    ←</div>
+                <span class="font-extrabold text-lg text-slate-800">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-slate-800">KATAKANA <span
+                    class="text-pop-accent">CHART</span></h1>
+            <div class="w-8"></div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4">
+
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-10">
+            <button onclick="switchTab('seion')" id="btn-seion" class="tab-btn active">DASAR</button>
+            <button onclick="switchTab('dakuten')" id="btn-dakuten" class="tab-btn">DAKUTEN (″)</button>
+            <button onclick="switchTab('yoon')" id="btn-yoon" class="tab-btn">YOON (ya/yu/yo)</button>
+            <button onclick="switchTab('foreign')" id="btn-foreign"
+                class="tab-btn bg-yellow-100 hover:bg-yellow-200 border-yellow-600 text-yellow-800">TAMBAHAN
+                (Asing)</button>
+        </div>
+
+        <div id="tab-seion" class="grid-section">
+            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
+                <div class="grid grid-cols-5 gap-3 md:gap-4">
+                    <div class="char-card" onclick="openModal('ア', 'a', 'Aisu (Es Krim)')">
+                        <span class="char-main">ア</span><span class="romaji">a</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('イ', 'i', 'Inku (Tinta)')">
+                        <span class="char-main">イ</span><span class="romaji">i</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('ウ', 'u', 'Uiru (Wol)')">
+                        <span class="char-main">ウ</span><span class="romaji">u</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('エ', 'e', 'Erebeeta (Lift)')">
+                        <span class="char-main">エ</span><span class="romaji">e</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('オ', 'o', 'Orenji (Jeruk)')">
+                        <span class="char-main">オ</span><span class="romaji">o</span>
+                    </div>
+
+                    <div class="char-card" onclick="openModal('カ', 'ka', 'Kamera (Kamera)')">
+                        <span class="char-main">カ</span><span class="romaji">ka</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('キ', 'ki', 'Kisu (Ciuman)')">
+                        <span class="char-main">キ</span><span class="romaji">ki</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('ク', 'ku', 'Kurasu (Kelas)')">
+                        <span class="char-main">ク</span><span class="romaji">ku</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('ケ', 'ke', 'Keeki (Kue)')">
+                        <span class="char-main">ケ</span><span class="romaji">ke</span>
+                    </div>
+                    <div class="char-card" onclick="openModal('コ', 'ko', 'Kooto (Mantel)')">
+                        <span class="char-main">コ</span><span class="romaji">ko</span>
+                    </div>
+
+                    <div class="char-card"><span class="char-main">サ</span><span class="romaji">sa</span></div>
+                    <div class="char-card"><span class="char-main">シ</span><span class="romaji">shi</span></div>
+                    <div class="char-card"><span class="char-main">ス</span><span class="romaji">su</span></div>
+                    <div class="char-card"><span class="char-main">セ</span><span class="romaji">se</span></div>
+                    <div class="char-card"><span class="char-main">ソ</span><span class="romaji">so</span></div>
+
+                    <div class="char-card"><span class="char-main">ワ</span><span class="romaji">wa</span></div>
+                    <div class="empty-slot"></div>
+                    <div class="empty-slot"></div>
+                    <div class="empty-slot"></div>
+                    <div class="char-card"><span class="char-main">ヲ</span><span class="romaji">wo</span></div>
+
+                    <div class="char-card col-span-5 bg-slate-100 border-dashed">
+                        <span class="char-main">ン</span><span class="romaji">n</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-dakuten" class="grid-section hidden">
+            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
+                <h3 class="text-center font-bold text-slate-400 mb-6 uppercase tracking-widest">Ga - Za - Da - Ba - Pa
+                </h3>
+                <div class="grid grid-cols-5 gap-3 md:gap-4">
+                    <div class="char-card"><span class="char-main">ガ</span><span class="romaji">ga</span></div>
+                    <div class="char-card"><span class="char-main">ギ</span><span class="romaji">gi</span></div>
+                    <div class="char-card"><span class="char-main">グ</span><span class="romaji">gu</span></div>
+                    <div class="char-card"><span class="char-main">ゲ</span><span class="romaji">ge</span></div>
+                    <div class="char-card"><span class="char-main">ゴ</span><span class="romaji">go</span></div>
+
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">パ</span><span
+                            class="romaji text-pop-accent border-pop-accent">pa</span></div>
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">ピ</span><span
+                            class="romaji text-pop-accent border-pop-accent">pi</span></div>
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">プ</span><span
+                            class="romaji text-pop-accent border-pop-accent">pu</span></div>
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">ペ</span><span
+                            class="romaji text-pop-accent border-pop-accent">pe</span></div>
+                    <div class="char-card border-pop-accent text-pop-accent"><span class="char-main">ポ</span><span
+                            class="romaji text-pop-accent border-pop-accent">po</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-yoon" class="grid-section hidden">
+            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
+                <div class="grid grid-cols-3 gap-3 md:gap-4">
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">キャ</span><span
+                            class="romaji">kya</span></div>
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">キュ</span><span
+                            class="romaji">kyu</span></div>
+                    <div class="char-card aspect-auto py-4"><span class="char-main text-4xl">キョ</span><span
+                            class="romaji">kyo</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-foreign" class="grid-section hidden">
+            <div class="bg-yellow-50 border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
+                <h3 class="text-center font-bold text-slate-500 mb-6">Bunyi Asing (Extended Katakana)</h3>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ファ', 'fa', 'Fasshon (Fashion)')"><span
+                            class="char-main text-3xl">ファ</span><span class="romaji">fa</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('フィ', 'fi', 'Firumu (Film)')"><span
+                            class="char-main text-3xl">フィ</span><span class="romaji">fi</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('フェ', 'fe', 'Fesu (Festival)')"><span
+                            class="char-main text-3xl">フェ</span><span class="romaji">fe</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('フォ', 'fo', 'Fooku (Garpu)')"><span
+                            class="char-main text-3xl">フォ</span><span class="romaji">fo</span></div>
+
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ティ', 'ti', 'Paatii (Pesta)')"><span
+                            class="char-main text-3xl">ティ</span><span class="romaji">ti</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ディ', 'di', 'Disuko (Disko)')"><span
+                            class="char-main text-3xl">ディ</span><span class="romaji">di</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('トゥ', 'tu', 'Tuu (Two)')"><span
+                            class="char-main text-3xl">トゥ</span><span class="romaji">tu</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ドゥ', 'du', 'Du (Do)')"><span
+                            class="char-main text-3xl">ドゥ</span><span class="romaji">du</span></div>
+
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ウィ', 'wi', 'Wisukii (Whisky)')"><span
+                            class="char-main text-3xl">ウィ</span><span class="romaji">wi</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ウェ', 'we', 'Webu (Web)')"><span
+                            class="char-main text-3xl">ウェ</span><span class="romaji">we</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ウォ', 'wo', 'Wootaa (Water)')"><span
+                            class="char-main text-3xl">ウォ</span><span class="romaji">wo</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ヴァ', 'va', 'Vaiorin (Biola)')"><span
+                            class="char-main text-3xl">ヴァ</span><span class="romaji">va</span></div>
+
+                    <div class="char-card aspect-auto py-3" onclick="openModal('シェ', 'she', 'Shefu (Koki)')"><span
+                            class="char-main text-3xl">シェ</span><span class="romaji">she</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('ジェ', 'je', 'Jeri (Jelly)')"><span
+                            class="char-main text-3xl">ジェ</span><span class="romaji">je</span></div>
+                    <div class="char-card aspect-auto py-3" onclick="openModal('チェ', 'che', 'Chekku (Check)')"><span
+                            class="char-main text-3xl">チェ</span><span class="romaji">che</span></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="detailModal" class="fixed inset-0 z-50 hidden bg-slate-900/50 flex items-center justify-center p-4"
+        onclick="closeModal()">
+        <div class="modal-content bg-white border-4 border-slate-800 rounded-[32px] w-full max-w-sm overflow-hidden shadow-modal"
+            onclick="event.stopPropagation()">
+            <div class="bg-pop-accent p-6 text-center relative border-b-4 border-slate-800">
+                <button onclick="closeModal()"
+                    class="absolute top-4 right-4 bg-white text-slate-800 w-8 h-8 rounded-full font-bold border-2 border-slate-800 hover:bg-slate-100">✕</button>
+                <h2 id="modal-char" class="text-8xl font-black text-white drop-shadow-md mt-2">ア</h2>
+                <span id="modal-romaji"
+                    class="inline-block bg-white text-pop-accent px-4 py-1 rounded-full font-bold border-2 border-slate-800 -mb-9 relative z-10 shadow-sm text-lg">a</span>
+            </div>
+
+            <div class="p-8 pt-10 text-center">
+                <p class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-2">CONTOH KATA</p>
+                <div class="bg-pop-bg/50 p-4 rounded-xl border-2 border-dashed border-pop-accent">
+                    <p id="modal-example" class="text-xl font-bold text-slate-800">Aisu</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mt-6">
+                    <button
+                        class="bg-white border-2 border-slate-200 py-2 rounded-xl font-bold text-slate-500 text-sm hover:border-pop-accent hover:text-pop-accent transition-colors">🔊
+                        Audio</button>
+                    <button
+                        class="bg-white border-2 border-slate-200 py-2 rounded-xl font-bold text-slate-500 text-sm hover:border-pop-accent hover:text-pop-accent transition-colors">✍️
+                        Stroke</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.grid-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + tabName).classList.add('active');
+        }
+
+        const modal = document.getElementById('detailModal');
+        const modalChar = document.getElementById('modal-char');
+        const modalRomaji = document.getElementById('modal-romaji');
+        const modalExample = document.getElementById('modal-example');
+
+        function openModal(char, romaji, example = 'Belum ada contoh') {
+            modalChar.innerText = char;
+            modalRomaji.innerText = romaji;
+            modalExample.innerText = example;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") closeModal();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professions (Shigoto) - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#f1f5f9', /* Abu-abu Kebiruan (Kantor) */
+                        'pop-accent': '#2563eb', /* Biru Bisnis */
+                        'pop-dark': '#1e293b', /* Slate Dark */
+                        'card-border': '#0f172a'
+                    },
+                    boxShadow: {
+                        'card': '6px 6px 0px rgba(0, 0, 0, 0.15)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)',
+                        'badge': '2px 2px 0px rgba(0,0,0,0.1)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#94a3b8 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* ID Card Style */
+        .id-card {
+            background: white;
+            border: 3px solid #0f172a;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.2s;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .id-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        /* Lubang ID Card (Hiasan) */
+        .id-hole {
+            width: 40px;
+            height: 12px;
+            background: #f1f5f9;
+            border: 3px solid #0f172a;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .photo-area {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            background: #e2e8f0;
+            border-bottom: 3px solid #0f172a;
+        }
+        
+        /* Category Badge */
+        .job-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 2px solid #0f172a;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-6xl mx-auto bg-white border-4 border-card-border rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-card-border text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">JOB <span class="text-pop-accent">CARDS</span></h1>
+            <div class="text-2xl">💼</div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            <div class="id-card">
+                <div class="id-hole"></div>
+                <div class="job-tag bg-yellow-200 text-yellow-800">Sekolah</div>
+                <div class="photo-area bg-yellow-50">🎓</div>
+                <div class="p-4 text-center">
+                    <h2 class="text-3xl font-black mb-1">学生</h2>
+                    <p class="text-lg font-bold text-pop-accent">Gakusei</p>
+                    <div class="w-full h-1 bg-slate-200 rounded-full my-3"></div>
+                    <p class="font-bold text-slate-500">Pelajar / Mahasiswa</p>
+                </div>
+            </div>
+
+            <div class="id-card">
+                <div class="id-hole"></div>
+                <div class="job-tag bg-yellow-200 text-yellow-800">Sekolah</div>
+                <div class="photo-area bg-yellow-50">👩‍🏫</div>
+                <div class="p-4 text-center">
+                    <h2 class="text-3xl font-black mb-1">先生</h2>
+                    <p class="text-lg font-bold text-pop-accent">Sensei</p>
+                    <div class="w-full h-1 bg-slate-200 rounded-full my-3"></div>
+                    <p class="font-bold text-slate-500">Guru / Pengajar</p>
+                </div>
+            </div>
+
+            <div class="id-card">
+                <div class="id-hole"></div>
+                <div class="job-tag bg-blue-200 text-blue-800">Kantor</div>
+                <div class="photo-area bg-blue-50">💼</div>
+                <div class="p-4 text-center">
+                    <h2 class="text-3xl font-black mb-1">会社員</h2>
+                    <p class="text-lg font-bold text-pop-accent">Kaishain</p>
+                    <div class="w-full h-1 bg-slate-200 rounded-full my-3"></div>
+                    <p class="font-bold text-slate-500">Pegawai Kantor</p>
+                </div>
+            </div>
+
+            <div class="id-card">
+                <div class="id-hole"></div>
+                <div class="job-tag bg-red-200 text-red-800">Medis</div>
+                <div class="photo-area bg-red-50">👨‍⚕️</div>
+                <div class="p-4 text-center">
+                    <h2 class="text-3xl font-black mb-1">医者</h2>
+                    <p class="text-lg font-bold text-pop-accent">Isha</p>
+                    <div class="w-full h-1 bg-slate-200 rounded-full my-3"></div>
+                    <p class="font-bold text-slate-500">Dokter</p>
+                </div>
+            </div>
+
+            <div class="id-card transform scale-105 border-pop-accent shadow-card">
+                <div class="id-hole border-pop-accent"></div>
+                <div class="job-tag bg-purple-200 text-purple-800">Teknologi</div>
+                <div class="photo-area bg-purple-50">💻</div>
+                <div class="p-4 text-center">
+                    <h2 class="text-2xl font-black mb-1">エンジニア</h2>
+                    <p class="text-lg font-bold text-pop-accent">Enjinia</p>
+                    <div class="w-full h-1 bg-slate-200 rounded-full my-3"></div>
+                    <p class="font-bold text-slate-500">Insinyur / IT</p>
+                    <p class="text-xs text-slate-400 mt-1">(Kata serapan: Engineer)</p>
+                </div>
+            </div>
+
+            <div class="id-card">
+                <div class="id-hole"></div>
+                <div class="job-tag bg-slate-200 text-slate-800">Publik</div>
+                <div class="photo-area bg-slate-100">👮</div>
+                <div class="p-4 text-center">
+                    <h2 class="text-3xl font-black mb-1">警察官</h2>
+                    <p class="text-lg font-bold text-pop-accent">Keisatsukan</p>
+                    <div class="w-full h-1 bg-slate-200 rounded-full my-3"></div>
+                    <p class="font-bold text-slate-500">Polisi</p>
+                </div>
+            </div>
+
+            <div class="id-card">
+                <div class="id-hole"></div>
+                <div class="job-tag bg-green-200 text-green-800">Jasa</div>
+                <div class="photo-area bg-green-50">🏪</div>
+                <div class="p-4 text-center">
+                    <h2 class="text-3xl font-black mb-1">店員</h2>
+                    <p class="text-lg font-bold text-pop-accent">Ten-in</p>
+                    <div class="w-full h-1 bg-slate-200 rounded-full my-3"></div>
+                    <p class="font-bold text-slate-500">Pegawai Toko</p>
+                </div>
+            </div>
+
+            <div class="id-card">
+                <div class="id-hole"></div>
+                <div class="job-tag bg-blue-200 text-blue-800">Keuangan</div>
+                <div class="photo-area bg-blue-50">🏦</div>
+                <div class="p-4 text-center">
+                    <h2 class="text-3xl font-black mb-1">銀行員</h2>
+                    <p class="text-lg font-bold text-pop-accent">Ginkouin</p>
+                    <div class="w-full h-1 bg-slate-200 rounded-full my-3"></div>
+                    <p class="font-bold text-slate-500">Pegawai Bank</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-12 bg-white border-4 border-card-border rounded-[32px] p-6 md:p-8 shadow-card">
+            <h3 class="text-2xl font-black text-pop-dark mb-4 text-center">Memperkenalkan Pekerjaan</h3>
+            
+            <div class="bg-pop-bg rounded-2xl p-6 border-2 border-dashed border-slate-300 text-center">
+                <p class="text-slate-500 font-bold mb-2 uppercase text-xs tracking-widest">RUMUS</p>
+                <p class="text-xl md:text-2xl font-black text-pop-dark">
+                    Watashi wa <span class="text-pop-accent border-b-4 border-pop-accent">[ PEKERJAAN ]</span> desu.
+                </p>
+                <p class="mt-4 text-slate-600 font-bold">
+                    Contoh: <br>
+                    <span class="text-pop-dark">Watashi wa <span class="text-pop-accent">Gakusei</span> desu.</span>
+                    <span class="block text-sm text-slate-400 font-normal">(Saya adalah seorang pelajar.)</span>
+                </p>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

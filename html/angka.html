@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angka (Numbers) - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#fffbeb', /* Kuning Sangat Muda */
+                        'pop-accent': '#f59e0b', /* Amber/Oranye */
+                        'pop-dark': '#78350f', /* Coklat Tua */
+                        'pop-text': '#334155' 
+                    },
+                    boxShadow: {
+                        'card': '8px 8px 0px rgba(0, 0, 0, 0.15)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.15)',
+                        'key': '0px 6px 0px #b45309', /* Efek tombol tekan */
+                        'key-active': '0px 2px 0px #b45309'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fffbeb;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#fcd34d 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Tombol Angka (Calculator Style) */
+        .num-key {
+            background: white;
+            border: 3px solid #78350f;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0px 6px 0px #d97706; /* Shadow bawah tebal */
+            transition: all 0.1s;
+            cursor: pointer;
+            position: relative;
+            top: 0;
+        }
+
+        .num-key:active {
+            top: 4px;
+            box-shadow: 0px 2px 0px #d97706;
+        }
+
+        .num-key:hover {
+            background-color: #fff7ed;
+        }
+
+        /* Math Visualizer (Kotak Rumus) */
+        .math-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #fef3c7;
+            border: 3px dashed #d97706;
+            padding: 1rem;
+            border-radius: 16px;
+            font-weight: 800;
+            color: #92400e;
+        }
+
+        /* Tab Style */
+        .tab-btn {
+            padding: 10px 20px;
+            border: 3px solid #78350f;
+            background: white;
+            border-radius: 14px;
+            font-weight: 800;
+            box-shadow: 4px 4px 0px #78350f;
+            transition: all 0.2s;
+            color: #78350f;
+        }
+
+        .tab-btn.active {
+            background: #f59e0b;
+            color: white;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #78350f;
+            border-color: #78350f;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background-color: #fff7ed;
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px #78350f;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-4xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">JAPANESE <span class="text-pop-accent">NUMBERS</span></h1>
+            <div class="text-2xl">🔢</div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4">
+
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button onclick="switchTab('basic')" id="btn-basic" class="tab-btn active">Satuan (1-10)</button>
+            <button onclick="switchTab('tens')" id="btn-tens" class="tab-btn">Puluhan (11-99)</button>
+            <button onclick="switchTab('hundreds')" id="btn-hundreds" class="tab-btn">Ratusan & Ribuan</button>
+            <button onclick="switchTab('millions')" id="btn-millions" class="tab-btn bg-yellow-100">Jutaan (Big!)</button>
+        </div>
+
+        <div id="tab-basic" class="grid-section">
+            <div class="bg-white border-4 border-pop-dark rounded-[32px] p-6 md:p-8 shadow-card">
+                <h2 class="text-center font-black text-3xl text-pop-dark mb-6">Angka Dasar</h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">1</div>
+                        <div class="text-2xl font-bold text-pop-dark">一</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Ichi</div>
+                    </div>
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">2</div>
+                        <div class="text-2xl font-bold text-pop-dark">二</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Ni</div>
+                    </div>
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">3</div>
+                        <div class="text-2xl font-bold text-pop-dark">三</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">San</div>
+                    </div>
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">4</div>
+                        <div class="text-2xl font-bold text-pop-dark">四</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Yon / Shi</div>
+                    </div>
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">5</div>
+                        <div class="text-2xl font-bold text-pop-dark">五</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Go</div>
+                    </div>
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">6</div>
+                        <div class="text-2xl font-bold text-pop-dark">六</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Roku</div>
+                    </div>
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">7</div>
+                        <div class="text-2xl font-bold text-pop-dark">七</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Nana / Shichi</div>
+                    </div>
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">8</div>
+                        <div class="text-2xl font-bold text-pop-dark">八</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Hachi</div>
+                    </div>
+                    <div class="num-key group">
+                        <div class="text-5xl font-black text-pop-accent mb-2">9</div>
+                        <div class="text-2xl font-bold text-pop-dark">九</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Kyuu</div>
+                    </div>
+                    <div class="num-key group bg-yellow-50 border-pop-accent">
+                        <div class="text-5xl font-black text-pop-dark mb-2">10</div>
+                        <div class="text-2xl font-bold text-pop-dark">十</div>
+                        <div class="text-sm font-bold text-slate-400 mt-1 uppercase">Juu</div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 p-4 bg-slate-100 rounded-2xl border-2 border-slate-200 text-center flex justify-center items-center gap-4">
+                    <span class="font-black text-2xl text-slate-400">0</span>
+                    <span class="font-bold text-slate-600">Zero / Rei (ゼロ / 零)</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-tens" class="grid-section hidden">
+            <div class="bg-white border-4 border-pop-dark rounded-[32px] p-6 md:p-8 shadow-card">
+                <h2 class="text-center font-black text-3xl text-pop-dark mb-2">Rumus Puluhan</h2>
+                <p class="text-center text-slate-500 mb-8 font-bold">Gabungkan angka dasar + Juu</p>
+
+                <div class="space-y-6">
+                    <div class="bg-pop-bg rounded-2xl p-4 border-2 border-pop-accent">
+                        <p class="text-sm font-bold text-pop-dark mb-2 uppercase tracking-widest">Belasan (11-19)</p>
+                        <div class="flex items-center justify-center gap-2 md:gap-4 text-xl md:text-3xl font-black text-pop-dark flex-wrap">
+                            <span class="bg-white px-4 py-2 rounded-xl border-2 border-pop-dark shadow-sm">10 (Juu)</span>
+                            <span class="text-pop-accent">+</span>
+                            <span class="bg-white px-4 py-2 rounded-xl border-2 border-pop-dark shadow-sm">1 (Ichi)</span>
+                            <span class="text-pop-accent">=</span>
+                            <span class="bg-pop-accent text-white px-4 py-2 rounded-xl border-2 border-pop-dark shadow-key">11 (Juu-ichi)</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-pop-bg rounded-2xl p-4 border-2 border-pop-accent">
+                        <p class="text-sm font-bold text-pop-dark mb-2 uppercase tracking-widest">Puluhan (20, 30...)</p>
+                        <div class="flex items-center justify-center gap-2 md:gap-4 text-xl md:text-3xl font-black text-pop-dark flex-wrap">
+                            <span class="bg-white px-4 py-2 rounded-xl border-2 border-pop-dark shadow-sm">2 (Ni)</span>
+                            <span class="text-pop-accent">x</span>
+                            <span class="bg-white px-4 py-2 rounded-xl border-2 border-pop-dark shadow-sm">10 (Juu)</span>
+                            <span class="text-pop-accent">=</span>
+                            <span class="bg-pop-accent text-white px-4 py-2 rounded-xl border-2 border-pop-dark shadow-key">20 (Ni-juu)</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <h3 class="font-bold text-lg mb-4">Contoh: 45</h3>
+                        <div class="math-box text-xl md:text-2xl">
+                            Yon (4) + Juu (10) + Go (5) = <span class="text-pop-dark ml-2">Yon-juu-go</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-hundreds" class="grid-section hidden">
+            <div class="grid gap-6">
+                <div class="bg-white border-4 border-pop-dark rounded-[32px] p-6 shadow-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="font-black text-2xl text-pop-dark">Ratusan (Hyaku)</h2>
+                        <span class="bg-yellow-100 text-pop-dark font-bold px-3 py-1 rounded-lg border border-pop-dark text-sm">Unit: 百</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2">
+                            <span class="font-black text-xl">100</span>
+                            <span class="font-bold text-slate-500">Hyaku</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2">
+                            <span class="font-black text-xl text-red-500">300</span>
+                            <span class="font-bold text-red-500">San-byaku (⚠️)</span>
+                        </div>
+                         <div class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2">
+                            <span class="font-black text-xl text-red-500">600</span>
+                            <span class="font-bold text-red-500">Roppyaku (⚠️)</span>
+                        </div>
+                         <div class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2">
+                            <span class="font-black text-xl text-red-500">800</span>
+                            <span class="font-bold text-red-500">Happyaku (⚠️)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border-4 border-pop-dark rounded-[32px] p-6 shadow-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="font-black text-2xl text-pop-dark">Ribuan (Sen)</h2>
+                        <span class="bg-yellow-100 text-pop-dark font-bold px-3 py-1 rounded-lg border border-pop-dark text-sm">Unit: 千</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2">
+                            <span class="font-black text-xl">1,000</span>
+                            <span class="font-bold text-slate-500">Sen (Issen)</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2">
+                            <span class="font-black text-xl text-red-500">3,000</span>
+                            <span class="font-bold text-red-500">San-zen (⚠️)</span>
+                        </div>
+                         <div class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2">
+                            <span class="font-black text-xl text-red-500">8,000</span>
+                            <span class="font-bold text-red-500">Hassen (⚠️)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-millions" class="grid-section hidden">
+            <div class="bg-pop-dark text-white border-4 border-pop-dark rounded-[32px] p-6 md:p-8 shadow-card">
+                <h2 class="text-center font-black text-3xl text-yellow-400 mb-2">Angka Raksasa</h2>
+                <p class="text-center text-yellow-100 mb-8 text-sm">Jepang menghitung per 4 digit (10.000), bukan per 3 digit!</p>
+
+                <div class="grid gap-4">
+                    <div class="bg-white text-pop-dark rounded-2xl p-4 border-b-8 border-r-4 border-pop-accent transform hover:scale-[1.02] transition-transform">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="font-black text-4xl">10,000</h3>
+                                <p class="font-bold text-slate-400 text-sm mt-1">Sepuluh Ribu</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-4xl font-black text-pop-accent">万</span>
+                                <span class="font-bold text-lg">Ichi-man</span>
+                            </div>
+                        </div>
+                        <div class="mt-2 bg-yellow-50 p-2 rounded text-xs font-bold text-slate-500">
+                            💡 Bukan "Juu-sen", tapi "Ichi-man".
+                        </div>
+                    </div>
+
+                    <div class="bg-white text-pop-dark rounded-2xl p-4 border-b-8 border-r-4 border-pop-accent transform hover:scale-[1.02] transition-transform">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="font-black text-3xl">1,000,000</h3>
+                                <p class="font-bold text-slate-400 text-sm mt-1">Satu Juta</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-3xl font-black text-pop-accent">百万</span>
+                                <span class="font-bold text-lg">Hyaku-man</span>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs font-bold text-slate-400">
+                            Logika: 100 x 10,000 (100 Man)
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-400 text-pop-dark rounded-2xl p-4 border-b-8 border-r-4 border-white transform hover:scale-[1.02] transition-transform">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="font-black text-3xl md:text-4xl tracking-tighter">100,000,000</h3>
+                                <p class="font-bold text-pop-dark/60 text-sm mt-1">Seratus Juta</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-5xl font-black text-white drop-shadow-md">億</span>
+                                <span class="font-bold text-xl">Ichi-oku</span>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs font-bold text-pop-dark/60">
+                            Level Baru: Oku (億)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('.grid-section').forEach(el => el.classList.add('hidden'));
+            // Show selected section
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            
+            // Reset buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Activate button
+            document.getElementById('btn-' + tabName).classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food & Drinks - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#fff7ed', /* Creamy Orange */
+                        'pop-accent': '#f97316', /* Jeruk Segar */
+                        'pop-red': '#ef4444', /* Merah Cabai */
+                        'pop-dark': '#9a3412', /* Coklat Kemerahan */
+                        'pop-text': '#334155' 
+                    },
+                    boxShadow: {
+                        'card': '6px 6px 0px rgba(0, 0, 0, 0.1)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.1)',
+                        'menu': '8px 8px 0px #9a3412'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fff7ed;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#fdba74 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* Menu Item Card */
+        .menu-card {
+            background: white;
+            border: 3px solid #9a3412;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
+            border-color: #f97316;
+        }
+
+        .emoji-icon {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .menu-card:hover .emoji-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* Tab Style */
+        .tab-btn {
+            padding: 12px 24px;
+            border: 3px solid #9a3412;
+            background: white;
+            border-radius: 16px;
+            font-weight: 800;
+            color: #9a3412;
+            box-shadow: 4px 4px 0px #9a3412;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #f97316;
+            color: white;
+            border-color: #9a3412;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #9a3412;
+        }
+
+        .tab-btn:not(.active):hover {
+            background: #ffedd5;
+            transform: translateY(-2px);
+        }
+
+        /* Badge Kategori */
+        .cat-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 99px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-5xl mx-auto bg-white border-4 border-pop-dark rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-pop-dark text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-pop-dark hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-pop-dark">OISHII <span class="text-pop-accent">MENU</span></h1>
+            <div class="text-2xl">🍜</div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4">
+
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
+            <button onclick="switchMenu('food')" id="btn-food" class="tab-btn active">🍔 Makanan (Tabemono)</button>
+            <button onclick="switchMenu('drink')" id="btn-drink" class="tab-btn">🥤 Minuman (Nomimono)</button>
+            <button onclick="switchMenu('taste')" id="btn-taste" class="tab-btn bg-yellow-50">😋 Rasa (Aji)</button>
+        </div>
+
+        <div id="menu-food" class="menu-section">
+            <div class="bg-white border-4 border-pop-dark rounded-[32px] p-6 md:p-8 shadow-menu">
+                <h2 class="text-3xl font-black text-pop-dark mb-6 border-b-2 border-orange-100 pb-2">Menu Makanan</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    
+                    <div class="menu-card">
+                        <span class="cat-badge bg-orange-100 text-orange-800">Pokok</span>
+                        <div class="emoji-icon">🍚</div>
+                        <h3 class="text-2xl font-black text-slate-700">ご飯</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Gohan</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Nasi</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <span class="cat-badge bg-orange-100 text-orange-800">Pokok</span>
+                        <div class="emoji-icon">🍞</div>
+                        <h3 class="text-2xl font-black text-slate-700">パン</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Pan</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Roti</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <span class="cat-badge bg-red-100 text-red-800">Lauk</span>
+                        <div class="emoji-icon">🍖</div>
+                        <h3 class="text-2xl font-black text-slate-700">肉</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Niku</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Daging</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <span class="cat-badge bg-blue-100 text-blue-800">Lauk</span>
+                        <div class="emoji-icon">🐟</div>
+                        <h3 class="text-2xl font-black text-slate-700">魚</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Sakana</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Ikan</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <span class="cat-badge bg-yellow-100 text-yellow-800">Lauk</span>
+                        <div class="emoji-icon">🥚</div>
+                        <h3 class="text-2xl font-black text-slate-700">卵</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Tamago</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Telur</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <span class="cat-badge bg-green-100 text-green-800">Sehat</span>
+                        <div class="emoji-icon">🥗</div>
+                        <h3 class="text-2xl font-black text-slate-700">野菜</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Yasai</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Sayuran</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <span class="cat-badge bg-green-100 text-green-800">Sehat</span>
+                        <div class="emoji-icon">🍎</div>
+                        <h3 class="text-2xl font-black text-slate-700">果物</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Kudamono</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Buah</p>
+                    </div>
+
+                    <div class="menu-card bg-yellow-50 border-yellow-500">
+                        <span class="cat-badge bg-yellow-200 text-yellow-800">Snack</span>
+                        <div class="emoji-icon">🍱</div>
+                        <h3 class="text-2xl font-black text-slate-700">お弁当</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Obentou</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Kotak Bekal</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-drink" class="menu-section hidden">
+            <div class="bg-white border-4 border-pop-dark rounded-[32px] p-6 md:p-8 shadow-menu">
+                <h2 class="text-3xl font-black text-pop-dark mb-6 border-b-2 border-orange-100 pb-2">Menu Minuman</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    
+                    <div class="menu-card">
+                        <div class="emoji-icon">💧</div>
+                        <h3 class="text-2xl font-black text-slate-700">水</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Mizu</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Air Putih</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <div class="emoji-icon">🍵</div>
+                        <h3 class="text-2xl font-black text-slate-700">お茶</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Ocha</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Teh Jepang</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <div class="emoji-icon">☕</div>
+                        <h3 class="text-2xl font-black text-slate-700">コーヒー</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Koohii</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Kopi</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <div class="emoji-icon">🥛</div>
+                        <h3 class="text-2xl font-black text-slate-700">牛乳</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Gyuunyuu</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Susu Sapi</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <div class="emoji-icon">🧃</div>
+                        <h3 class="text-2xl font-black text-slate-700">ジュース</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Juusu</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Jus</p>
+                    </div>
+
+                    <div class="menu-card">
+                        <div class="emoji-icon">🍺</div>
+                        <h3 class="text-2xl font-black text-slate-700">ビール</h3>
+                        <p class="text-sm font-bold text-pop-accent uppercase tracking-widest mt-1">Biiru</p>
+                        <p class="text-xs font-bold text-slate-400 mt-1">Bir</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-taste" class="menu-section hidden">
+            <div class="bg-yellow-50 border-4 border-pop-dark rounded-[32px] p-6 md:p-8 shadow-menu">
+                <h2 class="text-3xl font-black text-pop-dark mb-6 border-b-2 border-orange-200 pb-2">Rasa (Aji)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <div class="bg-white border-4 border-orange-400 rounded-2xl p-6 text-center shadow-card transform hover:scale-105 transition-transform cursor-pointer">
+                        <div class="text-6xl mb-2">😋</div>
+                        <h3 class="text-4xl font-black text-orange-500 mb-1">美味しい</h3>
+                        <p class="text-xl font-bold text-slate-700">Oishii</p>
+                        <p class="text-sm font-bold text-slate-400">Enak / Lezat</p>
+                    </div>
+
+                    <div class="bg-white border-4 border-pink-300 rounded-2xl p-6 text-center shadow-card cursor-pointer hover:bg-pink-50">
+                        <div class="text-5xl mb-2">🍰</div>
+                        <h3 class="text-3xl font-black text-pink-500 mb-1">甘い</h3>
+                        <p class="text-lg font-bold text-slate-700">Amai</p>
+                        <p class="text-sm font-bold text-slate-400">Manis</p>
+                    </div>
+
+                    <div class="bg-white border-4 border-red-500 rounded-2xl p-6 text-center shadow-card cursor-pointer hover:bg-red-50">
+                        <div class="text-5xl mb-2">🌶️</div>
+                        <h3 class="text-3xl font-black text-red-600 mb-1">辛い</h3>
+                        <p class="text-lg font-bold text-slate-700">Karai</p>
+                        <p class="text-sm font-bold text-slate-400">Pedas</p>
+                    </div>
+
+                    <div class="bg-white border-4 border-yellow-400 rounded-2xl p-6 text-center shadow-card cursor-pointer hover:bg-yellow-50">
+                        <div class="text-5xl mb-2">🍋</div>
+                        <h3 class="text-3xl font-black text-yellow-500 mb-1">酸っぱい</h3>
+                        <p class="text-lg font-bold text-slate-700">Suppai</p>
+                        <p class="text-sm font-bold text-slate-400">Asam</p>
+                    </div>
+
+                    <div class="bg-white border-4 border-stone-600 rounded-2xl p-6 text-center shadow-card cursor-pointer hover:bg-stone-100">
+                        <div class="text-5xl mb-2">☕</div>
+                        <h3 class="text-3xl font-black text-stone-700 mb-1">苦い</h3>
+                        <p class="text-lg font-bold text-slate-700">Nigai</p>
+                        <p class="text-sm font-bold text-slate-400">Pahit</p>
+                    </div>
+
+                    <div class="bg-white border-4 border-blue-300 rounded-2xl p-6 text-center shadow-card cursor-pointer hover:bg-blue-50">
+                        <div class="text-5xl mb-2">🧂</div>
+                        <h3 class="text-3xl font-black text-blue-400 mb-1">塩辛い</h3>
+                        <p class="text-lg font-bold text-slate-700">Shiokarai</p>
+                        <p class="text-sm font-bold text-slate-400">Asin</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div class="bg-orange-500 text-white p-6 rounded-3xl border-4 border-pop-dark shadow-card flex items-center gap-4">
+                <div class="text-4xl">🙏</div>
+                <div>
+                    <h4 class="font-black text-xl">Itadakimasu</h4>
+                    <p class="text-orange-100 font-bold text-sm">Diucapkan SEBELUM makan (Selamat makan)</p>
+                </div>
+             </div>
+             <div class="bg-slate-800 text-white p-6 rounded-3xl border-4 border-slate-900 shadow-card flex items-center gap-4">
+                <div class="text-4xl">😌</div>
+                <div>
+                    <h4 class="font-black text-xl">Gochisousama</h4>
+                    <p class="text-slate-300 font-bold text-sm">Diucapkan SETELAH makan (Terima kasih hidangannya)</p>
+                </div>
+             </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchMenu(menuName) {
+            // Hide all sections
+            document.querySelectorAll('.menu-section').forEach(el => el.classList.add('hidden'));
+            // Show selected section
+            document.getElementById('menu-' + menuName).classList.remove('hidden');
+            
+            // Reset buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Activate button
+            document.getElementById('btn-' + menuName).classList.add('active');
+        }
+    </script>
+</body>
+</html>

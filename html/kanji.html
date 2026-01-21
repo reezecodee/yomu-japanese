@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Collection - NihongoFun</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: { 
+                        'pop-bg': '#f3e8ff', 
+                        'pop-accent': '#8b5cf6', 
+                        'pop-dark': '#4c1d95',
+                        'pop-text': '#334155' 
+                    },
+                    boxShadow: {
+                        'card': '8px 8px 0px rgba(0, 0, 0, 0.15)',
+                        'btn': '4px 4px 0px rgba(0, 0, 0, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f3e8ff;
+            color: #334155;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#8b5cf6 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+
+        /* --- FLIP CARD ENGINE (FIXED) --- */
+        .flip-card {
+            background-color: transparent;
+            height: 300px; /* Tinggi kartu harus FIX agar absolute position jalan */
+            perspective: 1000px; /* Memberikan efek 3D */
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        /* Trigger putar saat hover atau class .flipped */
+        .flip-card:hover .flip-card-inner,
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Style dasar untuk Depan & Belakang */
+        .flip-card-front, .flip-card-back {
+            position: absolute; /* KUNCI: Supaya menumpuk pas */
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden; /* Standard */
+            border-radius: 24px;
+            border: 4px solid #334155;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Sisi Depan */
+        .flip-card-front {
+            background-color: #ffffff;
+            color: #334155;
+            z-index: 2;
+        }
+
+        /* Sisi Belakang */
+        .flip-card-back {
+            background-color: #8b5cf6;
+            color: white;
+            border-color: #4c1d95;
+            transform: rotateY(180deg); /* Sudah diputar duluan */
+            z-index: 1;
+        }
+
+        /* Button Style */
+        .tab-btn {
+            padding: 10px 20px;
+            border: 3px solid #334155;
+            background: white;
+            border-radius: 14px;
+            font-weight: 800;
+            box-shadow: 4px 4px 0px #334155;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #8b5cf6;
+            color: white;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #334155;
+        }
+
+        .level-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 99px;
+            border: 2px solid #334155;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen pb-20">
+
+    <nav class="sticky top-4 z-40 px-4 mb-8">
+        <div class="max-w-5xl mx-auto bg-white border-4 border-slate-800 rounded-2xl shadow-btn p-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="bg-slate-800 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg group-hover:bg-pop-accent transition-colors">←</div>
+                <span class="font-extrabold text-lg text-slate-800 hidden md:inline">Kembali</span>
+            </a>
+            <h1 class="font-black text-2xl tracking-tighter text-slate-800">KANJI <span class="text-pop-accent">CARDS</span></h1>
+            <div class="w-20 hidden md:block"></div> </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4">
+
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button onclick="switchLevel('n5')" id="btn-n5" class="tab-btn active">N5</button>
+            <button onclick="switchLevel('n4')" id="btn-n4" class="tab-btn">N4</button>
+            <button onclick="switchLevel('n3')" id="btn-n3" class="tab-btn">N3</button>
+            <button onclick="switchLevel('n2')" id="btn-n2" class="tab-btn">N2</button>
+            <button onclick="switchLevel('n1')" id="btn-n1" class="tab-btn">N1</button>
+        </div>
+
+        <div id="level-n5" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="level-badge bg-green-200 text-green-800">N5</span>
+                        <h2 class="text-7xl font-black mb-2 mt-2">日</h2>
+                        <div class="text-center w-full">
+                            <div class="mb-2">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ONYOMI</p>
+                                <p class="font-bold text-pop-accent">NICHI, JITSU</p>
+                            </div>
+                            <div class="w-10 h-1 bg-slate-200 mx-auto my-1 rounded-full"></div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">KUNYOMI</p>
+                                <p class="font-bold text-slate-800">Hi, -ka</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-2xl font-black mb-1 border-b-2 border-white/30 pb-2 w-full text-center">Matahari</h3>
+                        <div class="mt-4 text-left w-full px-2 space-y-2">
+                            <div class="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
+                                <p class="text-xs opacity-75">Nichi-youbi</p>
+                                <p class="font-bold">日曜日 (Minggu)</p>
+                            </div>
+                            <div class="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
+                                <p class="text-xs opacity-75">Mik-ka</p>
+                                <p class="font-bold">三日 (Tgl 3)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="level-badge bg-green-200 text-green-800">N5</span>
+                        <h2 class="text-7xl font-black mb-2 mt-2">月</h2>
+                        <div class="text-center w-full">
+                            <div class="mb-2">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ONYOMI</p>
+                                <p class="font-bold text-pop-accent">GETSU</p>
+                            </div>
+                            <div class="w-10 h-1 bg-slate-200 mx-auto my-1 rounded-full"></div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">KUNYOMI</p>
+                                <p class="font-bold text-slate-800">Tsuki</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-2xl font-black mb-1 border-b-2 border-white/30 pb-2 w-full text-center">Bulan</h3>
+                        <div class="mt-4 text-left w-full px-2 space-y-2">
+                            <div class="bg-white/20 p-2 rounded-lg">
+                                <p class="text-xs opacity-75">Getsu-youbi</p>
+                                <p class="font-bold">月曜日 (Senin)</p>
+                            </div>
+                            <div class="bg-white/20 p-2 rounded-lg">
+                                <p class="text-xs opacity-75">Kon-getsu</p>
+                                <p class="font-bold">今月 (Bulan ini)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="level-badge bg-green-200 text-green-800">N5</span>
+                        <h2 class="text-7xl font-black mb-2 mt-2">木</h2>
+                        <div class="text-center w-full">
+                            <div class="mb-2">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ONYOMI</p>
+                                <p class="font-bold text-pop-accent">MOKU</p>
+                            </div>
+                            <div class="w-10 h-1 bg-slate-200 mx-auto my-1 rounded-full"></div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">KUNYOMI</p>
+                                <p class="font-bold text-slate-800">Ki</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-2xl font-black mb-1 border-b-2 border-white/30 pb-2 w-full text-center">Pohon</h3>
+                        <div class="mt-4 text-left w-full px-2 space-y-2">
+                            <div class="bg-white/20 p-2 rounded-lg">
+                                <p class="text-xs opacity-75">Moku-youbi</p>
+                                <p class="font-bold">木曜日 (Kamis)</p>
+                            </div>
+                            <div class="bg-white/20 p-2 rounded-lg">
+                                <p class="text-xs opacity-75">Ki</p>
+                                <p class="font-bold">木 (Pohon)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="level-badge bg-green-200 text-green-800">N5</span>
+                        <h2 class="text-7xl font-black mb-2 mt-2">山</h2>
+                        <div class="text-center w-full">
+                            <div class="mb-2">
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ONYOMI</p>
+                                <p class="font-bold text-pop-accent">SAN</p>
+                            </div>
+                            <div class="w-10 h-1 bg-slate-200 mx-auto my-1 rounded-full"></div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">KUNYOMI</p>
+                                <p class="font-bold text-slate-800">Yama</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-2xl font-black mb-1 border-b-2 border-white/30 pb-2 w-full text-center">Gunung</h3>
+                        <div class="mt-4 text-left w-full px-2 space-y-2">
+                            <div class="bg-white/20 p-2 rounded-lg">
+                                <p class="text-xs opacity-75">Fuji-san</p>
+                                <p class="font-bold">富士山 (G. Fuji)</p>
+                            </div>
+                            <div class="bg-white/20 p-2 rounded-lg">
+                                <p class="text-xs opacity-75">Yama</p>
+                                <p class="font-bold">山 (Gunung)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="level-n4" class="hidden text-center py-20 bg-white/50 rounded-3xl border-4 border-dashed border-slate-300">
+            <h2 class="text-2xl font-bold text-slate-400">Level N4 Content</h2>
+        </div>
+        <div id="level-n3" class="hidden text-center py-20 bg-white/50 rounded-3xl border-4 border-dashed border-slate-300">
+            <h2 class="text-2xl font-bold text-slate-400">Level N3 Content</h2>
+        </div>
+        <div id="level-n2" class="hidden text-center py-20 bg-white/50 rounded-3xl border-4 border-dashed border-slate-300">
+            <h2 class="text-2xl font-bold text-slate-400">Level N2 Content</h2>
+        </div>
+        <div id="level-n1" class="hidden text-center py-20 bg-white/50 rounded-3xl border-4 border-dashed border-slate-300">
+            <h2 class="text-2xl font-bold text-slate-400">Level N1 Content</h2>
+        </div>
+
+    </main>
+
+    <script>
+        function switchLevel(level) {
+            // Hide all levels
+            ['n5', 'n4', 'n3', 'n2', 'n1'].forEach(l => {
+                document.getElementById('level-' + l).classList.add('hidden');
+                document.getElementById('btn-' + l).classList.remove('active');
+            });
+
+            // Show selected
+            document.getElementById('level-' + level).classList.remove('hidden');
+            document.getElementById('btn-' + level).classList.add('active');
+        }
+    </script>
+</body>
+</html>

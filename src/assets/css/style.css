@@ -1,1 +1,100 @@
 @import "tailwindcss";
+
+@theme {
+    /* --- Font Family --- */
+    --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+    /* --- Global Color --- */
+
+    /* warna teks */
+    --color-dark: #334155; 
+    
+    /* halaman hiragana */
+    --color-peach: #ffdecc;
+    --color-peach-accent: #ff6b6b;
+
+    /* halaman katakana */
+    --color-ice: #e0f7fa;
+    --color-ice-accent: #4ecdc4;
+
+    /* halaman kanji */
+    --color-lavender: #f3e8ff;
+    --color-lavender-accent: #8b5cf6;
+    --color-lavender-dark: #4c1d95;
+
+    /* halaman suuji */
+    --color-vanilla: #fffbeb;
+    --color-vanilla-accent: #f59e0b;
+    --color-vanilla-dark: #78350f;
+
+    /* halaman doushi */
+    --color-rose: #fff1f2;
+    --color-rose-accent: #e11d48;
+    --color-rose-dark: #881337;
+
+    /* halaman keiyoushi */
+    --color-aqua: #ecfeff;
+    --color-aqua-accent: #06b6d4;
+    --color-aqua-dark: #164e63;
+
+    /* halaman mono */
+    --color-ghost: #f8fafc;
+    --color-loc-home: #f97316;
+    --color-loc-school: #3b82f6;
+    --color-loc-nature: #22c55e;
+    --color-loc-hospital: #ef4444;
+    --color-loc-sport: #a855f7;
+
+    /* halaman shigoto */
+    --color-surface: #f1f5f9;
+    --color-surface-accent: #2563eb;
+    --color-surface-dark: #1e293b;
+
+    /* halaman tabemono */
+    --color-apricot: #fff7ed;
+    --color-apricot-accent: #f97316;
+    --color-apricot-red: #ef4444;
+    --color-apricot-dark: #9a3412;
+
+    /* halaman aisatsu */
+    --color-sky: #f0f9ff;
+    --color-sky-accent: #0ea5e9;
+    --color-sky-dark: #0c4a6e;
+    --color-sky-pink: #f472b6;
+
+    /* halaman bunpou */
+    --color-cool: #f0f4f8;
+    --color-cool-accent: #facc15;
+    --color-cool-dark: #1e293b;
+    --color-block-noun: #3b82f6;
+    --color-block-verb: #ef4444;
+    --color-block-particle: #22c55e;
+    --color-block-adj: #06b6d4;
+
+    /* halaman joshi */
+    --color-mint: #dcfce7;
+    --color-mint-accent: #22c55e;
+    --color-mint-dark: #14532d;
+
+    /* halaman flashcard */
+    --color-indigo: #e0e7ff;
+    --color-indigo-accent: #6366f1;
+    --color-indigo-dark: #312e81;
+
+    /* --- Box Shadows (Gaya Pop/Neobrutalism) --- */
+    --shadow-card: 8px 8px 0px rgba(0, 0, 0, 0.1);
+    --shadow-btn: 4px 4px 0px rgba(0, 0, 0, 0.1);
+    --shadow-btn-active: 2px 2px 0px rgba(0, 0, 0, 0.1);
+    --shadow-modal: 12px 12px 0px rgba(0, 0, 0, 0.15);
+    --shadow-key: 0px 6px 0px #b45309;
+    --shadow-key-active: 0px 2px 0px #b45309;
+    --shadow-block: 4px 4px 0px rgba(0,0,0,0.15);
+    --shadow-menu: 8px 8px 0px #9a3412;
+    --shadow-inset: inset 0 2px 4px 0 rgba(0,0,0,0.05);
+    --shadow-bubble: 4px 4px 0px #14532d;
+    --shadow-bubble-l: 4px 4px 0px rgba(0, 0, 0, 0.1);
+    --shadow-bubble-r: -4px 4px 0px rgba(0, 0, 0, 0.1);
+    --shadow-badge: 2px 2px 0px rgba(0,0,0,0.1);
+    --shadow-action: 0px 4px 0px #9f1239;
+}
+

@@ -1,0 +1,488 @@
+import type { AdjectivePair } from "@/types/Keiyoushi";
+
+// ==========================================
+// 1. KATA SIFAT -I (I-KEIYOUSHI PAIRS)
+// ==========================================
+export const I_AdjectivePairs: AdjectivePair[] = [
+  // --- UKURAN & DIMENSI ---
+  {
+    top: {
+      icon: "🐘",
+      word: "大きい",
+      kana: "おおきい",
+      romaji: "Ookii",
+      meaning: "Besar",
+      group: "i",
+    },
+    bottom: {
+      icon: "🐜",
+      word: "小さい",
+      kana: "ちいさい",
+      romaji: "Chiisai",
+      meaning: "Kecil",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "📏",
+      word: "長い",
+      kana: "ながい",
+      romaji: "Nagai",
+      meaning: "Panjang",
+      group: "i",
+    },
+    bottom: {
+      icon: "🤏",
+      word: "短い",
+      kana: "みじかい",
+      romaji: "Mijikai",
+      meaning: "Pendek",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "🏋️",
+      word: "重い",
+      kana: "おもい",
+      romaji: "Omoi",
+      meaning: "Berat",
+      group: "i",
+    },
+    bottom: {
+      icon: "🪶",
+      word: "軽い",
+      kana: "かるい",
+      romaji: "Karui",
+      meaning: "Ringan",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "📕",
+      word: "厚い",
+      kana: "あつい",
+      romaji: "Atsui",
+      meaning: "Tebal",
+      group: "i",
+    },
+    bottom: {
+      icon: "📄",
+      word: "薄い",
+      kana: "うすい",
+      romaji: "Usui",
+      meaning: "Tipis",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "🏞️",
+      word: "広い",
+      kana: "ひろい",
+      romaji: "Hiroi",
+      meaning: "Luas",
+      group: "i",
+    },
+    bottom: {
+      icon: "diz",
+      word: "狭い",
+      kana: "せまい",
+      romaji: "Semai",
+      meaning: "Sempit",
+      group: "i",
+    },
+  },
+
+  // --- SUHU (CUACA & BENDA) ---
+  {
+    top: {
+      icon: "🥵",
+      word: "暑い",
+      kana: "あつい",
+      romaji: "Atsui",
+      meaning: "Panas (Cuaca)",
+      group: "i",
+    },
+    bottom: {
+      icon: "🥶",
+      word: "寒い",
+      kana: "さむい",
+      romaji: "Samui",
+      meaning: "Dingin (Cuaca)",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "☕",
+      word: "熱い",
+      kana: "あつい",
+      romaji: "Atsui",
+      meaning: "Panas (Benda)",
+      group: "i",
+    },
+    bottom: {
+      icon: "🧊",
+      word: "冷たい",
+      kana: "つめたい",
+      romaji: "Tsumetai",
+      meaning: "Dingin (Benda)",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "⛅",
+      word: "暖かい",
+      kana: "あたたかい",
+      romaji: "Atatakai",
+      meaning: "Hangat",
+      group: "i",
+    },
+    bottom: {
+      icon: "🍃",
+      word: "涼しい",
+      kana: "すずしい",
+      romaji: "Suzushii",
+      meaning: "Sejuk",
+      group: "i",
+    },
+  },
+
+  // --- WAKTU & JARAK ---
+  {
+    top: {
+      icon: "🚀",
+      word: "速い",
+      kana: "はやい",
+      romaji: "Hayai",
+      meaning: "Cepat",
+      group: "i",
+    },
+    bottom: {
+      icon: "🐢",
+      word: "遅い",
+      kana: "おそい",
+      romaji: "Osoi",
+      meaning: "Lambat",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "🏠",
+      word: "近い",
+      kana: "ちかい",
+      romaji: "Chikai",
+      meaning: "Dekat",
+      group: "i",
+    },
+    bottom: {
+      icon: "🔭",
+      word: "遠い",
+      kana: "とおい",
+      romaji: "Tooi",
+      meaning: "Jauh",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "✨",
+      word: "新しい",
+      kana: "あたらしい",
+      romaji: "Atarashii",
+      meaning: "Baru",
+      group: "i",
+    },
+    bottom: {
+      icon: "🏚️",
+      word: "古い",
+      kana: "ふるい",
+      romaji: "Furui",
+      meaning: "Lama / Kuno",
+      group: "i",
+    },
+  },
+
+  // --- SIFAT & RASA ---
+  {
+    top: {
+      icon: "👍",
+      word: "いい",
+      kana: "いい",
+      romaji: "Ii / Yoi",
+      meaning: "Bagus",
+      group: "i",
+    },
+    bottom: {
+      icon: "👎",
+      word: "悪い",
+      kana: "わるい",
+      romaji: "Warui",
+      meaning: "Buruk",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "💎",
+      word: "高い",
+      kana: "たかい",
+      romaji: "Takai",
+      meaning: "Mahal / Tinggi",
+      group: "i",
+    },
+    bottom: {
+      icon: "🏷️",
+      word: "安い",
+      kana: "やすい",
+      romaji: "Yasui",
+      meaning: "Murah",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "💪",
+      word: "強い",
+      kana: "つよい",
+      romaji: "Tsuyoi",
+      meaning: "Kuat",
+      group: "i",
+    },
+    bottom: {
+      icon: "🥀",
+      word: "弱い",
+      kana: "よわい",
+      romaji: "Yowai",
+      meaning: "Lemah",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "😋",
+      word: "おいしい",
+      kana: "おいしい",
+      romaji: "Oishii",
+      meaning: "Enak",
+      group: "i",
+    },
+    bottom: {
+      icon: "🤢",
+      word: "まずい",
+      kana: "まずい",
+      romaji: "Mazui",
+      meaning: "Tidak Enak",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "🍬",
+      word: "甘い",
+      kana: "あまい",
+      romaji: "Amai",
+      meaning: "Manis",
+      group: "i",
+    },
+    bottom: {
+      icon: "🌶️",
+      word: "辛い",
+      kana: "からい",
+      romaji: "Karai",
+      meaning: "Pedas",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "🤯",
+      word: "難しい",
+      kana: "むずかしい",
+      romaji: "Muzukashii",
+      meaning: "Sulit",
+      group: "i",
+    },
+    bottom: {
+      icon: "👌",
+      word: "易しい",
+      kana: "やさしい",
+      romaji: "Yasashii",
+      meaning: "Mudah",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "🤣",
+      word: "面白い",
+      kana: "おもしろい",
+      romaji: "Omoshiroi",
+      meaning: "Menarik",
+      group: "i",
+    },
+    bottom: {
+      icon: "🥱",
+      word: "つまらない",
+      kana: "つまらない",
+      romaji: "Tsumaranai",
+      meaning: "Membosankan",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "💡",
+      word: "明るい",
+      kana: "あかるい",
+      romaji: "Akarui",
+      meaning: "Terang",
+      group: "i",
+    },
+    bottom: {
+      icon: "🌑",
+      word: "暗い",
+      kana: "くらい",
+      romaji: "Kurai",
+      meaning: "Gelap",
+      group: "i",
+    },
+  },
+  {
+    top: {
+      icon: "🏃",
+      word: "忙しい",
+      kana: "いそがしい",
+      romaji: "Isogashii",
+      meaning: "Sibuk",
+      group: "i",
+    },
+    bottom: {
+      icon: "🏖️",
+      word: "暇",
+      kana: "ひま",
+      romaji: "Hima",
+      meaning: "Senggang",
+      group: "na",
+    },
+  },
+];
+
+// ==========================================
+// 2. KATA SIFAT -NA (NA-KEIYOUSHI PAIRS)
+// ==========================================
+export const Na_AdjectivePairs: AdjectivePair[] = [
+  {
+    top: {
+      icon: "🎉",
+      word: "賑やか",
+      kana: "にぎやか",
+      romaji: "Nigiyaka",
+      meaning: "Ramai",
+      group: "na",
+    },
+    bottom: {
+      icon: "🤫",
+      word: "静か",
+      kana: "しずか",
+      romaji: "Shizuka",
+      meaning: "Sepi / Tenang",
+      group: "na",
+    },
+  },
+  {
+    top: {
+      icon: "😍",
+      word: "好き",
+      kana: "すき",
+      romaji: "Suki",
+      meaning: "Suka",
+      group: "na",
+    },
+    bottom: {
+      icon: "🤢",
+      word: "嫌い",
+      kana: "きらい",
+      romaji: "Kirai",
+      meaning: "Benci",
+      group: "na",
+    },
+  },
+  {
+    top: {
+      icon: "🎨",
+      word: "上手",
+      kana: "じょうず",
+      romaji: "Jouzu",
+      meaning: "Pandai / Jago",
+      group: "na",
+    },
+    bottom: {
+      icon: "🔧",
+      word: "下手",
+      kana: "へた",
+      romaji: "Heta",
+      meaning: "Bodoh / Payah",
+      group: "na",
+    },
+  },
+  {
+    top: {
+      icon: "🛠️",
+      word: "便利",
+      kana: "べんり",
+      romaji: "Benri",
+      meaning: "Praktis",
+      group: "na",
+    },
+    bottom: {
+      icon: "😓",
+      word: "不便",
+      kana: "ふべん",
+      romaji: "Fuben",
+      meaning: "Ribet",
+      group: "na",
+    },
+  },
+  {
+    top: {
+      icon: "💪",
+      word: "元気",
+      kana: "げんき",
+      romaji: "Genki",
+      meaning: "Sehat / Kuat",
+      group: "na",
+    },
+    bottom: {
+      icon: "🏥",
+      word: "病気",
+      kana: "びょうき",
+      romaji: "Byouki",
+      meaning: "Sakit",
+      group: "na",
+    },
+  },
+  {
+    top: {
+      icon: "😌",
+      word: "安全",
+      kana: "あんぜん",
+      romaji: "Anzen",
+      meaning: "Aman",
+      group: "na",
+    },
+    bottom: {
+      icon: "⚠️",
+      word: "危険",
+      kana: "きけん",
+      romaji: "Kiken",
+      meaning: "Bahaya",
+      group: "na",
+    },
+  },
+];

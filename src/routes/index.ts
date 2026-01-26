@@ -60,6 +60,15 @@ const router = createRouter({
             bgClass: "rose",
           },
         },
+        {
+          path: "keiyoushi",
+          name: "Keiyoushi",
+          component: () => import("@/pages/vocabulary/Keiyoushi.vue"),
+          meta: {
+            title: "Keiyoushi",
+            bgClass: "aqua",
+          },
+        },
       ],
     },
   ],

@@ -1,33 +1,80 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
-import SecNavbar from '@/components/common/nav/SecNavbar.vue';
-import { computed } from 'vue';
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+import SecNavbar from '@/components/common/nav/SecNavbar.vue'
 
-const route = useRoute();
+type ThemeName =
+    | 'peach'
+    | 'ice'
+    | 'lavender'
+    | 'vanilla'
+    | 'rose'
+    | 'aqua'
+    | 'ghost'
+
+const route = useRoute()
+
+const themeMap: Record<ThemeName, {
+    bg: string
+    hover: string
+}> = {
+    peach: {
+        bg: 'bg-peach',
+        hover: 'group-hover:bg-peach-accent',
+    },
+    ice: {
+        bg: 'bg-ice',
+        hover: 'group-hover:bg-ice-accent',
+    },
+    lavender: {
+        bg: 'bg-lavender',
+        hover: 'group-hover:bg-lavender-accent',
+    },
+    vanilla: {
+        bg: 'bg-vanilla',
+        hover: 'group-hover:bg-vanilla-accent',
+    },
+    rose: {
+        bg: 'bg-rose',
+        hover: 'group-hover:bg-rose-accent',
+    },
+    aqua: {
+        bg: 'bg-aqua',
+        hover: 'group-hover:bg-aqua-accent',
+    },
+    ghost: {
+        bg: 'bg-ghost',
+        hover: 'group-hover:bg-ghost-accent',
+    },
+}
+
+const themeName = computed<ThemeName>(() => {
+    return (route.meta.bgClass as ThemeName) || 'peach'
+})
 
 const currentTheme = computed(() => {
-    const themeName = (route.meta.bgClass as string) || 'peach';
+    const theme = themeMap[themeName.value]
 
-    const dotColor = themeName === 'peach'
-        ? '#ffffff'
-        : `var(--color-${themeName}-accent)`;
+    const dotColor =
+        themeName.value === 'peach'
+            ? '#ffffff'
+            : `var(--color-${themeName.value}-accent)`
 
     return {
-        bg: `bg-${themeName}`,
-        hover: `group-hover:bg-${themeName}-accent`,
+        ...theme,
         dot: {
-            backgroundImage: `radial-gradient(${dotColor} 2px, transparent 2px)`
-        }
+            backgroundImage: `radial-gradient(${dotColor} 2px, transparent 2px)`,
+            backgroundSize: '30px 30px',
+        },
     }
-});
+})
 
-const pageTitle = computed(() => (route.meta.title as string) || '');
+const pageTitle = computed(() => (route.meta.title as string) || '')
 </script>
 
 <template>
-    <div :class="['min-h-screen pb-20 transition-colors duration-300 wrapper', currentTheme.bg]"
+    <div class="min-h-screen pb-20 transition-colors duration-300 layout-root" :class="currentTheme.bg"
         :style="currentTheme.dot">
-
         <SecNavbar :title="pageTitle" :hover-class="currentTheme.hover" />
 
         <main>
@@ -37,17 +84,12 @@ const pageTitle = computed(() => (route.meta.title as string) || '');
                 </keep-alive>
             </router-view>
         </main>
-
     </div>
 </template>
 
-<style scoped>
-.wrapper {
+<style>
+.layout-root {
     color: var(--color-dark);
     font-family: var(--font-sans);
-
-    /* Polkadot Background Pattern */
-    background-image: radial-gradient(#fff 2px, transparent 2px);
-    background-size: 30px 30px;
 }
 </style>

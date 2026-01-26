@@ -1,18 +1,22 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import type { MonoItem, LocationType } from '@/types/Mono';
+import { computed } from 'vue'
+import type { MonoItem, LocationType } from '@/types/Mono'
 
 const props = defineProps<{
-    item: MonoItem;
-    variant: LocationType;
-}>();
+    item: MonoItem
+    variant: LocationType
+}>()
 
-const colorClass = computed(() => `text-loc-${props.variant}`);
+const colorStyle = computed(() => ({
+    color: `var(--color-loc-${props.variant})`,
+}))
 </script>
 
 <template>
-    <div :class="['obj-card', colorClass]" class="cursor-pointer">
-        <div class="icon-box">{{ item.icon }}</div>
+    <div class="obj-card cursor-pointer" :style="colorStyle">
+        <div class="icon-box">
+            {{ item.icon }}
+        </div>
 
         <div class="text-2xl font-black text-slate-700">
             {{ item.kanji }}

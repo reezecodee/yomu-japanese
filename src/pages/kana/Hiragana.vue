@@ -30,7 +30,7 @@ const handleCardClick = (char: CharData) => {
 </script>
 
 <template>
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="max-w-5xl mx-auto px-4">
         <TabSwitcher :tabs="hiraganaTabs" v-model="activeTab" :theme="themeName" />
 
         <div v-show="activeTab === 'seion'" class="animate-fade-in">

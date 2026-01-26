@@ -69,6 +69,15 @@ const router = createRouter({
             bgClass: "aqua",
           },
         },
+        {
+          path: "mono",
+          name: "Mono",
+          component: () => import("@/pages/vocabulary/Mono.vue"),
+          meta: {
+            title: "Mono",
+            bgClass: "ghost",
+          },
+        },
       ],
     },
   ],

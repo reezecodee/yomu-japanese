@@ -46,6 +46,22 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: "/vocabulary",
+      name: "Vocabulary",
+      component: MainLayout,
+      children: [
+        {
+          path: "doushi",
+          name: "Doushi",
+          component: () => import("@/pages/vocabulary/Doushi.vue"),
+          meta: {
+            title: "Doushi",
+            bgClass: "rose",
+          },
+        },
+      ],
+    },
   ],
 });
 

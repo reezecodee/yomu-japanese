@@ -42,6 +42,7 @@ const router = createRouter({
           component: () => import("@/pages/kana/Suuji.vue"),
           meta: {
             title: "Suuji",
+            bgClass: "vanilla",
           },
         },
       ],

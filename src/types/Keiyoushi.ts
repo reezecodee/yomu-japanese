@@ -10,6 +10,6 @@ export type AdjectiveDetail = {
 };
 
 export type AdjectivePair = {
-  top: AdjectiveDetail;    // Kata Sifat Utama
-  bottom: AdjectiveDetail; // Lawan Katanya
+  top: AdjectiveDetail;    
+  bottom: AdjectiveDetail; 
 };

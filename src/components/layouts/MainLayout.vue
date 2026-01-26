@@ -11,6 +11,12 @@ type ThemeName =
     | 'rose'
     | 'aqua'
     | 'ghost'
+    | 'surface'
+    | 'apricot'
+    | 'sky'
+    | 'cool'
+    | 'mint'
+    | 'indigo'
 
 const route = useRoute()
 
@@ -45,6 +51,30 @@ const themeMap: Record<ThemeName, {
     ghost: {
         bg: 'bg-ghost',
         hover: 'group-hover:bg-ghost-accent',
+    },
+    surface: {
+        bg: 'bg-surface',
+        hover: 'group-hover:bg-surface-accent',
+    },
+    apricot: {
+        bg: 'bg-apricot',
+        hover: 'group-hover:bg-apricot-accent',
+    },
+    sky: {
+        bg: 'bg-sky',
+        hover: 'group-hover:bg-sky-accent',
+    },
+    cool: {
+        bg: 'bg-cool',
+        hover: 'group-hover:bg-cool-accent',
+    },
+    mint: {
+        bg: 'bg-mint',
+        hover: 'group-hover:bg-mint-accent',
+    },
+    indigo: {
+        bg: 'bg-indigo',
+        hover: 'group-hover:bg-indigo-accent',
     },
 }
 

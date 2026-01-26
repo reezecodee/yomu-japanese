@@ -79,6 +79,15 @@ const router = createRouter({
             bgClass: "ghost",
           },
         },
+        {
+          path: "shigoto",
+          name: "Shigoto",
+          component: () => import("@/pages/vocabulary/Shigoto.vue"),
+          meta: {
+            title: "Shigoto",
+            bgClass: "surface",
+          },
+        },
       ],
     },
   ],

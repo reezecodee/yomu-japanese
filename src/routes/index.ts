@@ -133,6 +133,22 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: "/memory-practice",
+      name: "Memory Practice",
+      component: MainLayout,
+      children: [
+        {
+          path: "flashcard",
+          name: "Flashcard",
+          component: () => import("@/pages/memory-practice/Flashcard.vue"),
+          meta: {
+            title: "Flashcard",
+            bgClass: "indigo",
+          },
+        },
+      ],
+    },
   ],
 });
 

@@ -122,6 +122,15 @@ const router = createRouter({
             bgClass: "cool",
           },
         },
+        {
+          path: "joshi",
+          name: "Joshi",
+          component: () => import("@/pages/grammar/Joshi.vue"),
+          meta: {
+            title: "Joshi",
+            bgClass: "mint",
+          },
+        },
       ],
     },
   ],

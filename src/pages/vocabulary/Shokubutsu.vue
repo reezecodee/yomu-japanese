@@ -29,7 +29,7 @@ const activeTab = ref('trees')
                     Pohon & Hutan 🌳
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-forest-accent">
-                    <MenuCard v-for="(item, i) in Trees" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in Trees" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -41,19 +41,19 @@ const activeTab = ref('trees')
                     Bunga-bungaan 🌻
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-rose-500">
-                    <MenuCard v-for="(item, i) in Flowers" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in Flowers" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
 
         <div v-show="activeTab === 'parts'" class="animate-fade-in">
             <div
-                class="bg-forest border-4 border-forest-accent rounded-[32px] p-6 md:p-8 shadow-[8px_8px_0px_theme('colors.forest-accent')]">
+                class="bg-white border-4 border-forest-accent rounded-[32px] p-6 md:p-8 shadow-[8px_8px_0px_theme('colors.forest-accent')]">
                 <h2 class="text-3xl font-black text-forest-accent mb-6 border-b-2 border-white pb-2">
                     Bagian Tanaman 🌿
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-forest-accent">
-                    <MenuCard v-for="(item, i) in NatureParts" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in NatureParts" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>

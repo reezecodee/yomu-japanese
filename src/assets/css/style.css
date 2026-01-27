@@ -61,22 +61,27 @@
     /* Halaman doubutsu */
     --color-safari: #fffbeb;
     --color-safari-accent: #d97706;
+    --color-safari-dark: #9a3412;
 
     /* Halaman norimono */
     --color-metro: #f5f3ff;
     --color-metro-accent: #7c3aed;
+    --color-metro-dark: #5b21b6;
 
     /* Halaman tatemono */
     --color-concrete: #f1f5f9;
     --color-concrete-accent: #475569;
+    --color-concrete-dark: #1e293b;
 
     /* Halaman kudamono */
     --color-berry: #fce7f3;
     --color-berry-accent: #db2777;
+    --color-berry-dark: #9d174d;
 
     /* Halaman shokubutsu */
     --color-forest: #f0fdf4;
     --color-forest-accent: #15803d;
+    --color-forest-dark: #166534;
 
     /* halaman aisatsu */
     --color-sky: #f0f9ff;

@@ -29,7 +29,7 @@ const activeTab = ref('land')
                     Transportasi Darat 🚗
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <MenuCard v-for="(item, i) in LandTransport" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in LandTransport" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ const activeTab = ref('land')
                     Transportasi Udara ✈️
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <MenuCard v-for="(item, i) in AirTransport" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in AirTransport" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@ const activeTab = ref('land')
                     Transportasi Laut 🚢
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <MenuCard v-for="(item, i) in SeaTransport" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in SeaTransport" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>

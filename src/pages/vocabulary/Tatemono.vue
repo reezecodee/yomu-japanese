@@ -29,7 +29,7 @@ const activeTab = ref('public')
                     Fasilitas Umum 🏫
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-concrete-accent">
-                    <MenuCard v-for="(item, i) in PublicBuildings" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in PublicBuildings" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ const activeTab = ref('public')
                     Toko & Komersial 🛒
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-concrete-accent">
-                    <MenuCard v-for="(item, i) in Shops" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in Shops" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@ const activeTab = ref('public')
                     Rumah & Ruangan 🏠
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-concrete-accent">
-                    <MenuCard v-for="(item, i) in Housing" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in Housing" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>

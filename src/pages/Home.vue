@@ -185,8 +185,8 @@ const menuItems = [
 
                 <h1
                     class="text-6xl md:text-8xl font-black text-slate-800 leading-tight tracking-tight mb-4 drop-shadow-sm">
-                    NIHONGO <span class="text-white"
-                        style="-webkit-text-stroke: 3px var(--color-peach-accent);">POP!</span>
+                    YOMU <span class="text-white"
+                        style="-webkit-text-stroke: 3px var(--color-peach-accent);">JAPANESE!</span>
                 </h1>
 
                 <p class="text-xl font-bold text-slate-500 max-w-2xl mx-auto">

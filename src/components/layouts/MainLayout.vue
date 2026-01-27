@@ -13,6 +13,11 @@ type ThemeName =
     | 'ghost'
     | 'surface'
     | 'apricot'
+    | 'safari'
+    | 'metro'
+    | 'concrete'
+    | 'berry'
+    | 'forest'
     | 'sky'
     | 'cool'
     | 'mint'
@@ -59,6 +64,26 @@ const themeMap: Record<ThemeName, {
     apricot: {
         bg: 'bg-apricot',
         hover: 'group-hover:bg-apricot-accent',
+    },
+    safari: {
+        bg: 'bg-safari',
+        hover: 'group-hover:bg-safari-accent',
+    },
+    metro: {
+        bg: 'bg-metro',
+        hover: 'group-hover:bg-metro-accent',
+    },
+    concrete: {
+        bg: 'bg-concrete',
+        hover: 'group-hover:bg-concrete-accent',
+    },
+    berry: {
+        bg: 'bg-berry',
+        hover: 'group-hover:bg-berry-accent',
+    },
+    forest: {
+        bg: 'bg-forest',
+        hover: 'group-hover:bg-forest-accent',
     },
     sky: {
         bg: 'bg-sky',

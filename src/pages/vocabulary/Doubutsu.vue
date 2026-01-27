@@ -30,7 +30,7 @@ const activeTab = ref('land')
                 </h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-safari-accent">
-                    <MenuCard v-for="(item, i) in LandAnimals" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in LandAnimals" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ const activeTab = ref('land')
                     Hewan Air 🐟
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sky-500">
-                    <MenuCard v-for="(item, i) in WaterAnimals" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in WaterAnimals" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@ const activeTab = ref('land')
                     Burung & Serangga 🦋
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-safari-accent">
-                    <MenuCard v-for="(item, i) in FlyingAnimals" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in FlyingAnimals" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>

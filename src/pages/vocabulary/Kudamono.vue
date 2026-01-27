@@ -29,7 +29,7 @@ const activeTab = ref('common')
                     Buah Umum 🍎
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-berry-accent">
-                    <MenuCard v-for="(item, i) in CommonFruits" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in CommonFruits" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ const activeTab = ref('common')
                     Musiman & Berries 🍓
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-berry-accent">
-                    <MenuCard v-for="(item, i) in SeasonalFruits" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in SeasonalFruits" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@ const activeTab = ref('common')
                     Sayuran (Yasai) 🥕
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-green-600">
-                    <MenuCard v-for="(item, i) in Vegetables" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in Vegetables" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>

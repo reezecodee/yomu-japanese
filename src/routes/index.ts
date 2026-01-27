@@ -9,7 +9,7 @@ const router = createRouter({
       name: "Home",
       component: () => import("@/pages/Home.vue"),
       meta: {
-        title: "Home",
+        title: "Beranda",
       },
     },
     {
@@ -22,7 +22,7 @@ const router = createRouter({
           name: "Hiragana",
           component: () => import("@/pages/kana/Hiragana.vue"),
           meta: {
-            title: "Hiragana",
+            title: "Huruf Hiragana",
             bgClass: "peach",
           },
         },
@@ -31,7 +31,7 @@ const router = createRouter({
           name: "Katakana",
           component: () => import("@/pages/kana/Katakana.vue"),
           meta: {
-            title: "Katakana",
+            title: "Huruf Katakana",
             bgClass: "ice",
           },
         },
@@ -40,7 +40,7 @@ const router = createRouter({
           name: "Kanji",
           component: () => import("@/pages/kana/Kanji.vue"),
           meta: {
-            title: "Kanji",
+            title: "Kanji N5-N1",
             bgClass: "lavender",
           },
         },
@@ -49,7 +49,7 @@ const router = createRouter({
           name: "Suuji",
           component: () => import("@/pages/kana/Suuji.vue"),
           meta: {
-            title: "Suuji",
+            title: "Angka (Suuji)",
             bgClass: "vanilla",
           },
         },
@@ -65,7 +65,7 @@ const router = createRouter({
           name: "Doushi",
           component: () => import("@/pages/vocabulary/Doushi.vue"),
           meta: {
-            title: "Doushi",
+            title: "Kata Kerja (Doushi)",
             bgClass: "rose",
           },
         },
@@ -74,7 +74,7 @@ const router = createRouter({
           name: "Keiyoushi",
           component: () => import("@/pages/vocabulary/Keiyoushi.vue"),
           meta: {
-            title: "Keiyoushi",
+            title: "Kata Sifat (Keiyoushi)",
             bgClass: "aqua",
           },
         },
@@ -83,7 +83,7 @@ const router = createRouter({
           name: "Mono",
           component: () => import("@/pages/vocabulary/Mono.vue"),
           meta: {
-            title: "Mono",
+            title: "Benda (Mono)",
             bgClass: "ghost",
           },
         },
@@ -92,7 +92,7 @@ const router = createRouter({
           name: "Shigoto",
           component: () => import("@/pages/vocabulary/Shigoto.vue"),
           meta: {
-            title: "Shigoto",
+            title: "Profesi (Shigoto)",
             bgClass: "surface",
           },
         },
@@ -101,7 +101,7 @@ const router = createRouter({
           name: "Tabemono",
           component: () => import("@/pages/vocabulary/Tabemono.vue"),
           meta: {
-            title: "Tabemono",
+            title: "Makanan (Tabemono)",
             bgClass: "apricot",
           },
         },
@@ -110,7 +110,7 @@ const router = createRouter({
           name: "Doubutsu",
           component: () => import("@/pages/vocabulary/Doubutsu.vue"),
           meta: {
-            title: "Doubutsu",
+            title: "Hewan (Doubutsu)",
             bgClass: "safari",
           },
         },
@@ -119,7 +119,7 @@ const router = createRouter({
           name: "Norimono",
           component: () => import("@/pages/vocabulary/Norimono.vue"),
           meta: {
-            title: "Norimono",
+            title: "Transportasi (Norimono)",
             bgClass: "metro",
           },
         },
@@ -128,7 +128,7 @@ const router = createRouter({
           name: "Tatemono",
           component: () => import("@/pages/vocabulary/Tatemono.vue"),
           meta: {
-            title: "Tatemono",
+            title: "Bangunan (Tatemono)",
             bgClass: "concrete",
           },
         },
@@ -137,7 +137,7 @@ const router = createRouter({
           name: "Kudamono",
           component: () => import("@/pages/vocabulary/Kudamono.vue"),
           meta: {
-            title: "Kudamono",
+            title: "Buah & Sayur (Kudamono)",
             bgClass: "berry",
           },
         },
@@ -146,7 +146,7 @@ const router = createRouter({
           name: "Shokubutsu",
           component: () => import("@/pages/vocabulary/Shokubutsu.vue"),
           meta: {
-            title: "Shokubutsu",
+            title: "Tanaman (Shokubutsu)",
             bgClass: "forest",
           },
         },
@@ -162,7 +162,7 @@ const router = createRouter({
           name: "Aisatsu",
           component: () => import("@/pages/grammar/Aisatsu.vue"),
           meta: {
-            title: "Aisatsu",
+            title: "Salam (Aisatsu)",
             bgClass: "sky",
           },
         },
@@ -171,7 +171,7 @@ const router = createRouter({
           name: "Bunpou",
           component: () => import("@/pages/grammar/Bunpou.vue"),
           meta: {
-            title: "Bunpou",
+            title: "Tata Bahasa (Bunpou)",
             bgClass: "cool",
           },
         },
@@ -180,7 +180,7 @@ const router = createRouter({
           name: "Joshi",
           component: () => import("@/pages/grammar/Joshi.vue"),
           meta: {
-            title: "Joshi",
+            title: "Partikel (Joshi)",
             bgClass: "mint",
           },
         },
@@ -196,7 +196,7 @@ const router = createRouter({
           name: "Flashcard",
           component: () => import("@/pages/memory-practice/Flashcard.vue"),
           meta: {
-            title: "Flashcard",
+            title: "Latihan Flashcard",
             bgClass: "indigo",
           },
         },
@@ -210,6 +210,21 @@ const router = createRouter({
       return { top: 0 };
     }
   },
+});
+
+// --- UPDATE JUDUL BROWSER ---
+const DEFAULT_TITLE = "Yomu Japanese";
+
+router.beforeEach((to, from, next) => {
+  const pageTitle = to.meta.title;
+
+  if (pageTitle) {
+    document.title = `${pageTitle} - ${DEFAULT_TITLE}`;
+  } else {
+    document.title = DEFAULT_TITLE;
+  }
+
+  next();
 });
 
 export default router;

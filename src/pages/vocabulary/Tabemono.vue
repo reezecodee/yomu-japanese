@@ -28,7 +28,7 @@ const activeTab = ref('tabemono')
                 <h2 class="text-3xl font-black text-apricot-dark mb-6 border-b-2 border-orange-100 pb-2">Menu Makanan
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <MenuCard v-for="(item, i) in FoodItems" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in FoodItems" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
@@ -39,17 +39,17 @@ const activeTab = ref('tabemono')
                 <h2 class="text-3xl font-black text-apricot-dark mb-6 border-b-2 border-orange-100 pb-2">Menu Minuman
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <MenuCard v-for="(item, i) in DrinkItems" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in DrinkItems" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>
 
         <div v-show="activeTab === 'aji'" class="animate-fade-in">
             <div
-                class="bg-apricot border-4 border-apricot-dark rounded-[32px] p-6 md:p-8 shadow-[8px_8px_0px_var(--color-apricot-dark)]">
+                class="bg-white border-4 border-apricot-dark rounded-[32px] p-6 md:p-8 shadow-[8px_8px_0px_var(--color-apricot-dark)]">
                 <h2 class="text-3xl font-black text-apricot-dark mb-6 border-b-2 border-orange-200 pb-2">Rasa (Aji)</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                    <MenuCard v-for="(item, i) in TasteItems" :key="i" :item="item" />
+                    <MenuCard v-for="(item, i) in TasteItems" :key="i" :item="item" :theme="themeName" />
                 </div>
             </div>
         </div>

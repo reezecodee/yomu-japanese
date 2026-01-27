@@ -1,24 +1,47 @@
 <script setup lang="ts">
-import type { MenuItem } from '@/types/Tabemono';
+import { MenuItem } from '@/types/Tabemono';
+import { computed } from 'vue';
 
-defineProps<{
+const props = withDefaults(defineProps<{
     item: MenuItem;
-}>();
+    theme?: string;
+}>(), {
+    theme: 'apricot'
+});
+
+// --- MAPPING REFERENSI ---
+const THEME_MAP: Record<string, { dark: string, accent: string }> = {
+    apricot: { dark: 'var(--color-apricot-dark)', accent: 'var(--color-apricot-accent)' },
+    safari: { dark: 'var(--color-safari-dark)', accent: 'var(--color-safari-accent)' },
+    metro: { dark: 'var(--color-metro-dark)', accent: 'var(--color-metro-accent)' },
+    concrete: { dark: 'var(--color-concrete-dark)', accent: 'var(--color-concrete-accent)' },
+    berry: { dark: 'var(--color-berry-dark)', accent: 'var(--color-berry-accent)' },
+    forest: { dark: 'var(--color-forest-dark)', accent: 'var(--color-forest-accent)' },
+};
+
+const dynamicStyles = computed(() => {
+    const themeConfig = THEME_MAP[props.theme] || THEME_MAP['apricot'];
+
+    return {
+        '--card-dark': themeConfig.dark,
+        '--card-accent': themeConfig.accent,
+    };
+});
 </script>
 
 <template>
-    <div class="menu-card group">
+    <div class="menu-card group" :style="dynamicStyles">
 
         <div class="emoji-icon group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 ease-out">
             {{ item.icon }}
         </div>
 
         <h3
-            class="text-2xl font-black text-slate-700 mb-1 leading-tight group-hover:text-apricot-dark transition-colors">
+            class="text-2xl font-black text-slate-700 mb-1 leading-tight group-hover:text-[var(--card-dark)] transition-colors">
             {{ item.kanji }}
         </h3>
 
-        <p class="text-sm font-extrabold text-apricot-accent uppercase tracking-widest">
+        <p class="text-sm font-extrabold text-[var(--card-accent)] uppercase tracking-widest">
             {{ item.romaji }}
         </p>
 
@@ -32,7 +55,7 @@ defineProps<{
 <style scoped>
 .menu-card {
     background: white;
-    border: 3px solid var(--color-apricot-dark);
+    border: 3px solid var(--card-dark);
     border-radius: 20px;
     padding: 1.5rem;
     text-align: center;
@@ -41,7 +64,6 @@ defineProps<{
     position: relative;
     overflow: hidden;
     height: 100%;
-    /* Agar tinggi kartu seragam di grid */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +73,7 @@ defineProps<{
 .menu-card:hover {
     transform: translateY(-4px);
     box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-apricot-accent);
+    border-color: var(--card-accent);
 }
 
 .emoji-icon {

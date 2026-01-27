@@ -105,6 +105,51 @@ const router = createRouter({
             bgClass: "apricot",
           },
         },
+        {
+          path: "doubutsu",
+          name: "Doubutsu",
+          component: () => import("@/pages/vocabulary/Doubutsu.vue"),
+          meta: {
+            title: "Doubutsu",
+            bgClass: "safari",
+          },
+        },
+        {
+          path: "norimono",
+          name: "Norimono",
+          component: () => import("@/pages/vocabulary/Norimono.vue"),
+          meta: {
+            title: "Norimono",
+            bgClass: "metro",
+          },
+        },
+        {
+          path: "tatemono",
+          name: "Tatemono",
+          component: () => import("@/pages/vocabulary/Tatemono.vue"),
+          meta: {
+            title: "Tatemono",
+            bgClass: "concrete",
+          },
+        },
+        {
+          path: "kudamono",
+          name: "Kudamono",
+          component: () => import("@/pages/vocabulary/Kudamono.vue"),
+          meta: {
+            title: "Kudamono",
+            bgClass: "berry",
+          },
+        },
+        {
+          path: "shokubutsu",
+          name: "Shokubutsu",
+          component: () => import("@/pages/vocabulary/Shokubutsu.vue"),
+          meta: {
+            title: "Shokubutsu",
+            bgClass: "forest",
+          },
+        },
       ],
     },
     {

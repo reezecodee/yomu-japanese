@@ -88,6 +88,15 @@ const router = createRouter({
             bgClass: "surface",
           },
         },
+        {
+          path: "tabemono",
+          name: "Tabemono",
+          component: () => import("@/pages/vocabulary/Tabemono.vue"),
+          meta: {
+            title: "Tabemono",
+            bgClass: "apricot",
+          },
+        },
       ],
     },
   ],

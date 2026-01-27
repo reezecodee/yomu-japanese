@@ -61,6 +61,15 @@ const router = createRouter({
       component: MainLayout,
       children: [
         {
+          path: "kotoba",
+          name: "Kotoba",
+          component: () => import("@/pages/vocabulary/Kotoba.vue"),
+          meta: {
+            title: "Kosakata (Kotoba)",
+            bgClass: "kotoba",
+          },
+        },
+        {
           path: "doushi",
           name: "Doushi",
           component: () => import("@/pages/vocabulary/Doushi.vue"),

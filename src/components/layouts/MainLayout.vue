@@ -22,6 +22,7 @@ type ThemeName =
     | 'cool'
     | 'mint'
     | 'indigo'
+    | 'kotoba'
 
 const route = useRoute()
 
@@ -100,6 +101,10 @@ const themeMap: Record<ThemeName, {
     indigo: {
         bg: 'bg-indigo',
         hover: 'group-hover:bg-indigo-accent',
+    },
+    kotoba: {
+        bg: 'bg-kotoba',
+        hover: 'group-hover:bg-kotoba-accent',
     },
 }
 

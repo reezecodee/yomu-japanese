@@ -108,6 +108,49 @@
     --color-indigo-accent: #6366f1;
     --color-indigo-dark: #312e81;
 
+    /* --- PALET BENTO (KOTOBA) --- */
+    --color-kotoba: #f3f4f6;
+    --color-kotoba-accent: #6366f1;
+    --color-kotoba-dark: #312e81;
+    
+    /* Hero (Indigo) */
+    --color-bento-hero: #6366f1;
+    --color-bento-hero-dark: #312e81;
+
+    /* Iro/Warna (White/Gray) */
+    --color-bento-iro: #ffffff;
+    --color-bento-iro-border: #1f2937;
+
+    /* Youbi/Hari (Yellow) */
+    --color-bento-youbi: #fefce8;
+    --color-bento-youbi-border: #ca8a04;
+    --color-bento-youbi-text: #854d0e;
+
+    /* Nature (Green) */
+    --color-bento-nature: #f0fdf4;
+    --color-bento-nature-border: #16a34a;
+    --color-bento-nature-text: #166534;
+
+    /* Seasons (Orange) */
+    --color-bento-season: #fff7ed;
+    --color-bento-season-border: #f97316;
+    --color-bento-season-text: #9a3412;
+
+    /* Directions (Blue) */
+    --color-bento-dir: #eff6ff;
+    --color-bento-dir-border: #60a5fa;
+    --color-bento-dir-text: #1e40af;
+
+    /* Months (Purple) */
+    --color-bento-month: #faf5ff;
+    --color-bento-month-border: #a855f7;
+    --color-bento-month-text: #6b21a8;
+
+    /* Family (Pink) */
+    --color-bento-family: #fdf2f8;
+    --color-bento-family-border: #f472b6;
+    --color-bento-family-text: #9d174d;
+
     /* --- Box Shadows (Gaya Pop/Neobrutalism) --- */
     --shadow-card: 8px 8px 0px rgba(0, 0, 0, 0.1);
     --shadow-btn: 4px 4px 0px rgba(0, 0, 0, 0.1);

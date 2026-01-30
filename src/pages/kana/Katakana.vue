@@ -31,41 +31,45 @@ const handleCardClick = (char: CharData) => {
 </script>
 
 <template>
-    <div class="max-w-5xl mx-auto px-4">
+    <div class="max-w-5xl mx-auto px-3 sm:px-4 pb-12">
         <TabSwitcher :tabs="katakanaTabs" v-model="activeTab" :theme="themeName" />
 
         <div v-show="activeTab === 'seion'" class="animate-fade-in">
-            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
-                <div class="grid grid-cols-5 gap-3 md:gap-4">
+            <div
+                class="bg-white border-4 border-slate-800 rounded-2xl sm:rounded-[32px] p-4 sm:p-8 shadow-[6px_6px_0px_#1e293b] sm:shadow-card">
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
                     <CharCard v-for="(item, index) in seion" :key="index" :data="item" :theme="themeName"
-                        @click="handleCardClick(item)" />
+                        @click="handleCardClick(item)" :class="{ 'hidden md:block': item.type === 'empty' }" />
                 </div>
             </div>
         </div>
 
         <div v-show="activeTab === 'dakuten'" class="animate-fade-in">
-            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
-                <div class="grid grid-cols-5 gap-3 md:gap-4">
+            <div
+                class="bg-white border-4 border-slate-800 rounded-2xl sm:rounded-[32px] p-4 sm:p-8 shadow-[6px_6px_0px_#1e293b] sm:shadow-card">
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
                     <CharCard v-for="(item, index) in dakuten" :key="index" :data="item" :theme="themeName"
-                        @click="handleCardClick(item)" />
+                        @click="handleCardClick(item)" :class="{ 'hidden md:block': item.type === 'empty' }" />
                 </div>
             </div>
         </div>
 
         <div v-show="activeTab === 'yoon'" class="animate-fade-in">
-            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
-                <div class="grid grid-cols-3 gap-3 md:gap-4">
+            <div
+                class="bg-white border-4 border-slate-800 rounded-2xl sm:rounded-[32px] p-4 sm:p-8 shadow-[6px_6px_0px_#1e293b] sm:shadow-card">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
                     <CharCard v-for="(item, index) in yoon" :key="index" :data="item" :theme="themeName"
-                        @click="handleCardClick(item)" />
+                        @click="handleCardClick(item)" :class="{ 'hidden md:block': item.type === 'empty' }" />
                 </div>
             </div>
         </div>
 
         <div v-show="activeTab === 'tokushuon'" class="animate-fade-in">
-            <div class="bg-white border-4 border-slate-800 rounded-[32px] p-6 md:p-8 shadow-card">
-                <div class="grid grid-cols-4 gap-3 md:gap-4">
+            <div
+                class="bg-white border-4 border-slate-800 rounded-2xl sm:rounded-[32px] p-4 sm:p-8 shadow-[6px_6px_0px_#1e293b] sm:shadow-card">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
                     <CharCard v-for="(item, index) in tokushuon" :key="index" :data="item" :theme="themeName"
-                        @click="handleCardClick(item)" />
+                        @click="handleCardClick(item)" :class="{ 'hidden md:block': item.type === 'empty' }" />
                 </div>
             </div>
         </div>

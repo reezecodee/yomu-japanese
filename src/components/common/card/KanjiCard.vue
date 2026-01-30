@@ -4,7 +4,7 @@ import type { KanjiData } from '@/types/Kanji';
 
 const props = withDefaults(defineProps<{
     data: KanjiData;
-    theme?: string; // e.g. 'lavender'
+    theme?: string;
 }>(), {
     theme: 'lavender'
 });
@@ -12,12 +12,11 @@ const props = withDefaults(defineProps<{
 const isFlipped = ref(false);
 const toggleFlip = () => isFlipped.value = !isFlipped.value;
 
-// LOGIC WARNA (Supaya border belakang warnanya gelap persis HTML)
 const dynamicStyle = computed(() => {
     return {
-        '--card-accent': `var(--color-${props.theme}-accent)`, // Ungu (#8b5cf6)
-        '--card-bg': `var(--color-${props.theme})`,            // Ungu Muda (#f3e8ff)
-        '--card-dark': `var(--color-${props.theme}-dark)`,     // Ungu Gelap (#4c1d95) buat Border Belakang
+        '--card-accent': `var(--color-${props.theme}-accent)`,
+        '--card-bg': `var(--color-${props.theme})`,
+        '--card-dark': `var(--color-${props.theme}-dark)`,
     };
 });
 </script>
@@ -73,7 +72,6 @@ const dynamicStyle = computed(() => {
 </template>
 
 <style scoped>
-/* Utility Classes Khusus 3D Flip */
 .perspective-1000 {
     perspective: 1000px;
 }
@@ -91,12 +89,10 @@ const dynamicStyle = computed(() => {
     transform: rotateY(180deg);
 }
 
-/* Trigger Class dari Vue */
 .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-/* Hover Effect (Opsional, persis HTML) */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }

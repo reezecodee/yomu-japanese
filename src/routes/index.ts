@@ -10,6 +10,7 @@ const router = createRouter({
       component: () => import("@/pages/Home.vue"),
       meta: {
         title: "Beranda",
+        themeColor: "#ffdecc",
       },
     },
     {
@@ -24,6 +25,7 @@ const router = createRouter({
           meta: {
             title: "Huruf Hiragana",
             bgClass: "peach",
+            themeColor: "#ffdecc",
           },
         },
         {
@@ -33,6 +35,7 @@ const router = createRouter({
           meta: {
             title: "Huruf Katakana",
             bgClass: "ice",
+            themeColor: "#e0f7fa",
           },
         },
         {
@@ -42,6 +45,7 @@ const router = createRouter({
           meta: {
             title: "Kanji N5-N1",
             bgClass: "lavender",
+            themeColor: "#f3e8ff",
           },
         },
         {
@@ -51,6 +55,7 @@ const router = createRouter({
           meta: {
             title: "Angka (Suuji)",
             bgClass: "vanilla",
+            themeColor: "#fffbeb",
           },
         },
       ],
@@ -67,6 +72,7 @@ const router = createRouter({
           meta: {
             title: "Kosakata (Kotoba)",
             bgClass: "kotoba",
+            themeColor: "#f3f4f6",
           },
         },
         {
@@ -76,6 +82,7 @@ const router = createRouter({
           meta: {
             title: "Kata Kerja (Doushi)",
             bgClass: "rose",
+            themeColor: "#fff1f2",
           },
         },
         {
@@ -85,6 +92,7 @@ const router = createRouter({
           meta: {
             title: "Kata Sifat (Keiyoushi)",
             bgClass: "aqua",
+            themeColor: "#ecfeff",
           },
         },
         {
@@ -94,6 +102,7 @@ const router = createRouter({
           meta: {
             title: "Benda (Mono)",
             bgClass: "ghost",
+            themeColor: "#f8fafc",
           },
         },
         {
@@ -103,6 +112,7 @@ const router = createRouter({
           meta: {
             title: "Profesi (Shigoto)",
             bgClass: "surface",
+            themeColor: "#f1f5f9",
           },
         },
         {
@@ -112,6 +122,7 @@ const router = createRouter({
           meta: {
             title: "Makanan (Tabemono)",
             bgClass: "apricot",
+            themeColor: "#fff7ed",
           },
         },
         {
@@ -121,6 +132,7 @@ const router = createRouter({
           meta: {
             title: "Hewan (Doubutsu)",
             bgClass: "safari",
+            themeColor: "#fffbeb",
           },
         },
         {
@@ -130,6 +142,7 @@ const router = createRouter({
           meta: {
             title: "Transportasi (Norimono)",
             bgClass: "metro",
+            themeColor: "#f5f3ff",
           },
         },
         {
@@ -139,6 +152,7 @@ const router = createRouter({
           meta: {
             title: "Bangunan (Tatemono)",
             bgClass: "concrete",
+            themeColor: "#f1f5f9",
           },
         },
         {
@@ -148,6 +162,7 @@ const router = createRouter({
           meta: {
             title: "Buah & Sayur (Kudamono)",
             bgClass: "berry",
+            themeColor: "#fce7f3",
           },
         },
         {
@@ -157,6 +172,7 @@ const router = createRouter({
           meta: {
             title: "Tanaman (Shokubutsu)",
             bgClass: "forest",
+            themeColor: "#f0fdf4",
           },
         },
       ],
@@ -173,6 +189,7 @@ const router = createRouter({
           meta: {
             title: "Salam (Aisatsu)",
             bgClass: "sky",
+            themeColor: "#f0f9ff",
           },
         },
         {
@@ -182,6 +199,7 @@ const router = createRouter({
           meta: {
             title: "Tata Bahasa (Bunpou)",
             bgClass: "cool",
+            themeColor: "#f0f4f8",
           },
         },
         {
@@ -191,6 +209,7 @@ const router = createRouter({
           meta: {
             title: "Partikel (Joshi)",
             bgClass: "mint",
+            themeColor: "#dcfce7",
           },
         },
       ],
@@ -207,6 +226,7 @@ const router = createRouter({
           meta: {
             title: "Latihan Flashcard",
             bgClass: "indigo",
+            themeColor: "#e0e7ff",
           },
         },
       ],
@@ -221,19 +241,22 @@ const router = createRouter({
   },
 });
 
-// --- UPDATE JUDUL BROWSER ---
 const DEFAULT_TITLE = "Yomu Japanese";
 
-router.beforeEach((to, from, next) => {
+router.afterEach((to) => {
   const pageTitle = to.meta.title;
-
   if (pageTitle) {
     document.title = `${pageTitle} - ${DEFAULT_TITLE}`;
   } else {
     document.title = DEFAULT_TITLE;
   }
 
-  next();
+  const themeColor = (to.meta.themeColor as string) || "#ffffff";
+  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute("content", themeColor);
+  }
 });
 
 export default router;

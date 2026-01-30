@@ -8,7 +8,7 @@ import { DailyGreetings, HomeGreetings, GratitudeGreetings, IntroGreetings, Part
         <div class="space-y-6 mb-7">
             <div class="text-center">
                 <span
-                    class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full font-black border-2 border-yellow-300 shadow-sm text-sm">
+                    class="bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
                     SALAM HARIAN
                 </span>
             </div>

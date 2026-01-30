@@ -1,7 +1,8 @@
 <div align="center">
   <img src="public/pwa-192x192.png" alt="Yomu Japanese" width="120" height="120">
-
-  <h1>Yomu Japanese (読む)</h1>
+  
+  <br>
+  <b><font size="6">Yomu Japanese (読む)</font></b>
 
   <h3>Aplikasi Belajar Bahasa Jepang Interaktif dengan UI Ceria & Modern</h3>
 

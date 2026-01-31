@@ -12,8 +12,10 @@ export interface JoshiItem {
 }
 
 export interface JoshiExtraItem {
-  kana: string;
-  romaji: string;
-  desc: string;
-  example: string;
+    kana: string;
+    romaji: string;
+    desc: string;
+    example_jp: string;      
+    example_ro: string;      
+    example_meaning: string; 
 }

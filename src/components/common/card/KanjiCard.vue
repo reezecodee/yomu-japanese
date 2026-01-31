@@ -22,8 +22,9 @@ const dynamicStyle = computed(() => {
 </script>
 
 <template>
-    <div class="flip-card w-full h-[300px] relative cursor-pointer group perspective-1000"
-        :class="{ 'flipped': isFlipped }" @click="toggleFlip" :style="dynamicStyle">
+    <div class="flip-card w-full h-[300px] relative cursor-pointer perspective-1000" :class="{ 'flipped': isFlipped }"
+        @click="toggleFlip" :style="dynamicStyle">
+
         <div class="flip-card-inner w-full h-full relative transition-transform duration-500 transform-style-3d">
 
             <div
@@ -90,10 +91,6 @@ const dynamicStyle = computed(() => {
 }
 
 .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
 </style>

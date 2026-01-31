@@ -1,18 +1,32 @@
 <script setup lang="ts">
 import type { ShigotoItem } from '@/types/Shigoto';
 
-defineProps<{
+const props = defineProps<{
     item: ShigotoItem;
 }>();
+
+// --- LOGIKA AUDIO (YOUDAO) ---
+const playAudio = () => {
+    const text = encodeURIComponent(props.item.kanji);
+    const url = `https://dict.youdao.com/dictvoice?audio=${text}&le=jap`;
+
+    const audio = new Audio(url);
+    audio.play().catch(e => console.warn("Audio Error:", e));
+}
 </script>
 
 <template>
-    <div class="id-card group">
+    <div class="id-card group cursor-pointer select-none" @click="playAudio">
 
         <div class="id-hole"></div>
 
         <div class="job-tag bg-surface-dark text-white">
             {{ item.category }}
+        </div>
+
+        <div
+            class="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 text-sm z-30">
+            🔊
         </div>
 
         <div class="photo-area bg-surface group-hover:bg-blue-50 transition-colors">
@@ -61,6 +75,11 @@ defineProps<{
     transform: translateY(-6px);
     box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.15);
     border-color: var(--color-surface-accent);
+}
+
+.id-card:active {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .id-hole {

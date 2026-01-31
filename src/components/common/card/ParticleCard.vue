@@ -4,13 +4,28 @@ import type { JoshiItem } from '@/types/Joshi';
 defineProps<{
     item: JoshiItem;
 }>();
+
+const playAudio = (text: string) => {
+    if (!text) return;
+    const encodedText = encodeURIComponent(text);
+    const url = `https://dict.youdao.com/dictvoice?audio=${encodedText}&le=jap`;
+    const audio = new Audio(url);
+    audio.play().catch(e => console.warn("Audio Error:", e));
+}
 </script>
 
 <template>
     <div class="particle-card h-full">
 
-        <div class="card-header">
-            <div class="text-4xl md:text-5xl font-black">{{ item.kana }}</div>
+        <div class="card-header group cursor-pointer select-none relative transition-colors duration-200"
+            @click="playAudio(item.kana)">
+
+            <div
+                class="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity text-white/90 text-sm">
+                🔊
+            </div>
+
+            <div class="text-4xl md:text-5xl font-black pl-6">{{ item.kana }}</div>
             <div class="text-right">
                 <div class="text-lg md:text-xl font-bold uppercase tracking-wide">{{ item.romaji }}</div>
                 <div
@@ -31,8 +46,15 @@ defineProps<{
                 </p>
             </div>
 
-            <div class="example-bubble mt-auto">
-                <p class="font-black text-lg text-mint-dark mb-1">
+            <div class="example-bubble mt-auto group cursor-pointer select-none relative transition-all duration-200"
+                @click="playAudio(item.example.jp)">
+
+                <div
+                    class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-mint-dark text-xs">
+                    🔊
+                </div>
+
+                <p class="font-black text-lg text-mint-dark mb-1 pr-4">
                     <span
                         v-html="item.example.jp.replace(item.example.highlight, `<span class='text-mint-accent'>${item.example.highlight}</span>`)"></span>
                 </p>
@@ -73,12 +95,36 @@ defineProps<{
     align-items: center;
     justify-content: space-between;
     border-bottom: 4px solid var(--color-mint-dark);
+    transition: filter 0.2s ease, box-shadow 0.1s ease-out;
 }
+
+.card-header:hover {
+    filter: brightness(1.05);
+}
+
+.card-header:active {
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.25);
+    filter: brightness(0.95);
+    border-bottom-color: transparent;
+}
+
 
 .example-bubble {
     background: var(--color-mint);
     border: 2px dashed var(--color-mint-accent);
     border-radius: 16px;
     padding: 1rem;
+}
+
+.example-bubble:hover {
+    background: #dcfce7;
+    border-style: solid;
+    border-color: var(--color-mint-dark);
+}
+
+.example-bubble:active {
+    background: #bbf7d0;
+    border-color: var(--color-mint-dark);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>

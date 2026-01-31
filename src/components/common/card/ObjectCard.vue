@@ -10,10 +10,20 @@ const props = defineProps<{
 const colorStyle = computed(() => ({
     color: `var(--color-loc-${props.variant})`,
 }))
+
+// --- LOGIKA AUDIO (YOUDAO) ---
+const playAudio = () => {
+    const text = encodeURIComponent(props.item.kanji);
+    const url = `https://dict.youdao.com/dictvoice?audio=${text}&le=jap`;
+
+    const audio = new Audio(url);
+    audio.play().catch(e => console.error("Audio error:", e));
+}
 </script>
 
 <template>
-    <div class="obj-card cursor-pointer" :style="colorStyle">
+    <div class="obj-card cursor-pointer group select-none" :style="colorStyle" @click="playAudio">
+
         <div class="icon-box">
             {{ item.icon }}
         </div>
@@ -28,6 +38,10 @@ const colorStyle = computed(() => ({
 
         <div class="text-sm font-bold text-slate-400 mt-1">
             {{ item.meaning }}
+        </div>
+
+        <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-300 text-sm">
+            🔊
         </div>
     </div>
 </template>
@@ -48,6 +62,11 @@ const colorStyle = computed(() => ({
     transform: translateY(-4px);
     box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
     border-color: currentColor;
+}
+
+.obj-card:active {
+    transform: translateY(-1px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 .icon-box {

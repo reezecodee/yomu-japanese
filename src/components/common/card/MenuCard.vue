@@ -9,7 +9,6 @@ const props = withDefaults(defineProps<{
     theme: 'apricot'
 });
 
-// --- MAPPING REFERENSI ---
 const THEME_MAP: Record<string, { dark: string, accent: string }> = {
     apricot: { dark: 'var(--color-apricot-dark)', accent: 'var(--color-apricot-accent)' },
     safari: { dark: 'var(--color-safari-dark)', accent: 'var(--color-safari-accent)' },
@@ -27,10 +26,24 @@ const dynamicStyles = computed(() => {
         '--card-accent': themeConfig.accent,
     };
 });
+
+// --- LOGIKA AUDIO (YOUDAO) ---
+const playAudio = () => {
+    if (!props.item.kanji) return;
+
+    const text = encodeURIComponent(props.item.kanji);
+    const url = `https://dict.youdao.com/dictvoice?audio=${text}&le=jap`;
+
+    const audio = new Audio(url);
+
+    audio.play().catch(e => {
+        console.warn("Youdao Audio Error:", e);
+    });
+}
 </script>
 
 <template>
-    <div class="menu-card group" :style="dynamicStyles">
+    <div class="menu-card group select-none" :style="dynamicStyles" @click="playAudio">
 
         <div class="emoji-icon group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 ease-out">
             {{ item.icon }}
@@ -48,6 +61,10 @@ const dynamicStyles = computed(() => {
         <p class="text-xs font-bold text-slate-400 mt-1">
             {{ item.meaning }}
         </p>
+
+        <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-300 text-sm">
+            🔊
+        </div>
 
     </div>
 </template>
@@ -74,6 +91,11 @@ const dynamicStyles = computed(() => {
     transform: translateY(-4px);
     box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
     border-color: var(--card-accent);
+}
+
+.menu-card:active {
+    transform: translateY(-1px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 .emoji-icon {

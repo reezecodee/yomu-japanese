@@ -7,10 +7,28 @@ const props = defineProps<{
 }>();
 
 const isRight = computed(() => props.item.align === 'right');
+
+// --- LOGIKA AUDIO (YOUDAO) ---
+const playAudio = () => {
+    if (!props.item.kana) return;
+
+    const text = encodeURIComponent(props.item.kana);
+    const url = `https://dict.youdao.com/dictvoice?audio=${text}&le=jap`;
+
+    const audio = new Audio(url);
+    audio.play().catch(e => console.warn("Audio Error:", e));
+}
 </script>
 
 <template>
-    <div :class="['bubble', isRight ? 'bubble-right' : 'bubble-left']">
+    <div :class="['bubble group select-none', isRight ? 'bubble-right' : 'bubble-left']" @click="playAudio">
+
+        <div :class="[
+            'absolute top-3 opacity-0 group-hover:opacity-100 transition-opacity text-sm',
+            isRight ? 'left-3 text-white/90' : 'right-3 text-sky-400'
+        ]">
+            🔊
+        </div>
 
         <span v-if="item.situation" :class="['situation-badge', isRight ? 'badge-right' : 'badge-left']">
             {{ item.situation }}
@@ -39,7 +57,7 @@ const isRight = computed(() => props.item.align === 'right');
     position: relative;
     max-width: 90%;
     transition: transform 0.2s;
-    cursor: default;
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -52,7 +70,10 @@ const isRight = computed(() => props.item.align === 'right');
     transform: scale(1.02);
 }
 
-/* --- LEFT STYLE (Standard) --- */
+.bubble:active {
+    transform: scale(0.98);
+}
+
 .bubble-left {
     background: white;
     color: var(--color-dark);
@@ -67,7 +88,6 @@ const isRight = computed(() => props.item.align === 'right');
     border-color: var(--color-sky-dark);
 }
 
-/* --- RIGHT STYLE (Accent/Reply) --- */
 .bubble-right {
     background: var(--color-sky-accent);
     color: white;
@@ -83,7 +103,6 @@ const isRight = computed(() => props.item.align === 'right');
     border-color: white;
 }
 
-/* Common Badge Style */
 .situation-badge {
     display: inline-block;
     border: 2px solid;

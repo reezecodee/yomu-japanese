@@ -4,6 +4,17 @@ import type { VerbConjugation } from '@/types/Doushi';
 defineProps<{
     verb: VerbConjugation;
 }>();
+
+// --- LOGIKA AUDIO (YOUDAO) ---
+const playAudio = (text: string) => {
+    if (!text) return;
+
+    const encodedText = encodeURIComponent(text);
+    const url = `https://dict.youdao.com/dictvoice?audio=${encodedText}&le=jap`;
+
+    const audio = new Audio(url);
+    audio.play().catch(e => console.warn("Audio Error:", e));
+}
 </script>
 
 <template>
@@ -23,7 +34,14 @@ defineProps<{
 
         <div class="mt-4 space-y-2">
 
-            <div class="form-box bg-white border-2 border-yellow-200 text-slate-600 rounded-xl p-2 text-center">
+            <div class="form-box bg-white border-2 border-yellow-200 text-slate-600 rounded-xl p-2 text-center cursor-pointer group select-none relative hover:bg-yellow-50 transition-colors"
+                @click.stop="playAudio(verb.dictionary_form)">
+
+                <div
+                    class="absolute top-1 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 text-xs">
+                    🔊
+                </div>
+
                 <span class="block text-xl font-bold text-slate-800">{{ verb.dictionary_form }}</span>
                 <span class="text-xs font-bold uppercase">{{ verb.romaji }}</span>
             </div>
@@ -32,7 +50,14 @@ defineProps<{
                 ↓
             </div>
 
-            <div class="form-box bg-yellow-100 border-2 border-yellow-500 text-yellow-800 rounded-xl p-2 text-center">
+            <div class="form-box bg-yellow-100 border-2 border-yellow-500 text-yellow-800 rounded-xl p-2 text-center cursor-pointer group select-none relative hover:bg-yellow-200 transition-colors"
+                @click.stop="playAudio(verb.masu_form)">
+
+                <div
+                    class="absolute top-1 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-yellow-600 text-xs">
+                    🔊
+                </div>
+
                 <span class="block text-xl font-bold">{{ verb.masu_form }}</span>
                 <span class="text-xs font-bold uppercase">{{ verb.masu_romaji }}</span>
             </div>
@@ -48,5 +73,9 @@ defineProps<{
 <style scoped>
 .verb-card {
     border-width: 3px;
+}
+
+.form-box:active {
+    transform: scale(0.98);
 }
 </style>

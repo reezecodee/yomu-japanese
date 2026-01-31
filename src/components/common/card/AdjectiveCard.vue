@@ -28,31 +28,56 @@ const badgeBgClass = computed(() =>
 const bottomBgClass = computed(() =>
     isNa.value ? 'bg-green-50' : 'bg-aqua'
 );
+
+// --- LOGIKA AUDIO (YOUDAO - KANJI) ---
+// Kita butuh parameter 'text' karena ada 2 kata berbeda dalam 1 kartu
+const playAudio = (word: string) => {
+    if (!word) return;
+
+    const text = encodeURIComponent(word);
+    const url = `https://dict.youdao.com/dictvoice?audio=${text}&le=jap`;
+
+    const audio = new Audio(url);
+    audio.play().catch(e => console.warn("Audio Error:", e));
+}
 </script>
 
 <template>
     <div :class="['vs-card', cardBorderClass]">
 
-        <div class="half-card bg-white">
+        <div class="half-card bg-white cursor-pointer group select-none relative" @click="playAudio(pair.top.word)">
+
+            <div
+                class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-300 text-xs">
+                🔊
+            </div>
+
             <div class="flex flex-col">
                 <span class="jp-word">{{ pair.top.word }}</span>
                 <span :class="['romaji', romajiClass]">{{ pair.top.romaji }}</span>
                 <span class="meaning">{{ pair.top.meaning }}</span>
             </div>
-            <span class="emoji-box">{{ pair.top.icon }}</span>
+            <span class="emoji-box group-hover:scale-110 transition-transform">{{ pair.top.icon }}</span>
         </div>
 
         <div :class="['divider', dividerBgClass]">
             <span :class="['divider-badge', badgeBgClass]">VS</span>
         </div>
 
-        <div :class="['half-card', bottomBgClass]">
+        <div :class="['half-card', bottomBgClass, 'cursor-pointer group select-none relative']"
+            @click="playAudio(pair.bottom.word)">
+
+            <div
+                class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 text-xs">
+                🔊
+            </div>
+
             <div class="flex flex-col">
                 <span class="jp-word">{{ pair.bottom.word }}</span>
                 <span :class="['romaji', romajiClass]">{{ pair.bottom.romaji }}</span>
                 <span class="meaning">{{ pair.bottom.meaning }}</span>
             </div>
-            <span class="emoji-box">{{ pair.bottom.icon }}</span>
+            <span class="emoji-box group-hover:scale-110 transition-transform">{{ pair.bottom.icon }}</span>
         </div>
 
     </div>
@@ -84,6 +109,12 @@ const bottomBgClass = computed(() =>
     align-items: center;
     justify-content: space-between;
     flex-grow: 1;
+}
+
+/* Efek Active saat ditekan */
+.half-card:active {
+    background-color: rgba(0, 0, 0, 0.02);
+    /* Sedikit menggelap saat diklik */
 }
 
 .divider {

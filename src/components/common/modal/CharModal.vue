@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, computed } from 'vue';
+import { onMounted, onUnmounted, computed, ref } from 'vue'; // Tambah 'ref'
 
 interface CharData {
     char: string;
@@ -22,6 +22,34 @@ const handleEsc = (e: KeyboardEvent) => {
         emit('close')
     }
 }
+
+// --- STATE LOADING ---
+const isLoading = ref(false);
+
+const playAudio = () => {
+    if (!props.data?.char || isLoading.value) return;
+
+    isLoading.value = true;
+
+    const text = encodeURIComponent(props.data.char);
+    const url = `https://dict.youdao.com/dictvoice?audio=${text}&le=jap&t=${Date.now()}`;
+
+    const audio = new Audio(url);
+    audio.playbackRate = 1.0;
+
+    audio.onplay = () => {
+        isLoading.value = false;
+    };
+
+    audio.onerror = () => {
+        isLoading.value = false;
+    };
+
+    audio.play().catch(e => {
+        console.error("Error:", e);
+        isLoading.value = false;
+    });
+};
 
 onMounted(() => window.addEventListener('keydown', handleEsc))
 onUnmounted(() => window.removeEventListener('keydown', handleEsc))
@@ -75,14 +103,16 @@ const dynamicStyle = computed(() => {
                             </p>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-3">
-                            <button
-                                class="bg-white border-2 border-slate-200 py-2 rounded-xl font-bold text-slate-500 text-sm hover:border-[var(--modal-accent)] hover:text-[var(--modal-accent)] transition-colors flex justify-center items-center gap-2 group">
-                                <span>🔊</span> <span class="group-hover:underline">Audio</span>
-                            </button>
-                            <button
-                                class="bg-white border-2 border-slate-200 py-2 rounded-xl font-bold text-slate-500 text-sm hover:border-[var(--modal-accent)] hover:text-[var(--modal-accent)] transition-colors flex justify-center items-center gap-2 group">
-                                <span>✍️</span> <span class="group-hover:underline">Stroke</span>
+                        <div class="flex justify-center w-full">
+                            <button @click.stop="playAudio" :disabled="isLoading"
+                                class="bg-white border-2 border-slate-200 py-3 px-8 rounded-xl font-bold text-slate-500 text-sm hover:border-[var(--modal-accent)] hover:text-[var(--modal-accent)] transition-all flex justify-center items-center gap-2 group active:scale-95 shadow-sm w-full cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
+
+                                <span v-if="isLoading" class="animate-spin text-lg">⏳</span>
+                                <span v-else class="text-lg">🔊</span>
+
+                                <span class="group-hover:underline">
+                                    {{ isLoading ? 'Memuat...' : 'Dengarkan Audio' }}
+                                </span>
                             </button>
                         </div>
 

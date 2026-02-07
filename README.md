@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    <img src="public/pwa-192x192.png" alt="Yomu Japanese" width="100">
+    <img src="public/images/favicon-1.png" alt="Yomu Japanese" width="100">
     <br>
     Yomu Japanese (読む)
   </h1>

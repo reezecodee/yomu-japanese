@@ -28,9 +28,9 @@
   Dibangun sebagai <strong>PWA (Progressive Web App)</strong>, Yomu bisa langsung di-install di HP kamu tanpa ribet, siap menemani belajar kapan saja dan di mana saja, bahkan saat offline sekalipun!
 </p>
 
-<h2>📚 Daftar Materi (Page List)</h2>
+<h2>📚 Daftar Materi</h2>
 
-<h3>1. Huruf & Angka (Kana)</h3>
+<h3>1. Huruf & Angka</h3>
 <ul>
   <li>あ <strong>Hiragana</strong> — Huruf dasar Jepang</li>
   <li>ア <strong>Katakana</strong> — Huruf kata asing</li>
@@ -38,7 +38,7 @@
   <li>123 <strong>Angka (Suuji)</strong> — Hitungan & Uang</li>
 </ul>
 
-<h3>2. Kosakata (Vocabulary)</h3>
+<h3>2. Kosakata</h3>
 <ul>
   <li>🍱 <strong>Kotoba</strong> — Warna, Hari, Keluarga</li>
   <li>📦 <strong>Mono</strong> — Objek & Benda mati</li>
@@ -51,6 +51,7 @@
   <li>🏢 <strong>Bangunan (Tatemono)</strong> — Gedung & Fasilitas</li>
   <li>🍓 <strong>Buah (Kudamono)</strong> — Buah-buahan segar</li>
   <li>🌿 <strong>Tanaman (Shokubutsu)</strong> — Pohon & Bunga</li>
+  <li>🤒 <strong>Penyakit (Byouki)</strong> — Gejala & Cedera</li>
 </ul>
 
 <h3>3. Grammar (Tata Bahasa)</h3>
@@ -58,11 +59,12 @@
   <li>🏗️ <strong>Bunpou</strong> — Pola Kalimat Dasar</li>
   <li>🔗 <strong>Partikel (Joshi)</strong> — Wa, Ga, Wo, Ni, De</li>
   <li>💬 <strong>Salam (Aisatsu)</strong> — Percakapan Sehari-hari</li>
+  <li>📜 <strong>Idiom</strong> — Kanyouku & Yojijukugo (coming soon)</li>
 </ul>
 
 <h2>🛠️ Tech Stack</h2>
 <ul>
-  <li><strong>Framework:</strong> Vue 3 (Composition API)</li>
+  <li><strong>Framework:</strong> Vue 3</li>
   <li><strong>Build Tool:</strong> Vite</li>
   <li><strong>Styling:</strong> Tailwind CSS v4</li>
   <li><strong>PWA:</strong> Vite Plugin PWA</li>

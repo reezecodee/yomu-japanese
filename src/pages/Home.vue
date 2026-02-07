@@ -64,7 +64,7 @@ onUnmounted(() => {
                 </h1>
 
                 <p class="text-xl font-bold text-slate-500 max-w-2xl mx-auto">
-                    Pilih topik belajarmu dan mulailah petualangan bahasa Jepang sekarang juga!
+                    {{ $t('hero.subtitle') }}
                 </p>
             </div>
         </header>

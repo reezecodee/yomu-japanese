@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About"
+  },
+  "hero": {
+    "title": "LEARN JAPANESE",
+    "subtitle": "Choose your topic and start your Japanese adventure right now!"
+  },
+  "footer": {
+    "slogan": "Let's Learn Japanese",
+    "bug": "Report Bug",
+    "contribute": "Contribute",
+    "copyright": "All Rights Reserved"
+  }
+}

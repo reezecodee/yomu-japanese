@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang"
+  },
+  "hero": {
+    "title": "BELAJAR BAHASA JEPANG",
+    "subtitle": "Pilih topik belajarmu dan mulailah petualangan bahasa Jepang sekarang juga!"
+  },
+  "footer": {
+    "slogan": "Mari Belajar Bahasa Jepang",
+    "bug": "Lapor Bug",
+    "contribute": "Kontribusi",
+    "copyright": "Hak Cipta Dilindungi"
+  }
+}

@@ -1,7 +1,7 @@
-import type { Norimono } from "@/types/Norimono";
+import type { WordItem } from "@/types";
 
 // 1. Transportasi Darat (Riku)
-export const LandTransport: Norimono[] = [
+export const LandTransport: WordItem[] = [
   { icon: "🚗", kanji: "車", romaji: "Kuruma", meaning: "Mobil" },
   { icon: "🚃", kanji: "電車", romaji: "Densha", meaning: "Kereta" },
   { icon: "🚲", kanji: "自転車", romaji: "Jitensha", meaning: "Sepeda" },
@@ -27,7 +27,7 @@ export const LandTransport: Norimono[] = [
 ];
 
 // 2. Transportasi Udara (Sora)
-export const AirTransport: Norimono[] = [
+export const AirTransport: WordItem[] = [
   { icon: "✈️", kanji: "飛行機", romaji: "Hikouki", meaning: "Pesawat" },
   {
     icon: "🚁",
@@ -46,7 +46,7 @@ export const AirTransport: Norimono[] = [
 ];
 
 // 3. Transportasi Laut (Umi)
-export const SeaTransport: Norimono[] = [
+export const SeaTransport: WordItem[] = [
   { icon: "🚢", kanji: "船", romaji: "Fune", meaning: "Kapal Laut" },
   { icon: "⛵", kanji: "ヨット", romaji: "Yotto", meaning: "Perahu Layar" },
   { icon: "🚤", kanji: "ボート", romaji: "Booto", meaning: "Perahu Motor" },

@@ -1,7 +1,7 @@
-import type { Doubutsu } from "@/types/Doubutsu";
+import type { WordItem } from "@/types";
 
 // 1. Hewan Darat (Riku no Ikimono)
-export const LandAnimals: Doubutsu[] = [
+export const LandAnimals: WordItem[] = [
   { icon: "🐶", kanji: "犬", romaji: "Inu", meaning: "Anjing" },
   { icon: "🐱", kanji: "猫", romaji: "Neko", meaning: "Kucing" },
   { icon: "🐼", kanji: "パンダ", romaji: "Panda", meaning: "Panda" },
@@ -23,7 +23,7 @@ export const LandAnimals: Doubutsu[] = [
 ];
 
 // 2. Hewan Air (Mizu no Ikimono)
-export const WaterAnimals: Doubutsu[] = [
+export const WaterAnimals: WordItem[] = [
   { icon: "🐟", kanji: "魚", romaji: "Sakana", meaning: "Ikan" },
   { icon: "🦈", kanji: "鮫", romaji: "Same", meaning: "Hiu" },
   { icon: "🐋", kanji: "鯨", romaji: "Kujira", meaning: "Paus" },
@@ -41,7 +41,7 @@ export const WaterAnimals: Doubutsu[] = [
 ];
 
 // 3. Hewan Terbang/Serangga (Tori / Mushi)
-export const FlyingAnimals: Doubutsu[] = [
+export const FlyingAnimals: WordItem[] = [
   { icon: "🐦", kanji: "鳥", romaji: "Tori", meaning: "Burung" },
   { icon: "🐔", kanji: "鶏", romaji: "Niwatori", meaning: "Ayam" },
   { icon: "🦅", kanji: "鷲", romaji: "Washi", meaning: "Elang" },

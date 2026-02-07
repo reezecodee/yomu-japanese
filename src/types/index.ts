@@ -1,4 +1,4 @@
-export interface MenuItem {
+export interface WordItem {
   icon: string;   
   kanji: string;  
   romaji: string; 

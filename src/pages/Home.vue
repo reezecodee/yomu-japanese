@@ -3,43 +3,44 @@ import HomeLayout from '@/components/layouts/HomeLayout.vue';
 import PopMenuCard from '@/components/common/card/PopMenuCard.vue';
 import { menuItems } from '@/data/home-routes';
 import { onMounted, onUnmounted } from 'vue';
+import Footer from '@/components/common/nav/Footer.vue';
 
 let lastBackTime = 0;
 
 const showToast = (msg: string) => {
-  const toast = document.createElement('div');
-  toast.innerText = msg;
-  Object.assign(toast.style, {
-    position: 'fixed', bottom: '80px', left: '50%', transform: 'translateX(-50%)',
-    backgroundColor: '#333', color: '#fff', padding: '10px 20px', borderRadius: '50px',
-    zIndex: '9999', fontSize: '14px', opacity: '0.9'
-  });
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 2000);
+    const toast = document.createElement('div');
+    toast.innerText = msg;
+    Object.assign(toast.style, {
+        position: 'fixed', bottom: '80px', left: '50%', transform: 'translateX(-50%)',
+        backgroundColor: '#333', color: '#fff', padding: '10px 20px', borderRadius: '50px',
+        zIndex: '9999', fontSize: '14px', opacity: '0.9'
+    });
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2000);
 };
 
 const handleBackButton = (event: PopStateEvent) => {
-  const now = new Date().getTime();
+    const now = new Date().getTime();
 
-  if (now - lastBackTime < 2000) {
-    window.history.back(); 
-  } else {
-    lastBackTime = now;
+    if (now - lastBackTime < 2000) {
+        window.history.back();
+    } else {
+        lastBackTime = now;
 
-    showToast("Tekan sekali lagi untuk keluar");
+        showToast("Tekan sekali lagi untuk keluar");
 
-    window.history.pushState(null, '', window.location.href);
-  }
+        window.history.pushState(null, '', window.location.href);
+    }
 };
 
 onMounted(() => {
-  window.history.pushState(null, '', window.location.href);
-  
-  window.addEventListener('popstate', handleBackButton);
+    window.history.pushState(null, '', window.location.href);
+
+    window.addEventListener('popstate', handleBackButton);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('popstate', handleBackButton);
+    window.removeEventListener('popstate', handleBackButton);
 });
 </script>
 
@@ -110,6 +111,8 @@ onUnmounted(() => {
             </section>
 
         </main>
+
+        <Footer />
 
     </HomeLayout>
 </template>

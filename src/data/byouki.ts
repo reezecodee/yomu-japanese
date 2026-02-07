@@ -1,6 +1,6 @@
-import { Byouki } from "@/types/Byouki";
+import type { WordItem } from "@/types";
 
-export const ShoujouItems: Byouki[] = [
+export const ShoujouItems: WordItem[] = [
   { icon: "🤒", kanji: "熱", romaji: "Netsu", meaning: "Demam" },
   { icon: "😫", kanji: "頭痛", romaji: "Zutsuu", meaning: "Sakit Kepala" },
   { icon: "😖", kanji: "腹痛", romaji: "Fukutsuu", meaning: "Sakit Perut" },
@@ -13,7 +13,7 @@ export const ShoujouItems: Byouki[] = [
   { icon: "🥱", kanji: "だるい", romaji: "Darui", meaning: "Badan Lemas" },
 ];
 
-export const DiseaseItems: Byouki[] = [
+export const DiseaseItems: WordItem[] = [
   { icon: "😷", kanji: "風邪", romaji: "Kaze", meaning: "Masuk Angin/Flu" },
   {
     icon: "🦟",
@@ -40,7 +40,7 @@ export const DiseaseItems: Byouki[] = [
   },
 ];
 
-export const KegaItems: Byouki[] = [
+export const KegaItems: WordItem[] = [
   { icon: "🤕", kanji: "怪我", romaji: "Kega", meaning: "Luka/Cedera" },
   {
     icon: "🩸",

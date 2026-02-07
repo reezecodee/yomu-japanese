@@ -1,7 +1,7 @@
-import type { Kudamono } from "@/types/Kudamono";
+import type { WordItem } from "@/types";
 
 // 1. Buah Umum (Kudamono)
-export const CommonFruits: Kudamono[] = [
+export const CommonFruits: WordItem[] = [
   { icon: "🍎", kanji: "林檎", romaji: "Ringo", meaning: "Apel" },
   { icon: "🍌", kanji: "バナナ", romaji: "Banana", meaning: "Pisang" },
   { icon: "🍊", kanji: "蜜柑", romaji: "Mikan", meaning: "Jeruk" },
@@ -13,7 +13,7 @@ export const CommonFruits: Kudamono[] = [
 ];
 
 // 2. Buah Musiman & Berries (Kisetsu no Kudamono)
-export const SeasonalFruits: Kudamono[] = [
+export const SeasonalFruits: WordItem[] = [
   { icon: "🍓", kanji: "苺", romaji: "Ichigo", meaning: "Stroberi" },
   { icon: "🍑", kanji: "桃", romaji: "Momo", meaning: "Persik (Peach)" },
   { icon: "🍉", kanji: "西瓜", romaji: "Suika", meaning: "Semangka" },
@@ -33,7 +33,7 @@ export const SeasonalFruits: Kudamono[] = [
 ];
 
 // 3. Sayuran (Yasai)
-export const Vegetables: Kudamono[] = [
+export const Vegetables: WordItem[] = [
   { icon: "🥕", kanji: "人参", romaji: "Ninjin", meaning: "Wortel" },
   { icon: "🥔", kanji: "ジャガイモ", romaji: "Jagaimo", meaning: "Kentang" },
   { icon: "🥒", kanji: "胡瓜", romaji: "Kyuuri", meaning: "Timun" },

@@ -1,9 +1,9 @@
-import type { MonoItem } from "@/types/Mono";
+import type { WordItem } from "@/types";
 
 // ==========================================
 // 1. HOME (RUMAH)
 // ==========================================
-export const HomeItems: MonoItem[] = [
+export const HomeItems: WordItem[] = [
   { icon: "📺", kanji: "テレビ", romaji: "Terebi", meaning: "Televisi" },
   { icon: "🪑", kanji: "椅子", romaji: "Isu", meaning: "Kursi" },
   { icon: "🪵", kanji: "机", romaji: "Tsukue", meaning: "Meja" },
@@ -34,7 +34,7 @@ export const HomeItems: MonoItem[] = [
 // ==========================================
 // 2. SCHOOL (SEKOLAH)
 // ==========================================
-export const SchoolItems: MonoItem[] = [
+export const SchoolItems: WordItem[] = [
   { icon: "✏️", kanji: "鉛筆", romaji: "Enpitsu", meaning: "Pensil" },
   { icon: "🖊️", kanji: "ペン", romaji: "Pen", meaning: "Pulpen" },
   { icon: "📖", kanji: "本", romaji: "Hon", meaning: "Buku" },
@@ -49,7 +49,7 @@ export const SchoolItems: MonoItem[] = [
 // ==========================================
 // 3. NATURE (ALAM)
 // ==========================================
-export const NatureItems: MonoItem[] = [
+export const NatureItems: WordItem[] = [
   { icon: "⛰️", kanji: "山", romaji: "Yama", meaning: "Gunung" },
   { icon: "🌊", kanji: "川", romaji: "Kawa", meaning: "Sungai" },
   { icon: "🌸", kanji: "花", romaji: "Hana", meaning: "Bunga" },
@@ -73,7 +73,7 @@ export const NatureItems: MonoItem[] = [
 // ==========================================
 // HOSPITAL (RUMAH SAKIT / KLINIK)
 // ==========================================
-export const HospitalItems: MonoItem[] = [
+export const HospitalItems: WordItem[] = [
   { icon: "💊", kanji: "薬", romaji: "Kusuri", meaning: "Obat" },
   { icon: "😷", kanji: "マスク", romaji: "Masuku", meaning: "Masker" },
   { icon: "👓", kanji: "眼鏡", romaji: "Megane", meaning: "Kacamata" },
@@ -93,7 +93,7 @@ export const HospitalItems: MonoItem[] = [
 // ==========================================
 // 5. SPORT (OLAHRAGA)
 // ==========================================
-export const SportItems: MonoItem[] = [
+export const SportItems: WordItem[] = [
   { icon: "🏐", kanji: "ボール", romaji: "Booru", meaning: "Bola" },
   { icon: "🏊", kanji: "プール", romaji: "Puuru", meaning: "Kolam Renang" },
   { icon: "👕", kanji: "ユニフォーム", romaji: "Yunifoomu", meaning: "Seragam" },
@@ -117,7 +117,7 @@ export const SportItems: MonoItem[] = [
 // ==========================================
 // 6. RESTAURANT (RESTORAN)
 // ==========================================
-export const RestaurantItems: MonoItem[] = [
+export const RestaurantItems: WordItem[] = [
   { icon: "🥢", kanji: "箸", romaji: "Hashi", meaning: "Sumpit" },
   { icon: "🍽️", kanji: "皿", romaji: "Sara", meaning: "Piring" },
   { icon: "🥄", kanji: "スプーン", romaji: "Supuun", meaning: "Sendok" },

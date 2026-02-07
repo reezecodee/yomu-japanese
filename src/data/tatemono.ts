@@ -1,7 +1,7 @@
-import type { Tatemono } from "@/types/Tatemono";
+import type { WordItem } from "@/types";
 
 // 1. Fasilitas Umum (Koukyou Shisetsu)
-export const PublicBuildings: Tatemono[] = [
+export const PublicBuildings: WordItem[] = [
   { icon: "🏫", kanji: "学校", romaji: "Gakkou", meaning: "Sekolah" },
   { icon: "🏥", kanji: "病院", romaji: "Byouin", meaning: "Rumah Sakit" },
   { icon: "📮", kanji: "郵便局", romaji: "Yuubinkyoku", meaning: "Kantor Pos" },
@@ -58,7 +58,7 @@ export const PublicBuildings: Tatemono[] = [
 ];
 
 // 2. Toko & Komersial (Mise)
-export const Shops: Tatemono[] = [
+export const Shops: WordItem[] = [
   { icon: "🛒", kanji: "スーパー", romaji: "Suupaa", meaning: "Supermarket" },
   { icon: "🏪", kanji: "コンビニ", romaji: "Konbini", meaning: "Minimarket" },
   {
@@ -110,7 +110,7 @@ export const Shops: Tatemono[] = [
 ];
 
 // 3. Rumah & Bagiannya (Ie)
-export const Housing: Tatemono[] = [
+export const Housing: WordItem[] = [
   { icon: "🏠", kanji: "家", romaji: "Ie", meaning: "Rumah" },
   { icon: "🏢", kanji: "アパート", romaji: "Apaato", meaning: "Apartemen" },
   { icon: "🚪", kanji: "部屋", romaji: "Heya", meaning: "Kamar" },

@@ -1,9 +1,9 @@
-import type { MenuItem } from "@/types/Tabemono";
+import type { WordItem } from "@/types";
 
 // ==========================================
 // 1. FOOD (MAKANAN / TABEMONO)
 // ==========================================
-export const FoodItems: MenuItem[] = [
+export const FoodItems: WordItem[] = [
   { icon: "🍚", kanji: "ご飯", romaji: "Gohan", meaning: "Nasi" },
   { icon: "🍞", kanji: "パン", romaji: "Pan", meaning: "Roti" },
   { icon: "🍖", kanji: "肉", romaji: "Niku", meaning: "Daging" },
@@ -69,7 +69,7 @@ export const FoodItems: MenuItem[] = [
 // ==========================================
 // 2. DRINK (MINUMAN / NOMIMONO)
 // ==========================================
-export const DrinkItems: MenuItem[] = [
+export const DrinkItems: WordItem[] = [
   { icon: "💧", kanji: "水", romaji: "Mizu", meaning: "Air Putih" },
   { icon: "🍵", kanji: "お茶", romaji: "Ocha", meaning: "Teh Jepang (Hijau)" },
   { icon: "🫖", kanji: "紅茶", romaji: "Koucha", meaning: "Teh Hitam" },
@@ -106,7 +106,7 @@ export const DrinkItems: MenuItem[] = [
 // ==========================================
 // 3. TASTE (RASA / AJI)
 // ==========================================
-export const TasteItems: MenuItem[] = [
+export const TasteItems: WordItem[] = [
   { icon: "😋", kanji: "美味しい", romaji: "Oishii", meaning: "Enak / Lezat" },
   { icon: "🤢", kanji: "不味い", romaji: "Mazui", meaning: "Tidak Enak" },
   { icon: "🍰", kanji: "甘い", romaji: "Amai", meaning: "Manis" },

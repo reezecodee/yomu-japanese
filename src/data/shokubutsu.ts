@@ -1,7 +1,7 @@
-import type { Shokubutsu } from "@/types/Shokubutsu";
+import type { WordItem } from "@/types";
 
 // 1. Pohon & Kayu (Ki)
-export const Trees: Shokubutsu[] = [
+export const Trees: WordItem[] = [
   { icon: "🌳", kanji: "木", romaji: "Ki", meaning: "Pohon" },
   { icon: "🌸", kanji: "桜", romaji: "Sakura", meaning: "Bunga Sakura" },
   { icon: "🎍", kanji: "竹", romaji: "Take", meaning: "Bambu" },
@@ -27,7 +27,7 @@ export const Trees: Shokubutsu[] = [
 ];
 
 // 2. Bunga (Hana)
-export const Flowers: Shokubutsu[] = [
+export const Flowers: WordItem[] = [
   {
     icon: "🌻",
     kanji: "向日葵",
@@ -72,7 +72,7 @@ export const Flowers: Shokubutsu[] = [
 ];
 
 // 3. Herbal & Rempah (Yakusou / Supaisu)
-export const Herbs: Shokubutsu[] = [
+export const Herbs: WordItem[] = [
   { icon: "🍃", kanji: "大葉", romaji: "Ooba / Shiso", meaning: "Daun Perilla (Kemangi Jepang)" },
   { icon: "🟢", kanji: "山葵", romaji: "Wasabi", meaning: "Wasabi (Lobak Pedas)" },
   { icon: "🫚", kanji: "生姜", romaji: "Shouga", meaning: "Jahe" },
@@ -100,7 +100,7 @@ export const Herbs: Shokubutsu[] = [
 ];
 
 // 4. Bagian Tanaman & Alam (Shizen)
-export const NatureParts: Shokubutsu[] = [
+export const NatureParts: WordItem[] = [
   { icon: "🌿", kanji: "葉", romaji: "Ha", meaning: "Daun" },
   { icon: "🌱", kanji: "草", romaji: "Kusa", meaning: "Rumput" },
   { icon: "🫚", kanji: "根", romaji: "Ne", meaning: "Akar" },

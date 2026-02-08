@@ -185,6 +185,16 @@ const router = createRouter({
             themeColor: "#fff1f2",
           },
         },
+        {
+          path: "dogu",
+          name: "Dōgu",
+          component: () => import("@/pages/vocabulary/Dogu.vue"),
+          meta: {
+            title: "Peralatan (Dōgu)",
+            bgClass: "orange",
+            themeColor: "#f97316",
+          },
+        },
       ],
     },
     {

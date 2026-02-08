@@ -150,6 +150,15 @@ export const menuItems = [
     hoverColor: "var(--color-rose-accent)",
     theme: "rose",
   },
+  {
+    to: "/vocabulary/dogu",
+    icon: "🛠️",
+    title: "Peralatan",
+    desc: "Pertukangan & Rumah",
+    tag: "Benda",
+    hoverColor: "var(--color-orange-accent)",
+    theme: "orange",
+  },
 
   // ==========================================
   // SECTION 3: GRAMMAR

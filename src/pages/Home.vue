@@ -93,7 +93,7 @@ onUnmounted(() => {
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <PopMenuCard v-for="item in menuItems.slice(4, 16)" :key="item.title" v-bind="item" />
+                    <PopMenuCard v-for="item in menuItems.slice(4, 17)" :key="item.title" v-bind="item" />
                 </div>
             </section>
 
@@ -106,7 +106,7 @@ onUnmounted(() => {
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <PopMenuCard v-for="item in menuItems.slice(16)" :key="item.title" v-bind="item" />
+                    <PopMenuCard v-for="item in menuItems.slice(17)" :key="item.title" v-bind="item" />
                 </div>
             </section>
 

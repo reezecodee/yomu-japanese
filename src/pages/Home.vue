@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import HomeLayout from '@/components/layouts/HomeLayout.vue';
 import PopMenuCard from '@/components/common/card/PopMenuCard.vue';
-import { menuItems } from '@/data/home-routes';
+import { useMenu } from '@/composables/useMenu';
 import { onMounted, onUnmounted } from 'vue';
 import Footer from '@/components/common/nav/Footer.vue';
 
 let lastBackTime = 0;
+
+const { menuItems } = useMenu();
 
 const showToast = (msg: string) => {
     const toast = document.createElement('div');
@@ -52,8 +54,8 @@ onUnmounted(() => {
                 <div
                     class="inline-block transform -rotate-2 hover:rotate-0 transition duration-300 mb-4 cursor-default">
                     <span
-                        class="bg-[var(--color-vanilla)] text-slate-800 border-4 border-white px-6 py-2 rounded-2xl font-extrabold text-lg shadow-[6px_6px_0px_rgba(0,0,0,0.1)]">
-                        PORTAL BELAJAR JEPANG
+                        class="bg-[var(--color-vanilla)] uppercase text-slate-800 border-4 border-white px-6 py-2 rounded-2xl font-extrabold text-lg shadow-[6px_6px_0px_rgba(0,0,0,0.1)]">
+                        {{ $t('hero.sticky') }}
                     </span>
                 </div>
 
@@ -69,14 +71,14 @@ onUnmounted(() => {
             </div>
         </header>
 
-        <main class="max-w-7xl mx-auto px-4 space-y-16">
+        <main class="max-w-4xl w-full mx-auto px-4 space-y-16">
 
             <section>
                 <div class="flex items-center gap-3 mb-6">
                     <span class="text-3xl">✍️</span>
                     <h2
                         class="text-2xl font-black text-slate-700 uppercase tracking-wider border-b-4 border-white pb-1">
-                        Huruf & Angka</h2>
+                        {{ $t('hero.menuChapter.one') }}</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -89,7 +91,7 @@ onUnmounted(() => {
                     <span class="text-3xl">📚</span>
                     <h2
                         class="text-2xl font-black text-slate-700 uppercase tracking-wider border-b-4 border-white pb-1">
-                        Kosakata</h2>
+                        {{ $t('hero.menuChapter.two') }}</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -102,7 +104,7 @@ onUnmounted(() => {
                     <span class="text-3xl">🧩</span>
                     <h2
                         class="text-2xl font-black text-slate-700 uppercase tracking-wider border-b-4 border-white pb-1">
-                        Tata Bahasa & Idiom</h2>
+                        {{ $t('hero.menuChapter.three') }}</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

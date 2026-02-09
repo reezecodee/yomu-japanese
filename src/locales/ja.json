@@ -1,11 +1,120 @@
 {
-  "nav": {
-    "home": "ホーム",
-    "about": "概要"
+  "navMenu": {
+    "hiragana": {
+      "title": "ひらがな",
+      "desc": "基本の文字",
+      "tag": "基本"
+    },
+    "katakana": {
+      "title": "カタカナ",
+      "desc": "外来語の文字",
+      "tag": "基本"
+    },
+    "kanji": {
+      "title": "漢字",
+      "desc": "N5〜N1カード",
+      "tag": "レベルUP"
+    },
+    "number": {
+      "title": "数字",
+      "desc": "数え方とお金",
+      "tag": "論理"
+    },
+    "kotoba": {
+      "title": "言葉",
+      "desc": "色・時間・方向",
+      "tag": "弁当"
+    },
+    "doushi": {
+      "title": "動詞",
+      "desc": "動作と活用",
+      "tag": "重要"
+    },
+    "keiyoushi": {
+      "title": "形容詞",
+      "desc": "イ形容詞・ナ形容詞",
+      "tag": "描写"
+    },
+    "mono": {
+      "title": "物",
+      "desc": "日用品・雑貨",
+      "tag": "オブジェクト"
+    },
+    "shigoto": {
+      "title": "仕事",
+      "desc": "職業とキャリア",
+      "tag": "名刺"
+    },
+    "tabemono": {
+      "title": "食べ物",
+      "desc": "料理と味",
+      "tag": "メニュー"
+    },
+    "doubutsu": {
+      "title": "動物",
+      "desc": "陸・海・空",
+      "tag": "サファリ"
+    },
+    "norimono": {
+      "title": "乗り物",
+      "desc": "交通機関",
+      "tag": "メトロ"
+    },
+    "tatemono": {
+      "title": "建物",
+      "desc": "施設と場所",
+      "tag": "都市"
+    },
+    "kudamono": {
+      "title": "果物",
+      "desc": "新鮮なフルーツ",
+      "tag": "フレッシュ"
+    },
+    "shokubutsu": {
+      "title": "植物",
+      "desc": "木と花",
+      "tag": "フローラ"
+    },
+    "byouki": {
+      "title": "病気",
+      "desc": "症状と怪我",
+      "tag": "医療"
+    },
+    "dogu": {
+      "title": "道具",
+      "desc": "工具と家庭用品",
+      "tag": "ツール"
+    },
+    "bunpou": {
+      "title": "文法",
+      "desc": "基本文型",
+      "tag": "ルール"
+    },
+    "joshi": {
+      "title": "助詞",
+      "desc": "は・が・を・に・で",
+      "tag": "助詞"
+    },
+    "aisatsu": {
+      "title": "挨拶",
+      "desc": "フレーズと会話",
+      "tag": "挨拶"
+    },
+    "kanyoku": {
+      "title": "慣用句",
+      "desc": "ことわざ・熟語",
+      "tag": "表現"
+    }
   },
   "hero": {
+    "sticky": "日本語学習ポータル",
     "title": "日本語を学ぼう",
-    "subtitle": "今すぐトピックを選んで、日本語の冒険を始めましょう！"
+    "subtitle": "今すぐトピックを選んで、日本語の冒険を始めましょう！",
+    "menuChapter": {
+      "one": "文字・数字",
+      "two": "単語",
+      "three": "文法・慣用句"
+    }
   },
   "footer": {
     "slogan": "一緒に日本語を勉強しましょう",

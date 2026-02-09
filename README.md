@@ -70,3 +70,12 @@
   <li><strong>PWA:</strong> Vite Plugin PWA</li>
   <li><strong>Routing:</strong> Vue Router</li>
 </ul>
+
+<h2>🙏 Credits & Resources</h2>
+<p>
+  Special thanks to these amazing resources for providing data and references:
+</p>
+<ul>
+  <li><a href="https://kanjikana.com" target="_blank"><strong>Kanjikana</strong></a></li>
+  <li><a href="https://jlptsensei.com" target="_blank"><strong>JLPT Sensei</strong></a></li>
+</ul>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import type { KanjiData } from '@/types';
+import { useSettings } from '@/composables/useSettings';
 
 const props = withDefaults(defineProps<{
     data: KanjiData;
@@ -19,6 +20,8 @@ const dynamicStyle = computed(() => {
         '--card-dark': `var(--color-${props.theme}-dark)`,
     };
 });
+
+const { showFurigana } = useSettings();
 </script>
 
 <template>
@@ -37,7 +40,7 @@ const dynamicStyle = computed(() => {
 
                 <h2 class="text-7xl font-black text-slate-800 mb-2 mt-2">{{ data.char }}</h2>
 
-                <div class="text-center w-full">
+                <div class="text-center w-full" v-if="showFurigana">
                     <div class="mb-2">
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ONYOMI</p>
                         <p class="font-bold text-[var(--card-accent)]">{{ data.onyomi }}</p>
@@ -62,7 +65,7 @@ const dynamicStyle = computed(() => {
                 <div class="mt-4 text-left w-full px-2 space-y-2">
                     <div v-for="(ex, idx) in data.examples" :key="idx"
                         class="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
-                        <p class="text-xs opacity-75">{{ ex.reading }}</p>
+                        <p class="text-xs opacity-75" v-if="showFurigana">{{ ex.reading }}</p>
                         <p class="font-bold text-sm">{{ ex.word }} ({{ ex.meaning }})</p>
                     </div>
                 </div>

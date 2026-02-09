@@ -1,29 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
-interface CharData {
-    char: string;
-    romaji: string;
-    type?: 'empty';
-    desc?: string;
-}
+import type { CharData } from '@/types';
+import { useSettings } from '@/composables/useSettings';
 
 const props = withDefaults(defineProps<{
     data: CharData;
-    theme?: string; 
+    theme?: string;
     size?: 'normal' | 'large';
 }>(), {
     theme: 'peach',
     size: 'normal'
 });
 
-// --- LOGIC CSS VARIABLE DINAMIS ---
 const dynamicStyle = computed(() => {
     return {
         '--card-accent': `var(--color-${props.theme}-accent)`,
         '--card-hover-bg': `color-mix(in srgb, var(--color-${props.theme}-accent), white 90%)`
     };
 });
+
+const { showRomaji } = useSettings();
 </script>
 
 <template>
@@ -40,7 +36,7 @@ const dynamicStyle = computed(() => {
             {{ data.char }}
         </span>
 
-        <span
+        <span v-if="showRomaji"
             class="romaji-pill font-sans font-bold text-slate-400 text-sm uppercase px-3 py-0.5 border-2 border-slate-200 rounded-full transition-colors">
             {{ data.romaji }}
         </span>

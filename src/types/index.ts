@@ -25,8 +25,11 @@ export interface ShigotoItem {
 export interface CharData {
   char: string;
   romaji: string;
+  word: string;
+  wordRomaji: string;
+  meaningId: string;
+  meaningEn: string;
   type?: "empty";
-  desc?: string;
 }
 
 export interface ExampleWord {

@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useSettings } from '@/composables/useSettings';
 import type { NumberItem } from '@/types';
 import { playAudio } from '@/utils/audio';
 
 const props = defineProps<{
     item: NumberItem;
 }>();
+
+const { showRomaji } = useSettings()
 </script>
 
 <template>
@@ -19,7 +22,7 @@ const props = defineProps<{
             {{ item.kanji }}
         </div>
 
-        <div class="text-sm font-bold text-slate-400 mt-1 uppercase tracking-wider">
+        <div v-if="showRomaji" class="text-sm font-bold text-slate-400 mt-1 uppercase tracking-wider">
             {{ item.romaji }}
         </div>
 

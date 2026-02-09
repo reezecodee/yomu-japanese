@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useSettings } from '@/composables/useSettings';
 import type { JoshiItem } from '@/types';
 import { playAudio } from '@/utils/audio';
 
 defineProps<{
     item: JoshiItem;
 }>();
+
+const { showRomaji } = useSettings()
 </script>
 
 <template>
@@ -52,7 +55,7 @@ defineProps<{
                         v-html="item.example.jp.replace(item.example.highlight, `<span class='text-mint-accent'>${item.example.highlight}</span>`)"></span>
                 </p>
                 <p class="text-sm font-bold text-slate-500 italic mb-1">
-                    {{ item.example.ro }}
+                    {{ showRomaji ? item.example.ro : '-' }}
                 </p>
                 <p class="text-sm font-bold text-slate-800 border-t border-dashed border-green-200 pt-1 mt-1">
                     {{ item.example.id }}

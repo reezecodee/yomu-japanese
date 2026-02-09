@@ -2,16 +2,19 @@
 import { computed } from 'vue';
 import type { AisatsuItem } from '@/types';
 import { playAudio } from '@/utils/audio';
+import { useSettings } from '@/composables/useSettings';
 
 const props = defineProps<{
     item: AisatsuItem;
 }>();
 
 const isRight = computed(() => props.item.align === 'right');
+const { showRomaji } = useSettings()
 </script>
 
 <template>
-    <div :class="['bubble group select-none', isRight ? 'bubble-right' : 'bubble-left']" @click="playAudio(props.item.kana)">
+    <div :class="['bubble group select-none', isRight ? 'bubble-right' : 'bubble-left']"
+        @click="playAudio(props.item.kana)">
 
         <div :class="[
             'absolute top-3 opacity-0 group-hover:opacity-100 transition-opacity text-sm',
@@ -28,7 +31,7 @@ const isRight = computed(() => props.item.align === 'right');
             {{ item.kana }}
         </h2>
 
-        <p :class="['text-lg font-bold', isRight ? 'text-white/95' : 'text-sky-accent']">
+        <p v-show="showRomaji" :class="['text-lg font-bold', isRight ? 'text-white/95' : 'text-sky-accent']">
             {{ item.romaji }}
         </p>
 

@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useSettings } from '@/composables/useSettings';
 import type { ShigotoItem } from '@/types';
 import { playAudio } from '@/utils/audio';
 
 const props = defineProps<{
     item: ShigotoItem;
 }>();
+
+const { showRomaji } = useSettings()
 </script>
 
 <template>
@@ -31,7 +34,7 @@ const props = defineProps<{
             </h2>
 
             <p class="text-lg font-extrabold text-surface-accent uppercase tracking-wide">
-                {{ item.romaji }}
+                {{ showRomaji ? item.romaji : '-' }}
             </p>
 
             <div

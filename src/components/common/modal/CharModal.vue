@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, computed, ref } from 'vue'; // Tambah 'ref'
-
-interface CharData {
-    char: string;
-    romaji: string;
-    desc?: string;
-}
+import { onMounted, onUnmounted, computed, ref } from 'vue';
+import { useI18n } from 'vue-i18n'; 
+import { playAudio } from '@/utils/audio';
+import type { CharData } from '@/types';
+import { useSettings } from '@/composables/useSettings';
 
 const props = withDefaults(defineProps<{
     isOpen: boolean;
@@ -17,49 +15,40 @@ const props = withDefaults(defineProps<{
 
 const emit = defineEmits(['close'])
 
+const { locale } = useI18n();
+
 const handleEsc = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && props.isOpen) {
         emit('close')
     }
 }
 
-// --- STATE LOADING ---
 const isLoading = ref(false);
 
-const playAudio = () => {
-    if (!props.data?.char || isLoading.value) return;
-
+const handlePlayAudio = (text: string) => {
+    if (!text) return;
     isLoading.value = true;
-
-    const text = encodeURIComponent(props.data.char);
-    const url = `https://dict.youdao.com/dictvoice?audio=${text}&le=jap&t=${Date.now()}`;
-
-    const audio = new Audio(url);
-    audio.playbackRate = 1.0;
-
-    audio.onplay = () => {
-        isLoading.value = false;
-    };
-
-    audio.onerror = () => {
-        isLoading.value = false;
-    };
-
-    audio.play().catch(e => {
-        console.error("Error:", e);
-        isLoading.value = false;
-    });
-};
+    playAudio(text);
+    setTimeout(() => { isLoading.value = false; }, 1000);
+}
 
 onMounted(() => window.addEventListener('keydown', handleEsc))
 onUnmounted(() => window.removeEventListener('keydown', handleEsc))
 
-const dynamicStyle = computed(() => {
-    return {
-        '--modal-accent': `var(--color-${props.theme}-accent)`,
-        '--modal-bg': `var(--color-${props.theme})`,
+const dynamicStyle = computed(() => ({
+    '--modal-accent': `var(--color-${props.theme}-accent)`,
+    '--modal-bg': `var(--color-${props.theme})`,
+}))
+
+const localizedMeaning = computed(() => {
+    if (!props.data) return '';
+    if (locale.value === 'en') {
+        return props.data.meaningEn;
     }
-})
+    return props.data.meaningId;
+});
+
+const { showRomaji } = useSettings();
 </script>
 
 <template>
@@ -76,7 +65,7 @@ const dynamicStyle = computed(() => {
                         class="bg-[var(--modal-accent)] p-6 text-center relative border-b-4 border-slate-800 transition-colors duration-300">
 
                         <button @click="emit('close')"
-                            class="absolute top-4 right-4 bg-white text-slate-800 w-8 h-8 rounded-full font-bold border-2 border-slate-800 hover:bg-slate-100 transition-colors cursor-pointer">
+                            class="absolute top-4 right-4 bg-white text-slate-800 w-8 h-8 rounded-full font-bold border-2 border-slate-800 hover:bg-slate-100 transition-colors flex items-center justify-center cursor-pointer">
                             ✕
                         </button>
 
@@ -84,38 +73,51 @@ const dynamicStyle = computed(() => {
                             {{ data.char }}
                         </h2>
 
-                        <span
+                        <span v-if="showRomaji"
                             class="inline-block bg-white text-[var(--modal-accent)] px-4 py-1 rounded-full font-bold border-2 border-slate-800 -mb-9 relative z-10 shadow-sm text-lg uppercase transition-colors duration-300">
                             {{ data.romaji }}
                         </span>
                     </div>
 
                     <div class="p-8 pt-10 text-center">
-
                         <p class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-2">
-                            CONTOH KATA
+                            CONTOH PENGGUNAAN
                         </p>
 
-                        <div
-                            class="bg-[var(--modal-bg)]/50 p-4 rounded-xl border-2 border-dashed border-[var(--modal-accent)] mb-6 transition-colors duration-300">
-                            <p class="text-xl font-bold text-slate-800">
-                                {{ data.desc || 'Belum ada contoh' }}
+                        <div v-if="data.word"
+                            class="bg-[var(--modal-bg)]/50 p-4 rounded-xl border-2 border-dashed border-[var(--modal-accent)] mb-6 transition-colors duration-300 flex flex-col items-center gap-1">
+
+                            <p class="text-3xl font-black text-slate-800">
+                                {{ data.word }}
                             </p>
+
+                            <p v-if="showRomaji" class="text-lg font-bold text-[var(--modal-accent)]">
+                                {{ data.wordRomaji }}
+                            </p>
+
+                            <div class="mt-2 text-sm border-t border-slate-800/10 pt-2 w-full">
+                                <p class="text-slate-800 font-bold leading-tight text-lg">
+                                    {{ localizedMeaning }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div v-else class="text-slate-400 italic mb-6">
+                            Belum ada contoh kata.
                         </div>
 
                         <div class="flex justify-center w-full">
-                            <button @click.stop="playAudio" :disabled="isLoading"
-                                class="bg-white border-2 border-slate-200 py-3 px-8 rounded-xl font-bold text-slate-500 text-sm hover:border-[var(--modal-accent)] hover:text-[var(--modal-accent)] transition-all flex justify-center items-center gap-2 group active:scale-95 shadow-sm w-full cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
+                            <button @click.stop="handlePlayAudio(data.word)" :disabled="isLoading || !data.word"
+                                class="bg-white border-2 border-slate-200 py-3 px-8 rounded-xl font-bold text-slate-500 text-sm hover:border-[var(--modal-accent)] hover:text-[var(--modal-accent)] transition-all flex justify-center items-center gap-2 group active:scale-95 shadow-sm w-full cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
 
                                 <span v-if="isLoading" class="animate-spin text-lg">⏳</span>
                                 <span v-else class="text-lg">🔊</span>
 
                                 <span class="group-hover:underline">
-                                    {{ isLoading ? 'Memuat...' : 'Dengarkan Audio' }}
+                                    {{ isLoading ? 'Memuat...' : 'Dengarkan Kata' }}
                                 </span>
                             </button>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -124,9 +126,20 @@ const dynamicStyle = computed(() => {
 </template>
 
 <style scoped>
-.modal-fade-enter-active,
-.modal-fade-leave-active {
+.modal-fade-enter-active {
     transition: opacity 0.3s ease;
+}
+
+.modal-fade-enter-active .modal-card {
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-fade-leave-active {
+    transition: opacity 0.15s ease;
+}
+
+.modal-fade-leave-active .modal-card {
+    animation: popIn 0.15s ease-in reverse;
 }
 
 .modal-fade-enter-from,
@@ -134,20 +147,12 @@ const dynamicStyle = computed(() => {
     opacity: 0;
 }
 
-.modal-fade-enter-active .modal-card {
-    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.modal-fade-leave-active .modal-card {
-    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) reverse;
-}
-
+/* Keyframes Pop In */
 @keyframes popIn {
     0% {
-        transform: scale(0.8) translateY(20px);
+        transform: scale(0.9) translateY(20px);
         opacity: 0;
     }
-
     100% {
         transform: scale(1) translateY(0);
         opacity: 1;

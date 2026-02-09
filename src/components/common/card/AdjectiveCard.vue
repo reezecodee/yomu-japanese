@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import type { AdjectivePair } from '@/types';
 import { playAudio } from '@/utils/audio';
+import { useSettings } from '@/composables/useSettings';
 
 const props = defineProps<{
     pair: AdjectivePair;
@@ -29,6 +30,8 @@ const badgeBgClass = computed(() =>
 const bottomBgClass = computed(() =>
     isNa.value ? 'bg-green-50' : 'bg-aqua'
 );
+
+const { showRomaji } = useSettings()
 </script>
 
 <template>
@@ -43,7 +46,7 @@ const bottomBgClass = computed(() =>
 
             <div class="flex flex-col">
                 <span class="jp-word">{{ pair.top.word }}</span>
-                <span :class="['romaji', romajiClass]">{{ pair.top.romaji }}</span>
+                <span v-if="showRomaji" :class="['romaji', romajiClass]">{{ pair.top.romaji }}</span>
                 <span class="meaning">{{ pair.top.meaning }}</span>
             </div>
             <span class="emoji-box group-hover:scale-110 transition-transform">{{ pair.top.icon }}</span>

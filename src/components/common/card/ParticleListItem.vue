@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useSettings } from '@/composables/useSettings';
 import type { JoshiExtraItem } from '@/types';
 import { playAudio } from '@/utils/audio';
 
 defineProps<{
     item: JoshiExtraItem;
 }>();
+
+const { showRomaji } = useSettings()
 </script>
 
 <template>
@@ -39,7 +42,7 @@ defineProps<{
                     </div>
 
                     <div class="text-xs flex items-center gap-2">
-                        <span class="font-bold text-mint-accent uppercase tracking-wide">{{ item.example_ro }}</span>
+                        <span class="font-bold text-mint-accent uppercase tracking-wide">{{ showRomaji ? item.example_ro : '-' }}</span>
                         <span class="text-slate-300">|</span>
                         <span class="text-slate-500 italic">{{ item.example_meaning }}</span>
                     </div>

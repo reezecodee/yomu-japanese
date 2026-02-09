@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSettings } from '@/composables/useSettings';
 import type { VerbConjugation } from '@/types';
 import { playAudio } from '@/utils/audio';
 
@@ -14,6 +15,8 @@ const props = withDefaults(defineProps<Props>(), {
 const badgeClass = props.type === 'ichidan'
     ? 'bg-pink-100 text-pink-600'
     : 'bg-slate-200 text-slate-600';
+
+const { showRomaji } = useSettings()
 </script>
 
 <template>
@@ -42,7 +45,7 @@ const badgeClass = props.type === 'ichidan'
                 </div>
 
                 <span class="block text-xl font-bold text-slate-800">{{ verb.dictionary_form }}</span>
-                <span class="text-xs font-bold uppercase">{{ verb.romaji }}</span>
+                <span class="text-xs font-bold uppercase" v-if="showRomaji">{{ verb.romaji }}</span>
             </div>
 
             <div class="trans-arrow flex justify-center text-rose-600 font-black text-2xl my-1">
@@ -58,7 +61,7 @@ const badgeClass = props.type === 'ichidan'
                 </div>
 
                 <span class="block text-xl font-bold">{{ verb.masu_form }}</span>
-                <span class="text-xs font-bold uppercase">{{ verb.masu_romaji }}</span>
+                <span class="text-xs font-bold uppercase" v-if="showRomaji">{{ verb.masu_romaji }}</span>
             </div>
 
         </div>

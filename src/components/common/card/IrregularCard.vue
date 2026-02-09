@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useSettings } from '@/composables/useSettings';
 import type { VerbConjugation } from '@/types';
 import { playAudio } from '@/utils/audio';
 
 defineProps<{
     verb: VerbConjugation;
 }>();
+
+const { showRomaji } = useSettings()
 </script>
 
 <template>
@@ -33,7 +36,7 @@ defineProps<{
                 </div>
 
                 <span class="block text-xl font-bold text-slate-800">{{ verb.dictionary_form }}</span>
-                <span class="text-xs font-bold uppercase">{{ verb.romaji }}</span>
+                <span class="text-xs font-bold uppercase" v-if="showRomaji">{{ verb.romaji }}</span>
             </div>
 
             <div class="trans-arrow flex justify-center text-yellow-600 font-black text-2xl my-1">
@@ -49,7 +52,7 @@ defineProps<{
                 </div>
 
                 <span class="block text-xl font-bold">{{ verb.masu_form }}</span>
-                <span class="text-xs font-bold uppercase">{{ verb.masu_romaji }}</span>
+                <span class="text-xs font-bold uppercase" v-if="showRomaji">{{ verb.masu_romaji }}</span>
             </div>
 
         </div>

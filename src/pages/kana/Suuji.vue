@@ -4,6 +4,8 @@ import TabSwitcher from '@/components/common/nav/TabSwitcher.vue';
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { BasicNumbers, Hundreds, Thousands, BigNumbers } from '@/data/suuji';
+import { playAudio } from '@/utils/audio';
+import { useSettings } from '@/composables/useSettings';
 
 const numberTabs = [
     { label: 'Satuan (1-10)', value: 'basic' },
@@ -14,19 +16,9 @@ const numberTabs = [
 
 const route = useRoute();
 const themeName = computed(() => route.meta.bgClass as string);
-
 const activeTab = ref('basic')
 
-// --- LOGIKA AUDIO (YOUDAO) ---
-const playAudio = (text: string) => {
-    if (!text) return;
-
-    const encodedText = encodeURIComponent(text);
-    const url = `https://dict.youdao.com/dictvoice?audio=${encodedText}&le=jap`;
-
-    const audio = new Audio(url);
-    audio.play().catch(e => console.warn("Audio Error:", e));
-}
+const { showRomaji } = useSettings();
 </script>
 
 <template>
@@ -129,7 +121,7 @@ const playAudio = (text: string) => {
                     <div class="space-y-3">
                         <div v-for="(item, i) in Hundreds" :key="i"
                             class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2 cursor-pointer hover:bg-yellow-50 px-2 rounded transition-colors group select-none"
-                            @click="playAudio(item.romaji)">
+                            @click="playAudio(item.kanji)">
 
                             <span class="font-black text-xl"
                                 :class="item.isException ? 'text-red-500' : 'text-slate-800'">
@@ -139,7 +131,7 @@ const playAudio = (text: string) => {
                             <div class="text-right flex items-center gap-2">
                                 <span class="text-xs opacity-0 group-hover:opacity-100 transition-opacity">🔊</span>
 
-                                <span class="font-bold block"
+                                <span class="font-bold block" v-if="showRomaji"
                                     :class="item.isException ? 'text-red-500' : 'text-slate-500'">
                                     {{ item.romaji }} {{ item.isException ? '(⚠️)' : '' }}
                                 </span>
@@ -159,7 +151,7 @@ const playAudio = (text: string) => {
                     <div class="space-y-3">
                         <div v-for="(item, i) in Thousands" :key="i"
                             class="flex justify-between items-center border-b-2 border-dashed border-slate-200 pb-2 cursor-pointer hover:bg-yellow-50 px-2 rounded transition-colors group select-none"
-                            @click="playAudio(item.romaji)">
+                            @click="playAudio(item.kanji)">
 
                             <span class="font-black text-xl"
                                 :class="item.isException ? 'text-red-500' : 'text-slate-800'">
@@ -168,7 +160,7 @@ const playAudio = (text: string) => {
 
                             <div class="flex items-center gap-2">
                                 <span class="text-xs opacity-0 group-hover:opacity-100 transition-opacity">🔊</span>
-                                <span class="font-bold" :class="item.isException ? 'text-red-500' : 'text-slate-500'">
+                                <span class="font-bold" v-if="showRomaji" :class="item.isException ? 'text-red-500' : 'text-slate-500'">
                                     {{ item.romaji }} {{ item.isException ? '(⚠️)' : '' }}
                                 </span>
                             </div>
@@ -203,7 +195,7 @@ const playAudio = (text: string) => {
                             </div>
                             <div class="text-right">
                                 <span class="block text-4xl font-black text-vanilla-accent">{{ item.kanji }}</span>
-                                <span class="font-bold text-lg">{{ item.romaji }}</span>
+                                <span class="font-bold text-lg" v-if="showRomaji">{{ item.romaji }}</span>
                             </div>
                         </div>
                     </div>

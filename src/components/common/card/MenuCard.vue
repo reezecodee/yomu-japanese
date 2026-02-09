@@ -2,6 +2,7 @@
 import { WordItem } from '@/types';
 import { computed } from 'vue';
 import { playAudio } from '@/utils/audio';
+import { useSettings } from '@/composables/useSettings';
 
 const props = withDefaults(defineProps<{
     item: WordItem;
@@ -28,6 +29,8 @@ const dynamicStyles = computed(() => {
         '--card-accent': themeConfig.accent,
     };
 });
+
+const { showRomaji } = useSettings()
 </script>
 
 <template>
@@ -43,7 +46,7 @@ const dynamicStyles = computed(() => {
         </h3>
 
         <p class="text-sm font-extrabold text-[var(--card-accent)] uppercase tracking-widest">
-            {{ item.romaji }}
+            {{ showRomaji ? item.romaji : '-' }}
         </p>
 
         <p class="text-xs font-bold text-slate-400 mt-1">

@@ -1,20 +1,9 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
+import { useSettings } from '@/composables/useSettings';
 
 const isSettingsOpen = ref(false);
-
-const showFurigana = ref(false);
-const showRomaji = ref(true);
-
-const savedFurigana = localStorage.getItem('setting-furigana');
-const savedRomaji = localStorage.getItem('setting-romaji');
-
-if (savedFurigana !== null) showFurigana.value = JSON.parse(savedFurigana);
-if (savedRomaji !== null) showRomaji.value = JSON.parse(savedRomaji);
-
-watch(showFurigana, (val) => localStorage.setItem('setting-furigana', JSON.stringify(val)));
-watch(showRomaji, (val) => localStorage.setItem('setting-romaji', JSON.stringify(val)));
-
+const { showFurigana, showRomaji } = useSettings();
 </script>
 
 <template>

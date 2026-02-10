@@ -7,7 +7,7 @@ defineProps<{
     verb: VerbConjugation;
 }>();
 
-const { showRomaji } = useSettings()
+const { showRomaji, showFurigana } = useSettings()
 </script>
 
 <template>
@@ -16,7 +16,8 @@ const { showRomaji } = useSettings()
 
         <div class="flex justify-between items-start mb-4">
             <span class="text-4xl">{{ verb.icon }}</span>
-            <span class="text-xs font-black bg-white text-slate-600 px-2 py-1 rounded border border-slate-200">
+            <span
+                class="text-xs font-black bg-white text-slate-600 px-2 py-1 rounded border border-slate-200 uppercase tracking-wide">
                 Spesial
             </span>
         </div>
@@ -35,11 +36,16 @@ const { showRomaji } = useSettings()
                     🔊
                 </div>
 
-                <span class="block text-xl font-bold text-slate-800">{{ verb.dictionary_form }}</span>
-                <span class="text-xs font-bold uppercase" v-if="showRomaji">{{ verb.romaji }}</span>
+                <span v-if="showFurigana" class="block text-[10px] font-bold text-slate-400 mb-[-4px]">
+                    {{ verb.furigana }}
+                </span>
+
+                <span class="block text-xl font-black text-slate-800">{{ verb.dictionary_form }}</span>
+
+                <span class="text-xs font-bold uppercase tracking-wider" v-if="showRomaji">{{ verb.romaji }}</span>
             </div>
 
-            <div class="trans-arrow flex justify-center text-yellow-600 font-black text-2xl my-1">
+            <div class="trans-arrow flex justify-center text-yellow-600 font-black text-2xl my-1 opacity-60">
                 ↓
             </div>
 
@@ -51,8 +57,13 @@ const { showRomaji } = useSettings()
                     🔊
                 </div>
 
-                <span class="block text-xl font-bold">{{ verb.masu_form }}</span>
-                <span class="text-xs font-bold uppercase" v-if="showRomaji">{{ verb.masu_romaji }}</span>
+                <span v-if="showFurigana" class="block text-[10px] font-bold text-yellow-600 mb-[-4px]">
+                    {{ verb.masu_furigana }}
+                </span>
+
+                <span class="block text-xl font-black">{{ verb.masu_form }}</span>
+
+                <span class="text-xs font-bold uppercase tracking-wider" v-if="showRomaji">{{ verb.masu_romaji }}</span>
             </div>
 
         </div>

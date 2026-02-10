@@ -6,6 +6,7 @@ export interface WordItem {
   icon: string;
   kanji: string;
   romaji: string;
+  furigana: string;
   meaning: string;
 }
 
@@ -13,6 +14,7 @@ export interface ShigotoItem {
   icon: string;
   kanji: string;
   romaji: string;
+  furigana: string;
   meaning: string;
   category: string;
   note?: string;
@@ -58,6 +60,7 @@ export type AdjectiveDetail = {
   word: string;
   kana: string;
   romaji: string;
+  furigana: string;
   meaning: string;
   group: AdjectiveGroup;
 };
@@ -98,8 +101,10 @@ export type VerbConjugation = {
   rule: string;
   meaning: string;
   dictionary_form: string;
+  furigana: string;
   romaji: string;
   masu_form: string;
+  masu_furigana: string;
   masu_romaji: string;
 };
 
@@ -120,6 +125,7 @@ export interface NumberItem {
   num: string;
   kanji: string;
   romaji: string;
+  furigana: string;
   isException?: boolean;
   note?: string;
 }

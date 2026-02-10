@@ -7,7 +7,7 @@ const props = defineProps<{
     item: NumberItem;
 }>();
 
-const { showRomaji } = useSettings()
+const { showRomaji, showFurigana } = useSettings()
 </script>
 
 <template>
@@ -16,6 +16,10 @@ const { showRomaji } = useSettings()
 
         <div class="text-5xl font-black text-vanilla-accent mb-2">
             {{ item.num }}
+        </div>
+
+        <div v-if="showFurigana" class="text-sm font-medium text-slate-500 -mb-1">
+            {{ item.furigana }}
         </div>
 
         <div class="text-2xl font-bold text-vanilla-dark">

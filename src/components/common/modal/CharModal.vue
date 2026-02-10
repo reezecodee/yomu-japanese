@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, computed, ref } from 'vue';
-import { useI18n } from 'vue-i18n'; 
+import { useI18n } from 'vue-i18n';
 import { playAudio } from '@/utils/audio';
 import type { CharData } from '@/types';
 import { useSettings } from '@/composables/useSettings';
@@ -42,10 +42,14 @@ const dynamicStyle = computed(() => ({
 
 const localizedMeaning = computed(() => {
     if (!props.data) return '';
-    if (locale.value === 'en') {
+    
+    if (locale.value === 'id') {
+        return props.data.meaningId;
+    } else if (locale.value === 'en') {
         return props.data.meaningEn;
     }
-    return props.data.meaningId;
+
+    return ''
 });
 
 const { showRomaji } = useSettings();
@@ -153,6 +157,7 @@ const { showRomaji } = useSettings();
         transform: scale(0.9) translateY(20px);
         opacity: 0;
     }
+
     100% {
         transform: scale(1) translateY(0);
         opacity: 1;

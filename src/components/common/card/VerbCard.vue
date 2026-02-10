@@ -5,7 +5,7 @@ import { playAudio } from '@/utils/audio';
 
 interface Props {
     verb: VerbConjugation;
-    type?: 'godan' | 'ichidan';
+    type?: 'godan' | 'ichidan' | 'irregular';
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -14,9 +14,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const badgeClass = props.type === 'ichidan'
     ? 'bg-pink-100 text-pink-600'
-    : 'bg-slate-200 text-slate-600';
+    : props.type === 'irregular'
+        ? 'bg-purple-100 text-purple-600'
+        : 'bg-slate-200 text-slate-600';
 
-const { showRomaji } = useSettings()
+const { showRomaji, showFurigana } = useSettings()
 </script>
 
 <template>
@@ -25,7 +27,7 @@ const { showRomaji } = useSettings()
 
         <div class="flex justify-between items-start mb-4">
             <span class="text-4xl">{{ verb.icon }}</span>
-            <span :class="['text-xs font-black px-2 py-1 rounded', badgeClass]">
+            <span :class="['text-xs font-black px-2 py-1 rounded uppercase tracking-wider', badgeClass]">
                 {{ verb.rule }}
             </span>
         </div>
@@ -44,11 +46,16 @@ const { showRomaji } = useSettings()
                     🔊
                 </div>
 
-                <span class="block text-xl font-bold text-slate-800">{{ verb.dictionary_form }}</span>
-                <span class="text-xs font-bold uppercase" v-if="showRomaji">{{ verb.romaji }}</span>
+                <span v-if="showFurigana" class="block text-[10px] font-bold text-slate-400 mb-[-4px]">
+                    {{ verb.furigana }}
+                </span>
+
+                <span class="block text-xl font-black text-slate-800">{{ verb.dictionary_form }}</span>
+
+                <span class="text-xs font-bold uppercase tracking-wider" v-if="showRomaji">{{ verb.romaji }}</span>
             </div>
 
-            <div class="trans-arrow flex justify-center text-rose-600 font-black text-2xl my-1">
+            <div class="trans-arrow flex justify-center text-rose-600 font-black text-2xl my-1 opacity-50">
                 ↓
             </div>
 
@@ -60,8 +67,13 @@ const { showRomaji } = useSettings()
                     🔊
                 </div>
 
-                <span class="block text-xl font-bold">{{ verb.masu_form }}</span>
-                <span class="text-xs font-bold uppercase" v-if="showRomaji">{{ verb.masu_romaji }}</span>
+                <span v-if="showFurigana" class="block text-[10px] font-bold text-rose-400/80 mb-[-4px]">
+                    {{ verb.masu_furigana }}
+                </span>
+
+                <span class="block text-xl font-black">{{ verb.masu_form }}</span>
+
+                <span class="text-xs font-bold uppercase tracking-wider" v-if="showRomaji">{{ verb.masu_romaji }}</span>
             </div>
 
         </div>

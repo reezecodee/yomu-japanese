@@ -9,13 +9,14 @@ const props = defineProps<{
     group?: 'i' | 'na';
 }>();
 
+const { showRomaji, showFurigana } = useSettings();
 const isNa = computed(() => props.group === 'na');
 
 const cardBorderClass = computed(() =>
     isNa.value ? 'border-green-700' : 'border-aqua-dark'
 );
 
-const romajiClass = computed(() =>
+const textAccentClass = computed(() =>
     isNa.value ? 'text-green-600' : 'text-aqua-accent'
 );
 
@@ -30,14 +31,13 @@ const badgeBgClass = computed(() =>
 const bottomBgClass = computed(() =>
     isNa.value ? 'bg-green-50' : 'bg-aqua'
 );
-
-const { showRomaji } = useSettings()
 </script>
 
 <template>
     <div :class="['vs-card', cardBorderClass]">
 
-        <div class="half-card bg-white cursor-pointer group select-none relative" @click="playAudio(pair.top.word)">
+        <div class="half-card bg-white cursor-pointer group select-none relative hover:bg-slate-50 transition-colors"
+            @click="playAudio(pair.top.word)">
 
             <div
                 class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-300 text-xs">
@@ -45,8 +45,9 @@ const { showRomaji } = useSettings()
             </div>
 
             <div class="flex flex-col">
+                <span v-if="showFurigana" :class="['furigana', textAccentClass]">{{ pair.top.furigana }}</span>
                 <span class="jp-word">{{ pair.top.word }}</span>
-                <span v-if="showRomaji" :class="['romaji', romajiClass]">{{ pair.top.romaji }}</span>
+                <span v-if="showRomaji" :class="['romaji', textAccentClass]">{{ pair.top.romaji }}</span>
                 <span class="meaning">{{ pair.top.meaning }}</span>
             </div>
             <span class="emoji-box group-hover:scale-110 transition-transform">{{ pair.top.icon }}</span>
@@ -56,7 +57,7 @@ const { showRomaji } = useSettings()
             <span :class="['divider-badge', badgeBgClass]">VS</span>
         </div>
 
-        <div :class="['half-card', bottomBgClass, 'cursor-pointer group select-none relative']"
+        <div :class="['half-card', bottomBgClass, 'cursor-pointer group select-none relative hover:brightness-95 transition-all']"
             @click="playAudio(pair.bottom.word)">
 
             <div
@@ -65,8 +66,9 @@ const { showRomaji } = useSettings()
             </div>
 
             <div class="flex flex-col">
+                <span v-if="showFurigana" :class="['furigana', textAccentClass]">{{ pair.bottom.furigana }}</span>
                 <span class="jp-word">{{ pair.bottom.word }}</span>
-                <span :class="['romaji', romajiClass]">{{ pair.bottom.romaji }}</span>
+                <span v-if="showRomaji" :class="['romaji', textAccentClass]">{{ pair.bottom.romaji }}</span>
                 <span class="meaning">{{ pair.bottom.meaning }}</span>
             </div>
             <span class="emoji-box group-hover:scale-110 transition-transform">{{ pair.bottom.icon }}</span>
@@ -76,7 +78,6 @@ const { showRomaji } = useSettings()
 </template>
 
 <style scoped>
-/* BASE STYLES TETAP SAMA */
 .vs-card {
     background: white;
     border-width: 3px;
@@ -103,10 +104,8 @@ const { showRomaji } = useSettings()
     flex-grow: 1;
 }
 
-/* Efek Active saat ditekan */
 .half-card:active {
-    background-color: rgba(0, 0, 0, 0.02);
-    /* Sedikit menggelap saat diklik */
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .divider {
@@ -131,6 +130,13 @@ const { showRomaji } = useSettings()
 }
 
 /* TYPOGRAPHY */
+.furigana {
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-bottom: -4px;
+    opacity: 0.8;
+}
+
 .jp-word {
     font-size: 1.5rem;
     font-weight: 900;

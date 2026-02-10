@@ -7,7 +7,7 @@ const props = defineProps<{
     item: ShigotoItem;
 }>();
 
-const { showRomaji } = useSettings()
+const { showRomaji, showFurigana } = useSettings()
 </script>
 
 <template>
@@ -29,6 +29,11 @@ const { showRomaji } = useSettings()
         </div>
 
         <div class="p-5 text-center flex flex-col items-center h-full">
+
+            <p v-if="showFurigana" class="text-xs font-bold text-slate-400 mb-[-4px]">
+                {{ item.furigana }}
+            </p>
+
             <h2 class="text-3xl font-black text-slate-800 mb-1 leading-tight">
                 {{ item.kanji }}
             </h2>

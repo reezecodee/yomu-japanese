@@ -5,6 +5,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🎓",
     kanji: "学生",
+    furigana: "がく.せい",
     romaji: "Gakusei",
     meaning: "Pelajar / Mahasiswa",
     category: "Sekolah",
@@ -12,6 +13,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "👩‍🏫",
     kanji: "先生",
+    furigana: "せん.せい",
     romaji: "Sensei",
     meaning: "Guru / Pengajar",
     category: "Sekolah",
@@ -20,6 +22,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🔬",
     kanji: "研究者",
+    furigana: "けん.きゅう.しゃ",
     romaji: "Kenkyuusha",
     meaning: "Peneliti",
     category: "Sains",
@@ -29,6 +32,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "💼",
     kanji: "会社員",
+    furigana: "かい.しゃ.いん",
     romaji: "Kaishain",
     meaning: "Pegawai Perusahaan",
     category: "Kantor",
@@ -36,6 +40,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🏦",
     kanji: "銀行員",
+    furigana: "ぎん.こう.いん",
     romaji: "Ginkouin",
     meaning: "Pegawai Bank",
     category: "Keuangan",
@@ -43,6 +48,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "👩‍💼",
     kanji: "秘書",
+    furigana: "ひ.しょ",
     romaji: "Hisho",
     meaning: "Sekretaris",
     category: "Kantor",
@@ -52,6 +58,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "👨‍⚕️",
     kanji: "医者",
+    furigana: "い.しゃ",
     romaji: "Isha",
     meaning: "Dokter",
     category: "Medis",
@@ -59,6 +66,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "👩‍⚕️",
     kanji: "看護師",
+    furigana: "かん.ご.し",
     romaji: "Kangoshi",
     meaning: "Perawat",
     category: "Medis",
@@ -68,6 +76,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "💻",
     kanji: "エンジニア",
+    furigana: "エンジニア",
     romaji: "Enjinia",
     meaning: "Insinyur / IT Engineer",
     category: "Teknologi",
@@ -76,6 +85,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🎨",
     kanji: "デザイナー",
+    furigana: "デザイナー",
     romaji: "Dezainaa",
     meaning: "Desainer",
     category: "Kreatif",
@@ -86,6 +96,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "👮",
     kanji: "警察官",
+    furigana: "けい.さつ.かん",
     romaji: "Keisatsukan",
     meaning: "Polisi",
     category: "Publik",
@@ -93,6 +104,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🏛️",
     kanji: "公務員",
+    furigana: "こう.む.いん",
     romaji: "Koumuin",
     meaning: "Pegawai Negeri (PNS)",
     category: "Publik",
@@ -100,6 +112,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "⚖️",
     kanji: "弁護士",
+    furigana: "べん.ご.し",
     romaji: "Bengoshi",
     meaning: "Pengacara",
     category: "Hukum",
@@ -109,6 +122,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🏪",
     kanji: "店員",
+    furigana: "てん.いん",
     romaji: "Ten-in",
     meaning: "Pegawai Toko",
     category: "Jasa",
@@ -116,6 +130,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🍳",
     kanji: "料理人",
+    furigana: "りょう.り.にん",
     romaji: "Ryourinin",
     meaning: "Juru Masak / Koki",
     category: "Jasa",
@@ -123,6 +138,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "💇",
     kanji: "美容師",
+    furigana: "び.よう.し",
     romaji: "Biyoushi",
     meaning: "Penata Rambut",
     category: "Jasa",
@@ -130,6 +146,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🚕",
     kanji: "運転手",
+    furigana: "うん.てん.しゅ",
     romaji: "Untenshu",
     meaning: "Sopir / Pengemudi",
     category: "Jasa",
@@ -139,6 +156,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🎤",
     kanji: "歌手",
+    furigana: "か.しゅ",
     romaji: "Kashu",
     meaning: "Penyanyi",
     category: "Seni",
@@ -146,6 +164,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🖌️",
     kanji: "作家",
+    furigana: "さっ.か",
     romaji: "Sakka",
     meaning: "Penulis",
     category: "Seni",
@@ -153,6 +172,7 @@ export const ShigotoItems: ShigotoItem[] = [
   {
     icon: "🏠",
     kanji: "主婦",
+    furigana: "しゅ.ふ",
     romaji: "Shufu",
     meaning: "Ibu Rumah Tangga",
     category: "Rumah",

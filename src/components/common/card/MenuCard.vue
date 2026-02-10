@@ -30,7 +30,7 @@ const dynamicStyles = computed(() => {
     };
 });
 
-const { showRomaji } = useSettings()
+const { showRomaji, showFurigana } = useSettings()
 </script>
 
 <template>
@@ -39,6 +39,10 @@ const { showRomaji } = useSettings()
         <div class="emoji-icon group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 ease-out">
             {{ item.icon }}
         </div>
+
+        <p v-if="showFurigana" class="text-[10px] font-bold text-slate-400 mb-[-4px] transition-all">
+            {{ item.furigana }}
+        </p>
 
         <h3
             class="text-2xl font-black text-slate-700 mb-1 leading-tight group-hover:text-[var(--card-dark)] transition-colors">

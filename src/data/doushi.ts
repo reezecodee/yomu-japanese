@@ -7,8 +7,10 @@ export const godan: VerbConjugation[] = [
     rule: "u → imasu",
     meaning: "Membeli",
     dictionary_form: "買う",
+    furigana: "か.う",
     romaji: "Kau",
     masu_form: "買います",
+    masu_furigana: "か.います",
     masu_romaji: "Kaimasu",
   },
   {
@@ -16,8 +18,10 @@ export const godan: VerbConjugation[] = [
     rule: "u → imasu",
     meaning: "Berkata",
     dictionary_form: "言う",
+    furigana: "い.う",
     romaji: "Iu",
     masu_form: "言います",
+    masu_furigana: "い.います",
     masu_romaji: "Iimasu",
   },
   {
@@ -25,8 +29,10 @@ export const godan: VerbConjugation[] = [
     rule: "u → imasu",
     meaning: "Bertemu",
     dictionary_form: "会う",
+    furigana: "あ.う",
     romaji: "Au",
     masu_form: "会います",
+    masu_furigana: "あ.います",
     masu_romaji: "Aimasu",
   },
 
@@ -36,8 +42,10 @@ export const godan: VerbConjugation[] = [
     rule: "tsu → chimasu",
     meaning: "Menunggu",
     dictionary_form: "待つ",
+    furigana: "ま.つ",
     romaji: "Matsu",
     masu_form: "待ちます",
+    masu_furigana: "ま.ちます",
     masu_romaji: "Machimasu",
   },
   {
@@ -45,20 +53,23 @@ export const godan: VerbConjugation[] = [
     rule: "tsu → chimasu",
     meaning: "Membawa",
     dictionary_form: "持つ",
+    furigana: "も.つ",
     romaji: "Motsu",
     masu_form: "持ちます",
+    masu_furigana: "も.ちます",
     masu_romaji: "Mochimasu",
   },
 
   // --- 3. Akhiran -RU (る) → -RIMASU (ります) ---
-  // Note: Hashiru & Kaeru itu PENGECUALIAN (Godan), meski bunyinya -iru/-eru.
   {
     icon: "🚃",
     rule: "ru → rimasu",
     meaning: "Naik (Kendaraan)",
     dictionary_form: "乗る",
+    furigana: "の.る",
     romaji: "Noru",
     masu_form: "乗ります",
+    masu_furigana: "の.ります",
     masu_romaji: "Norimasu",
   },
   {
@@ -66,8 +77,10 @@ export const godan: VerbConjugation[] = [
     rule: "ru → rimasu",
     meaning: "Berlari",
     dictionary_form: "走る",
+    furigana: "はし.る",
     romaji: "Hashiru",
     masu_form: "走ります",
+    masu_furigana: "はし.ります",
     masu_romaji: "Hashirimasu",
   },
   {
@@ -75,8 +88,10 @@ export const godan: VerbConjugation[] = [
     rule: "ru → rimasu",
     meaning: "Pulang",
     dictionary_form: "帰る",
+    furigana: "かえ.る",
     romaji: "Kaeru",
     masu_form: "帰ります",
+    masu_furigana: "かえ.ります",
     masu_romaji: "Kaerimasu",
   },
 
@@ -86,8 +101,10 @@ export const godan: VerbConjugation[] = [
     rule: "mu → mimasu",
     meaning: "Minum",
     dictionary_form: "飲む",
+    furigana: "の.む",
     romaji: "Nomu",
     masu_form: "飲みます",
+    masu_furigana: "の.みます",
     masu_romaji: "Nomimasu",
   },
   {
@@ -95,8 +112,10 @@ export const godan: VerbConjugation[] = [
     rule: "mu → mimasu",
     meaning: "Membaca",
     dictionary_form: "読む",
+    furigana: "よ.む",
     romaji: "Yomu",
     masu_form: "読みます",
+    masu_furigana: "よ.みます",
     masu_romaji: "Yomimasu",
   },
 
@@ -106,8 +125,10 @@ export const godan: VerbConjugation[] = [
     rule: "nu → nimasu",
     meaning: "Mati",
     dictionary_form: "死ぬ",
+    furigana: "し.ぬ",
     romaji: "Shinu",
     masu_form: "死にます",
+    masu_furigana: "し.にます",
     masu_romaji: "Shinimasu",
   },
 
@@ -117,8 +138,10 @@ export const godan: VerbConjugation[] = [
     rule: "bu → bimasu",
     meaning: "Bermain",
     dictionary_form: "遊ぶ",
+    furigana: "あそ.ぶ",
     romaji: "Asobu",
     masu_form: "遊びます",
+    masu_furigana: "あそ.びます",
     masu_romaji: "Asobimasu",
   },
   {
@@ -126,8 +149,10 @@ export const godan: VerbConjugation[] = [
     rule: "bu → bimasu",
     meaning: "Terbang",
     dictionary_form: "飛ぶ",
+    furigana: "と.ぶ",
     romaji: "Tobu",
     masu_form: "飛びます",
+    masu_furigana: "と.びます",
     masu_romaji: "Tobimasu",
   },
 
@@ -137,8 +162,10 @@ export const godan: VerbConjugation[] = [
     rule: "ku → kimasu",
     meaning: "Pergi",
     dictionary_form: "行く",
+    furigana: "い.く",
     romaji: "Iku",
     masu_form: "行きます",
+    masu_furigana: "い.きます",
     masu_romaji: "Ikimasu",
   },
   {
@@ -146,8 +173,10 @@ export const godan: VerbConjugation[] = [
     rule: "ku → kimasu",
     meaning: "Menulis",
     dictionary_form: "書く",
+    furigana: "か.く",
     romaji: "Kaku",
     masu_form: "書きます",
+    masu_furigana: "か.きます",
     masu_romaji: "Kakimasu",
   },
   {
@@ -155,8 +184,10 @@ export const godan: VerbConjugation[] = [
     rule: "ku → kimasu",
     meaning: "Memakai (Bawah)",
     dictionary_form: "穿く",
+    furigana: "は.く",
     romaji: "Haku",
     masu_form: "穿きます",
+    masu_furigana: "は.きます",
     masu_romaji: "Hakimasu",
   },
 
@@ -166,8 +197,10 @@ export const godan: VerbConjugation[] = [
     rule: "gu → gimasu",
     meaning: "Berenang",
     dictionary_form: "泳ぐ",
+    furigana: "およ.ぐ",
     romaji: "Oyogu",
     masu_form: "泳ぎます",
+    masu_furigana: "およ.ぎます",
     masu_romaji: "Oyogimasu",
   },
 
@@ -177,8 +210,10 @@ export const godan: VerbConjugation[] = [
     rule: "su → shimasu",
     meaning: "Berbicara",
     dictionary_form: "話す",
+    furigana: "はな.す",
     romaji: "Hanasu",
     masu_form: "話します",
+    masu_furigana: "はな.します",
     masu_romaji: "Hanashimasu",
   },
 ];
@@ -190,8 +225,10 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Makan",
     dictionary_form: "食べる",
+    furigana: "た.べる",
     romaji: "Taberu",
     masu_form: "食べます",
+    masu_furigana: "た.べます",
     masu_romaji: "Tabemasu",
   },
   {
@@ -199,8 +236,10 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Mengajar",
     dictionary_form: "教える",
+    furigana: "おし.える",
     romaji: "Oshieru",
     masu_form: "教えます",
+    masu_furigana: "おし.えます",
     masu_romaji: "Oshiemasu",
   },
   {
@@ -208,8 +247,10 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Tidur",
     dictionary_form: "寝る",
+    furigana: "ね.る",
     romaji: "Neru",
     masu_form: "寝ます",
+    masu_furigana: "ね.ます",
     masu_romaji: "Nemasu",
   },
   {
@@ -217,8 +258,10 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Membuka",
     dictionary_form: "開ける",
+    furigana: "あ.ける",
     romaji: "Akeru",
     masu_form: "開けます",
+    masu_furigana: "あ.けます",
     masu_romaji: "Akemasu",
   },
 
@@ -228,8 +271,10 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Melihat",
     dictionary_form: "見る",
+    furigana: "み.る",
     romaji: "Miru",
     masu_form: "見ます",
+    masu_furigana: "み.ます",
     masu_romaji: "Mimasu",
   },
   {
@@ -237,8 +282,10 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Bangun",
     dictionary_form: "起きる",
+    furigana: "お.きる",
     romaji: "Okiru",
     masu_form: "起きます",
+    masu_furigana: "お.きます",
     masu_romaji: "Okimasu",
   },
   {
@@ -246,8 +293,10 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Mandi",
     dictionary_form: "浴びる",
+    furigana: "あ.びる",
     romaji: "Abiru",
     masu_form: "浴びます",
+    masu_furigana: "あ.びます",
     masu_romaji: "Abimasu",
   },
   {
@@ -255,8 +304,10 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Meminjam",
     dictionary_form: "借りる",
+    furigana: "か.りる",
     romaji: "Kariru",
     masu_form: "借ります",
+    masu_furigana: "か.ります",
     masu_romaji: "Karimasu",
   },
   {
@@ -264,32 +315,38 @@ export const ichidan: VerbConjugation[] = [
     rule: "ru → masu",
     meaning: "Turun (Kendaraan)",
     dictionary_form: "降りる",
+    furigana: "お.りる",
     romaji: "Oriru",
     masu_form: "降ります",
+    masu_furigana: "お.ります",
     masu_romaji: "Orimasu",
   },
 ];
 
 export const irregular: VerbConjugation[] = [
-  // 1. Kuru (Datang) - Mbahnya Irregular
+  // 1. Kuru (Datang) - Pengecualian
   {
     icon: "👋",
     rule: "Irregular (Khusus)",
     meaning: "Datang",
     dictionary_form: "来る",
+    furigana: "く.る",
     romaji: "Kuru",
     masu_form: "来ます",
-    masu_romaji: "Kimasu", // Perhatikan: Ku jadi Ki
+    masu_furigana: "き.ます",
+    masu_romaji: "Kimasu",
   },
 
-  // 2. Suru (Melakukan) - Mbahnya Irregular
+  // 2. Suru (Melakukan) - Pengecualian
   {
     icon: "✨",
     rule: "Irregular (Khusus)",
     meaning: "Melakukan",
     dictionary_form: "する",
+    furigana: "する",
     romaji: "Suru",
     masu_form: "します",
+    masu_furigana: "します",
     masu_romaji: "Shimasu",
   },
 ];

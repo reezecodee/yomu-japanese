@@ -7,9 +7,9 @@ import { usePagination } from '@/composables/usePagination';
 import { carpentryTools, cleaningTools, gardeningTools } from '@/data/dogu';
 
 const toolTabs = [
-    { label: 'Pertukangan (Kōgu)', value: 'carpentry' },
-    { label: 'Kebersihan (Sōji)', value: 'cleaning' },
-    { label: 'Berkebun (Engei)', value: 'gardening' },
+    { label: 'Kōgu (工具)', value: 'carpentry' },
+    { label: 'Sōji (掃除)', value: 'cleaning' },
+    { label: 'Engei (園芸)', value: 'gardening' },
 ]
 
 const route = useRoute();

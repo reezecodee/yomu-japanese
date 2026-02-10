@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, computed, ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 import { playAudio } from '@/utils/audio';
 import type { CharData } from '@/types';
 import { useSettings } from '@/composables/useSettings';
+import { useLocalized } from '@/composables/useLocalized';
 
 const props = withDefaults(defineProps<{
     isOpen: boolean;
@@ -14,8 +14,6 @@ const props = withDefaults(defineProps<{
 })
 
 const emit = defineEmits(['close'])
-
-const { locale } = useI18n();
 
 const handleEsc = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && props.isOpen) {
@@ -40,19 +38,8 @@ const dynamicStyle = computed(() => ({
     '--modal-bg': `var(--color-${props.theme})`,
 }))
 
-const localizedMeaning = computed(() => {
-    if (!props.data) return '';
-    
-    if (locale.value === 'id') {
-        return props.data.meaningId;
-    } else if (locale.value === 'en') {
-        return props.data.meaningEn;
-    }
-
-    return ''
-});
-
 const { showRomaji } = useSettings();
+const { getMeaning } = useLocalized();
 </script>
 
 <template>
@@ -84,8 +71,8 @@ const { showRomaji } = useSettings();
                     </div>
 
                     <div class="p-8 pt-10 text-center">
-                        <p class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-2">
-                            CONTOH PENGGUNAAN
+                        <p class="uppercase text-slate-400 font-bold uppercase text-xs tracking-widest mb-2">
+                            {{ $t('common.dictionary.example_word') }}
                         </p>
 
                         <div v-if="data.word"
@@ -101,13 +88,13 @@ const { showRomaji } = useSettings();
 
                             <div class="mt-2 text-sm border-t border-slate-800/10 pt-2 w-full">
                                 <p class="text-slate-800 font-bold leading-tight text-lg">
-                                    {{ localizedMeaning }}
+                                    {{ getMeaning(props.data) }}
                                 </p>
                             </div>
                         </div>
 
                         <div v-else class="text-slate-400 italic mb-6">
-                            Belum ada contoh kata.
+                            {{ $t('common.dictionary.no_example') }}.
                         </div>
 
                         <div class="flex justify-center w-full">
@@ -118,7 +105,8 @@ const { showRomaji } = useSettings();
                                 <span v-else class="text-lg">🔊</span>
 
                                 <span class="group-hover:underline">
-                                    {{ isLoading ? 'Memuat...' : 'Dengarkan Kata' }}
+                                    {{ isLoading ? $t('common.dictionary.loading') :
+                                        $t('common.dictionary.listen_word') }}
                                 </span>
                             </button>
                         </div>

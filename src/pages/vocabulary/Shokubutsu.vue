@@ -7,10 +7,10 @@ import { usePagination } from '@/composables/usePagination';
 import { Trees, Flowers, Herbs, NatureParts } from '@/data/shokubutsu';
 
 const plantTabs = [
-    { label: 'Pohon', value: 'trees' },
-    { label: 'Bunga', value: 'flowers' },
-    { label: 'Herbal & Rempah', value: 'herbs' },
-    { label: 'Bagian & Alam', value: 'parts' },
+    { label: 'Ki (木)', value: 'trees' },
+    { label: 'Hana (花)', value: 'flowers' },
+    { label: 'Yakusou・Supaisu (薬草・スパイス)', value: 'herbs' },
+    { label: 'Shizen・Bubun (自然・部分)', value: 'parts' },
 ]
 
 const route = useRoute();

@@ -19,13 +19,13 @@ defineProps<{
                 </div>
                 <span
                     class="hidden sm:block font-extrabold text-lg text-slate-800 group-hover:underline decoration-2 underline-offset-4">
-                    Kembali
+                    {{ $t('common.actions.back') }}
                 </span>
             </RouterLink>
 
             <h1
                 class="font-black text-lg sm:text-2xl tracking-tighter text-slate-800 uppercase text-center mx-2 truncate flex-1">
-                {{ title }}
+                {{ $t(title) }}
             </h1>
 
             <div class="w-8 shrink-0"></div>

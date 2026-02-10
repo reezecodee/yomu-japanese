@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import type { AdjectivePair } from '@/types';
 import { playAudio } from '@/utils/audio';
 import { useSettings } from '@/composables/useSettings';
+import { useLocalized } from '@/composables/useLocalized';
 
 const props = defineProps<{
     pair: AdjectivePair;
@@ -31,6 +32,8 @@ const badgeBgClass = computed(() =>
 const bottomBgClass = computed(() =>
     isNa.value ? 'bg-green-50' : 'bg-aqua'
 );
+
+const { getMeaning } = useLocalized()
 </script>
 
 <template>
@@ -48,7 +51,7 @@ const bottomBgClass = computed(() =>
                 <span v-if="showFurigana" :class="['furigana', textAccentClass]">{{ pair.top.furigana }}</span>
                 <span class="jp-word">{{ pair.top.word }}</span>
                 <span v-if="showRomaji" :class="['romaji', textAccentClass]">{{ pair.top.romaji }}</span>
-                <span class="meaning">{{ pair.top.meaning }}</span>
+                <span class="meaning">{{ getMeaning(pair.top) }}</span>
             </div>
             <span class="emoji-box group-hover:scale-110 transition-transform">{{ pair.top.icon }}</span>
         </div>
@@ -69,7 +72,7 @@ const bottomBgClass = computed(() =>
                 <span v-if="showFurigana" :class="['furigana', textAccentClass]">{{ pair.bottom.furigana }}</span>
                 <span class="jp-word">{{ pair.bottom.word }}</span>
                 <span v-if="showRomaji" :class="['romaji', textAccentClass]">{{ pair.bottom.romaji }}</span>
-                <span class="meaning">{{ pair.bottom.meaning }}</span>
+                <span class="meaning">{{ getMeaning(pair.bottom) }}</span>
             </div>
             <span class="emoji-box group-hover:scale-110 transition-transform">{{ pair.bottom.icon }}</span>
         </div>

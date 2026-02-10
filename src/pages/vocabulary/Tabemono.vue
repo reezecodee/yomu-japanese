@@ -7,9 +7,9 @@ import { usePagination } from '@/composables/usePagination';
 import { FoodItems, DrinkItems, TasteItems } from '@/data/tabemono';
 
 const tabemonoTabs = [
-    { label: 'Tabemono', value: 'tabemono' },
-    { label: 'Nomimono', value: 'nomimono' },
-    { label: 'Aji', value: 'aji' },
+    { label: 'Tabemono (食べ物)', value: 'tabemono' },
+    { label: 'Nomimono (飲み物)', value: 'nomimono' },
+    { label: 'Aji (味)', value: 'aji' },
 ]
 
 const route = useRoute();

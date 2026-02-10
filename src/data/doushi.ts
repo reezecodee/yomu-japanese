@@ -5,7 +5,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🛒",
     rule: "u → imasu",
-    meaning: "Membeli",
+    meaningId: "Membeli",
+    meaningEn: "To Buy",
     dictionary_form: "買う",
     furigana: "か.う",
     romaji: "Kau",
@@ -16,7 +17,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🗣️",
     rule: "u → imasu",
-    meaning: "Berkata",
+    meaningId: "Berkata",
+    meaningEn: "To Say",
     dictionary_form: "言う",
     furigana: "い.う",
     romaji: "Iu",
@@ -27,7 +29,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🤝",
     rule: "u → imasu",
-    meaning: "Bertemu",
+    meaningId: "Bertemu",
+    meaningEn: "To Meet",
     dictionary_form: "会う",
     furigana: "あ.う",
     romaji: "Au",
@@ -40,7 +43,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "⌚",
     rule: "tsu → chimasu",
-    meaning: "Menunggu",
+    meaningId: "Menunggu",
+    meaningEn: "To Wait",
     dictionary_form: "待つ",
     furigana: "ま.つ",
     romaji: "Matsu",
@@ -51,7 +55,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "👜",
     rule: "tsu → chimasu",
-    meaning: "Membawa",
+    meaningId: "Membawa",
+    meaningEn: "To Carry/Hold",
     dictionary_form: "持つ",
     furigana: "も.つ",
     romaji: "Motsu",
@@ -64,7 +69,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🚃",
     rule: "ru → rimasu",
-    meaning: "Naik (Kendaraan)",
+    meaningId: "Naik (Kendaraan)",
+    meaningEn: "To Ride/Board",
     dictionary_form: "乗る",
     furigana: "の.る",
     romaji: "Noru",
@@ -75,7 +81,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🏃",
     rule: "ru → rimasu",
-    meaning: "Berlari",
+    meaningId: "Berlari",
+    meaningEn: "To Run",
     dictionary_form: "走る",
     furigana: "はし.る",
     romaji: "Hashiru",
@@ -86,7 +93,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🏠",
     rule: "ru → rimasu",
-    meaning: "Pulang",
+    meaningId: "Pulang",
+    meaningEn: "To Return Home",
     dictionary_form: "帰る",
     furigana: "かえ.る",
     romaji: "Kaeru",
@@ -99,7 +107,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🥤",
     rule: "mu → mimasu",
-    meaning: "Minum",
+    meaningId: "Minum",
+    meaningEn: "To Drink",
     dictionary_form: "飲む",
     furigana: "の.む",
     romaji: "Nomu",
@@ -110,7 +119,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "📖",
     rule: "mu → mimasu",
-    meaning: "Membaca",
+    meaningId: "Membaca",
+    meaningEn: "To Read",
     dictionary_form: "読む",
     furigana: "よ.む",
     romaji: "Yomu",
@@ -123,7 +133,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "💀",
     rule: "nu → nimasu",
-    meaning: "Mati",
+    meaningId: "Mati",
+    meaningEn: "To Die",
     dictionary_form: "死ぬ",
     furigana: "し.ぬ",
     romaji: "Shinu",
@@ -136,7 +147,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🎮",
     rule: "bu → bimasu",
-    meaning: "Bermain",
+    meaningId: "Bermain",
+    meaningEn: "To Play",
     dictionary_form: "遊ぶ",
     furigana: "あそ.ぶ",
     romaji: "Asobu",
@@ -147,7 +159,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "✈️",
     rule: "bu → bimasu",
-    meaning: "Terbang",
+    meaningId: "Terbang",
+    meaningEn: "To Fly",
     dictionary_form: "飛ぶ",
     furigana: "と.ぶ",
     romaji: "Tobu",
@@ -160,7 +173,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🚶",
     rule: "ku → kimasu",
-    meaning: "Pergi",
+    meaningId: "Pergi",
+    meaningEn: "To Go",
     dictionary_form: "行く",
     furigana: "い.く",
     romaji: "Iku",
@@ -171,7 +185,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "✍️",
     rule: "ku → kimasu",
-    meaning: "Menulis",
+    meaningId: "Menulis",
+    meaningEn: "To Write",
     dictionary_form: "書く",
     furigana: "か.く",
     romaji: "Kaku",
@@ -182,7 +197,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "👖",
     rule: "ku → kimasu",
-    meaning: "Memakai (Bawah)",
+    meaningId: "Memakai (Bawah)",
+    meaningEn: "To Wear (Lower Body)",
     dictionary_form: "穿く",
     furigana: "は.く",
     romaji: "Haku",
@@ -195,7 +211,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "🏊",
     rule: "gu → gimasu",
-    meaning: "Berenang",
+    meaningId: "Berenang",
+    meaningEn: "To Swim",
     dictionary_form: "泳ぐ",
     furigana: "およ.ぐ",
     romaji: "Oyogu",
@@ -208,7 +225,8 @@ export const godan: VerbConjugation[] = [
   {
     icon: "💬",
     rule: "su → shimasu",
-    meaning: "Berbicara",
+    meaningId: "Berbicara",
+    meaningEn: "To Speak",
     dictionary_form: "話す",
     furigana: "はな.す",
     romaji: "Hanasu",
@@ -223,7 +241,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "🍽️",
     rule: "ru → masu",
-    meaning: "Makan",
+    meaningId: "Makan",
+    meaningEn: "To Eat",
     dictionary_form: "食べる",
     furigana: "た.べる",
     romaji: "Taberu",
@@ -234,7 +253,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "👩‍🏫",
     rule: "ru → masu",
-    meaning: "Mengajar",
+    meaningId: "Mengajar",
+    meaningEn: "To Teach",
     dictionary_form: "教える",
     furigana: "おし.える",
     romaji: "Oshieru",
@@ -245,7 +265,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "🛌",
     rule: "ru → masu",
-    meaning: "Tidur",
+    meaningId: "Tidur",
+    meaningEn: "To Sleep",
     dictionary_form: "寝る",
     furigana: "ね.る",
     romaji: "Neru",
@@ -256,7 +277,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "🚪",
     rule: "ru → masu",
-    meaning: "Membuka",
+    meaningId: "Membuka",
+    meaningEn: "To Open",
     dictionary_form: "開ける",
     furigana: "あ.ける",
     romaji: "Akeru",
@@ -269,7 +291,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "👀",
     rule: "ru → masu",
-    meaning: "Melihat",
+    meaningId: "Melihat",
+    meaningEn: "To See/Watch",
     dictionary_form: "見る",
     furigana: "み.る",
     romaji: "Miru",
@@ -280,7 +303,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "⏰",
     rule: "ru → masu",
-    meaning: "Bangun",
+    meaningId: "Bangun",
+    meaningEn: "To Wake Up",
     dictionary_form: "起きる",
     furigana: "お.きる",
     romaji: "Okiru",
@@ -291,7 +315,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "🚿",
     rule: "ru → masu",
-    meaning: "Mandi",
+    meaningId: "Mandi",
+    meaningEn: "To Take a Shower",
     dictionary_form: "浴びる",
     furigana: "あ.びる",
     romaji: "Abiru",
@@ -302,7 +327,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "🤝",
     rule: "ru → masu",
-    meaning: "Meminjam",
+    meaningId: "Meminjam",
+    meaningEn: "To Borrow",
     dictionary_form: "借りる",
     furigana: "か.りる",
     romaji: "Kariru",
@@ -313,7 +339,8 @@ export const ichidan: VerbConjugation[] = [
   {
     icon: "👇",
     rule: "ru → masu",
-    meaning: "Turun (Kendaraan)",
+    meaningId: "Turun (Kendaraan)",
+    meaningEn: "To Get Off",
     dictionary_form: "降りる",
     furigana: "お.りる",
     romaji: "Oriru",
@@ -324,11 +351,11 @@ export const ichidan: VerbConjugation[] = [
 ];
 
 export const irregular: VerbConjugation[] = [
-  // 1. Kuru (Datang) - Pengecualian
   {
     icon: "👋",
     rule: "Irregular (Khusus)",
-    meaning: "Datang",
+    meaningId: "Datang",
+    meaningEn: "To Come",
     dictionary_form: "来る",
     furigana: "く.る",
     romaji: "Kuru",
@@ -336,12 +363,11 @@ export const irregular: VerbConjugation[] = [
     masu_furigana: "き.ます",
     masu_romaji: "Kimasu",
   },
-
-  // 2. Suru (Melakukan) - Pengecualian
   {
     icon: "✨",
     rule: "Irregular (Khusus)",
-    meaning: "Melakukan",
+    meaningId: "Melakukan",
+    meaningEn: "To Do",
     dictionary_form: "する",
     furigana: "する",
     romaji: "Suru",

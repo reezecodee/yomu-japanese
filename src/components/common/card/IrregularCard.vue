@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocalized } from '@/composables/useLocalized';
 import { useSettings } from '@/composables/useSettings';
 import type { VerbConjugation } from '@/types';
 import { playAudio } from '@/utils/audio';
@@ -8,6 +9,7 @@ defineProps<{
 }>();
 
 const { showRomaji, showFurigana } = useSettings()
+const { getMeaning } = useLocalized()
 </script>
 
 <template>
@@ -23,7 +25,7 @@ const { showRomaji, showFurigana } = useSettings()
         </div>
 
         <h3 class="text-center font-black text-2xl text-slate-700 mb-1">
-            {{ verb.meaning }}
+            {{ getMeaning(verb) }}
         </h3>
 
         <div class="mt-4 space-y-2">

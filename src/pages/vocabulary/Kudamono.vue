@@ -7,9 +7,9 @@ import { usePagination } from '@/composables/usePagination';
 import { CommonFruits, SeasonalFruits, Vegetables } from '@/data/kudamono';
 
 const foodTabs = [
-    { label: 'Buah Umum', value: 'common' },
-    { label: 'Musiman & Berry', value: 'seasonal' },
-    { label: 'Sayuran (Yasai)', value: 'vegetables' },
+    { label: 'Kudamono (果物)', value: 'common' },
+    { label: 'Kisetsu・Berī (季節・ベリー)', value: 'seasonal' },
+    { label: 'Yasai (野菜)', value: 'vegetables' },
 ]
 
 const route = useRoute();

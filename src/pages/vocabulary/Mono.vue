@@ -14,12 +14,12 @@ import {
 } from '@/data/mono';
 
 const monoTabs = [
-    { label: 'Rumah', value: 'home' },
-    { label: 'Sekolah', value: 'school' },
-    { label: 'Alam', value: 'nature' },
-    { label: 'RS', value: 'hospital' },
-    { label: 'Olahraga', value: 'sport' },
-    { label: 'Restoran', value: 'restaurant' },
+    { label: 'Ie (家)', value: 'home' },
+    { label: 'Gakkou (学校)', value: 'school' },
+    { label: 'Shizen (自然)', value: 'nature' },
+    { label: 'Byouin (病院)', value: 'hospital' },
+    { label: 'Supōtsu (スポーツ)', value: 'sport' },
+    { label: 'Resutoran (レストラン)', value: 'restaurant' },
 ]
 
 const route = useRoute();

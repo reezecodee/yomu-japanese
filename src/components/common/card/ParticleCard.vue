@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useSettings } from '@/composables/useSettings';
+import { useLocalized } from '@/composables/useLocalized';
 import type { JoshiItem } from '@/types';
 import { playAudio } from '@/utils/audio';
 
@@ -7,38 +8,34 @@ defineProps<{
     item: JoshiItem;
 }>();
 
-const { showRomaji } = useSettings()
+const { showRomaji, showFurigana } = useSettings();
+const { getLabel, getFunction, getExampleResult } = useLocalized();
 </script>
 
 <template>
     <div class="particle-card h-full">
-
         <div class="card-header group cursor-pointer select-none relative transition-colors duration-200"
             @click="playAudio(item.kana)">
-
             <div
                 class="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity text-white/90 text-sm">
-                🔊
-            </div>
-
+                🔊</div>
             <div class="text-4xl md:text-5xl font-black pl-6">{{ item.kana }}</div>
             <div class="text-right">
                 <div class="text-lg md:text-xl font-bold uppercase tracking-wide">{{ item.romaji }}</div>
                 <div
                     class="text-xs font-bold opacity-80 uppercase tracking-widest bg-white/20 px-2 rounded mt-1 inline-block">
-                    {{ item.label }}
+                    {{ getLabel(item) }}
                 </div>
             </div>
         </div>
 
         <div class="p-6 flex-grow flex flex-col gap-4">
-
             <div>
                 <h3 class="font-bold text-mint-dark mb-1 flex items-center gap-2">
-                    <span class="text-lg">💡</span> Fungsi:
+                    <span class="text-lg">💡</span> {{ $t('common.dictionary.joshi.function') }}:
                 </h3>
                 <p class="text-sm text-slate-600 font-medium leading-relaxed">
-                    {{ item.function }}
+                    {{ getFunction(item) }}
                 </p>
             </div>
 
@@ -47,21 +44,27 @@ const { showRomaji } = useSettings()
 
                 <div
                     class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-mint-dark text-xs">
-                    🔊
-                </div>
+                    🔊</div>
 
-                <p class="font-black text-lg text-mint-dark mb-1 pr-4">
+                <p v-if="showFurigana && item.example.furigana"
+                    class="text-xs font-medium text-slate-400 mb-0.5 pl-0.5 tracking-wide">
+                    <span
+                        v-html="item.example.furigana.replace(item.example.highlight, `<span class='text-mint-dark font-bold'>${item.example.highlight}</span>`)"></span>
+                </p>
+
+                <p class="font-black text-lg text-mint-dark mb-1 pr-4 leading-none">
                     <span
                         v-html="item.example.jp.replace(item.example.highlight, `<span class='text-mint-accent'>${item.example.highlight}</span>`)"></span>
                 </p>
+
                 <p class="text-sm font-bold text-slate-500 italic mb-1">
                     {{ showRomaji ? item.example.ro : '-' }}
                 </p>
+
                 <p class="text-sm font-bold text-slate-800 border-t border-dashed border-green-200 pt-1 mt-1">
-                    {{ item.example.id }}
+                    {{ getExampleResult(item.example) }}
                 </p>
             </div>
-
         </div>
     </div>
 </template>
@@ -103,7 +106,6 @@ const { showRomaji } = useSettings()
     filter: brightness(0.95);
     border-bottom-color: transparent;
 }
-
 
 .example-bubble {
     background: var(--color-mint);

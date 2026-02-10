@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import type { AisatsuItem } from '@/types';
 import { playAudio } from '@/utils/audio';
 import { useSettings } from '@/composables/useSettings';
+import { useLocalized } from '@/composables/useLocalized';
 
 const props = defineProps<{
     item: AisatsuItem;
@@ -10,6 +11,7 @@ const props = defineProps<{
 
 const isRight = computed(() => props.item.align === 'right');
 const { showRomaji } = useSettings()
+const { getMeaning } = useLocalized()
 </script>
 
 <template>
@@ -23,8 +25,8 @@ const { showRomaji } = useSettings()
             🔊
         </div>
 
-        <span v-if="item.situation" :class="['situation-badge', isRight ? 'badge-right' : 'badge-left']">
-            {{ item.situation }}
+        <span :class="['situation-badge', isRight ? 'badge-right' : 'badge-left']">
+            {{ getMeaning({ meaningId: item.situationId, meaningEn: item.situationEn }) }}
         </span>
 
         <h2 class="text-2xl md:text-3xl font-black mb-1 leading-tight">
@@ -36,7 +38,7 @@ const { showRomaji } = useSettings()
         </p>
 
         <p :class="['text-sm font-semibold mt-1', isRight ? 'text-white/80' : 'text-slate-500']">
-            {{ item.meaning }}
+            {{ getMeaning(item) }}
         </p>
 
     </div>

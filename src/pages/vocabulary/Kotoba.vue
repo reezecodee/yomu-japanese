@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BentoCard from '@/components/common/card/BentoCard.vue';
+import { useLocalized } from '@/composables/useLocalized';
 import { useSettings } from '@/composables/useSettings';
 import {
     colors, days, directions, familyMembers, months, seasons,
@@ -7,6 +8,7 @@ import {
 } from '@/data/kotoba';
 
 const { showRomaji, showFurigana } = useSettings()
+const { getMeaning } = useLocalized()
 </script>
 
 <template>
@@ -54,7 +56,7 @@ const { showRomaji, showFurigana } = useSettings()
                             <div class="font-bold text-xs uppercase opacity-70 mt-0.5">{{ showRomaji ? d.romaji : '-' }}
                             </div>
                         </div>
-                        <div class="font-bold text-slate-500 text-xs">{{ d.mean }}</div>
+                        <div class="font-bold text-slate-500 text-xs">{{ getMeaning(d) }}</div>
                     </div>
                 </div>
             </BentoCard>
@@ -68,7 +70,8 @@ const { showRomaji, showFurigana } = useSettings()
                         <div :class="[s.color, 'font-bold text-[10px] uppercase mt-0.5']">{{ showRomaji ? s.romaji : '-'
                         }}
                         </div>
-                        <div class="text-[9px] text-gray-600 italic capitalize">{{ s.mean }}</div>
+                        <div class="text-[9px] text-gray-600 italic capitalize">{{
+                            getMeaning(s) }}</div>
                     </div>
                 </div>
             </BentoCard>
@@ -85,7 +88,7 @@ const { showRomaji, showFurigana } = useSettings()
                         </div>
                         <p class="font-bold text-[10px] text-slate-500 uppercase tracking-tighter mt-1">{{ showRomaji ?
                             c.name : '-' }}</p>
-                        <p class="text-[8px] text-slate-400 italic leading-none">{{ c.mean }}</p>
+                        <p class="text-[8px] text-slate-400 italic leading-none">{{ getMeaning(c) }}</p>
                     </div>
                 </div>
             </BentoCard>
@@ -109,7 +112,7 @@ const { showRomaji, showFurigana } = useSettings()
                                 {{ showRomaji ? dir.romaji : '-' }}
                             </span>
                             <span class="text-[7px] text-gray-400 italic leading-none">
-                                {{ dir.mean }}
+                                {{ getMeaning(dir) }}
                             </span>
                         </template>
                     </div>
@@ -136,7 +139,7 @@ const { showRomaji, showFurigana } = useSettings()
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <div v-for="f in familyMembers" :key="f.label"
+                            <div v-for="f in familyMembers" :key="f.meaningEn"
                                 class="flex justify-between items-center border-b border-gray-50 pb-1">
                                 <div class="flex flex-col">
                                     <span class="text-sm font-bold text-slate-700 leading-none mb-0.5">{{ showRomaji ?
@@ -148,7 +151,7 @@ const { showRomaji, showFurigana } = useSettings()
                                     <span class="text-[12px] text-slate-500 font-japanese font-bold">{{ f.me.kanji
                                     }}</span>
                                 </div>
-                                <span class="text-[10px] text-slate-400 bg-slate-50 px-1 rounded">{{ f.label }}</span>
+                                <span class="text-[10px] text-slate-400 bg-slate-50 px-1 rounded">{{ getMeaning(f) }}</span>
                             </div>
                         </div>
                     </div>
@@ -170,7 +173,7 @@ const { showRomaji, showFurigana } = useSettings()
                             </div>
                         </div>
                         <div class="space-y-2">
-                            <div v-for="f in familyMembers" :key="f.label"
+                            <div v-for="f in familyMembers" :key="f.meaningEn"
                                 class="flex justify-between items-center border-b border-gray-50 pb-1">
                                 <div class="flex flex-col">
                                     <span class="text-sm font-bold text-pink-600 leading-none mb-0.5">{{ showRomaji ?
@@ -182,7 +185,7 @@ const { showRomaji, showFurigana } = useSettings()
                                     <span class="text-[12px] text-pink-400 font-japanese font-bold">{{ f.other.kanji
                                     }}</span>
                                 </div>
-                                <span class="text-[10px] text-slate-400 bg-slate-50 px-1 rounded">{{ f.label }}</span>
+                                <span class="text-[10px] text-slate-400 bg-slate-50 px-1 rounded">{{ getMeaning(f) }}</span>
                             </div>
                         </div>
                     </div>
@@ -204,7 +207,7 @@ const { showRomaji, showFurigana } = useSettings()
                                 {{ m.romaji }} {{ m.warn ? '⚠️' : '' }}
                             </span>
                         </div>
-                        <span class="text-[8px] text-slate-400 italic">{{ m.mean }}</span>
+                        <span class="text-[8px] text-slate-400 italic">{{ getMeaning(m) }}</span>
                     </div>
                 </div>
             </BentoCard>
@@ -221,7 +224,7 @@ const { showRomaji, showFurigana } = useSettings()
                             <span v-if="showRomaji" class="text-[10px] font-bold text-teal-600 uppercase">
                                 {{ d.romaji }}
                             </span>
-                            <span class="text-[8px] text-gray-400 italic">{{ d.mean }}</span>
+                            <span class="text-[8px] text-gray-400 italic">{{ getMeaning(d) }}</span>
                         </div>
                     </div>
                 </div>
@@ -236,7 +239,7 @@ const { showRomaji, showFurigana } = useSettings()
                         <div class="text-lg font-black text-slate-700 leading-none">{{ t.kanji }}</div>
                         <div class="text-[9px] font-bold text-indigo-600 uppercase mt-1">{{ showRomaji ? t.romaji : '-'
                         }}</div>
-                        <div class="text-[8px] text-gray-500 italic">{{ t.mean }}</div>
+                        <div class="text-[8px] text-gray-500 italic">{{ getMeaning(t) }}</div>
                     </div>
                 </div>
             </BentoCard>
@@ -250,7 +253,7 @@ const { showRomaji, showFurigana } = useSettings()
                         <div class="text-lg font-black text-slate-700 leading-none">{{ w.kanji }}</div>
                         <div class="text-[9px] font-bold text-sky-600 uppercase mt-1">{{ showRomaji ? w.romaji : '-' }}
                         </div>
-                        <div class="text-[8px] text-gray-500 italic">{{ w.mean }}</div>
+                        <div class="text-[8px] text-gray-500 italic">{{ getMeaning(w) }}</div>
                     </div>
                 </div>
             </BentoCard>
@@ -266,7 +269,7 @@ const { showRomaji, showFurigana } = useSettings()
                             ?
                             p.romaji : '-'
                         }}</span>
-                        <span class="text-[7px] text-gray-400 italic leading-none">{{ p.mean }}</span>
+                        <span class="text-[7px] text-gray-400 italic leading-none">{{ getMeaning(p) }}</span>
                     </div>
                 </div>
             </BentoCard>
@@ -284,7 +287,7 @@ const { showRomaji, showFurigana } = useSettings()
                                 e.romaji : '-'
                             }}
                             </div>
-                            <div class="text-[8px] text-slate-400 italic leading-none mt-1">{{ e.mean }}</div>
+                            <div class="text-[8px] text-slate-400 italic leading-none mt-1">{{ getMeaning(e) }}</div>
                         </div>
                     </div>
                 </div>

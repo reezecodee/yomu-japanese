@@ -8,8 +8,8 @@ import { DailyGreetings, HomeGreetings, GratitudeGreetings, IntroGreetings, Part
         <div class="space-y-6 mb-7">
             <div class="text-center">
                 <span
-                    class="bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
-                    SALAM HARIAN
+                    class="uppercase bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
+                    {{ $t('common.dictionary.aisatsu.daily_greetings') }}
                 </span>
             </div>
             <ChatBubble v-for="(chat, i) in DailyGreetings" :key="i" :item="chat" />
@@ -18,8 +18,8 @@ import { DailyGreetings, HomeGreetings, GratitudeGreetings, IntroGreetings, Part
         <div class="space-y-6 mb-7">
             <div class="text-center">
                 <span
-                    class="bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
-                    DI RUMAH
+                    class="uppercase bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
+                    {{ $t('common.dictionary.aisatsu.at_home') }}
                 </span>
             </div>
             <ChatBubble v-for="(chat, i) in HomeGreetings" :key="i" :item="chat" />
@@ -28,8 +28,8 @@ import { DailyGreetings, HomeGreetings, GratitudeGreetings, IntroGreetings, Part
         <div class="space-y-6 mb-7">
             <div class="text-center">
                 <span
-                    class="bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
-                    TERIMA KASIH
+                    class="uppercase bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
+                    {{ $t('common.dictionary.aisatsu.thanks') }}
                 </span>
             </div>
             <ChatBubble v-for="(chat, i) in GratitudeGreetings" :key="i" :item="chat" />
@@ -38,8 +38,8 @@ import { DailyGreetings, HomeGreetings, GratitudeGreetings, IntroGreetings, Part
         <div class="space-y-6 mb-7">
             <div class="text-center">
                 <span
-                    class="bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
-                    PERKENALAN
+                    class="uppercase bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
+                    {{ $t('common.dictionary.aisatsu.introduction') }}
                 </span>
             </div>
             <ChatBubble v-for="(chat, i) in IntroGreetings" :key="i" :item="chat" />
@@ -47,9 +47,9 @@ import { DailyGreetings, HomeGreetings, GratitudeGreetings, IntroGreetings, Part
 
         <div class="space-y-6 mb-7">
             <div class="text-center">
-               <span
-                    class="bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
-                    PERPISAHAN
+                <span
+                    class="uppercase bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-black border-2 border-orange-300 shadow-sm text-sm">
+                    {{ $t('common.dictionary.aisatsu.farewell') }}
                 </span>
             </div>
             <ChatBubble v-for="(chat, i) in PartingGreetings" :key="i" :item="chat" />

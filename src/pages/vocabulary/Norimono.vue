@@ -7,9 +7,9 @@ import { usePagination } from '@/composables/usePagination';
 import { LandTransport, AirTransport, SeaTransport } from '@/data/norimono';
 
 const transportTabs = [
-    { label: 'Darat (Riku)', value: 'land' },
-    { label: 'Udara (Sora)', value: 'air' },
-    { label: 'Laut (Umi)', value: 'sea' },
+    { label: 'Riku (陸)', value: 'land' },
+    { label: 'Sora (空)', value: 'air' },
+    { label: 'Umi (海)', value: 'sea' },
 ]
 
 const route = useRoute();

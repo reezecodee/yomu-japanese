@@ -1,125 +1,173 @@
 {
-  "navMenu": {
-    "hiragana": {
-      "title": "Hiragana",
-      "desc": "Basic Japanese Letters",
-      "tag": "Basic"
+  "common": {
+    "actions": {
+      "back": "Back"
     },
-    "katakana": {
-      "title": "Katakana",
-      "desc": "Foreign Loanwords",
-      "tag": "Basic"
-    },
-    "kanji": {
-      "title": "Kanji",
-      "desc": "N5 - N1 Cards",
-      "tag": "Level Up"
-    },
-    "number": {
-      "title": "Numbers",
-      "desc": "Counting & Money",
-      "tag": "Logic"
-    },
-    "kotoba": {
-      "title": "Vocabulary",
-      "desc": "Colors, Time, Directions",
-      "tag": "Bento"
-    },
-    "doushi": {
-      "title": "Verbs",
-      "desc": "Actions & Conjugation",
-      "tag": "Essential"
-    },
-    "keiyoushi": {
-      "title": "Adjectives",
-      "desc": "I-Adj & Na-Adj",
-      "tag": "Desc"
-    },
-    "mono": {
-      "title": "Objects",
-      "desc": "Daily Items",
-      "tag": "Things"
-    },
-    "shigoto": {
-      "title": "Professions",
-      "desc": "Jobs & Career",
-      "tag": "Career"
-    },
-    "tabemono": {
-      "title": "Food",
-      "desc": "Culinary & Taste",
-      "tag": "Menu"
-    },
-    "doubutsu": {
-      "title": "Animals",
-      "desc": "Land, Water, Air",
-      "tag": "Safari"
-    },
-    "norimono": {
-      "title": "Transport",
-      "desc": "Public Vehicles",
-      "tag": "Metro"
-    },
-    "tatemono": {
-      "title": "Buildings",
-      "desc": "Facilities & Places",
-      "tag": "City"
-    },
-    "kudamono": {
-      "title": "Fruits",
-      "desc": "Fresh Fruits",
-      "tag": "Fresh"
-    },
-    "shokubutsu": {
-      "title": "Plants",
-      "desc": "Trees & Flowers",
-      "tag": "Flora"
-    },
-    "byouki": {
-      "title": "Health",
-      "desc": "Illness & Injury",
-      "tag": "Medical"
-    },
-    "dogu": {
-      "title": "Tools",
-      "desc": "Carpentry & Home",
-      "tag": "Tools"
-    },
-    "bunpou": {
-      "title": "Grammar",
-      "desc": "Basic Patterns",
-      "tag": "Rules"
-    },
-    "joshi": {
-      "title": "Particles",
-      "desc": "Wa, Ga, Wo, Ni, De",
-      "tag": "Joshi"
-    },
-    "aisatsu": {
-      "title": "Greetings",
-      "desc": "Phrases & Chat",
-      "tag": "Hello"
-    },
-    "kanyoku": {
-      "title": "Idioms",
-      "desc": "Proverbs & Phrases",
-      "tag": "Express"
+    "dictionary": {
+      "example_word": "Example Usage",
+      "listen_word": "Listen",
+      "language": "Language",
+      "display": "Display",
+      "loading": "Loading...",
+      "no_examples": "No examples available yet",
+      "aisatsu": {
+        "daily_greetings": "Daily Greetings",
+        "at_home": "At Home",
+        "thanks": "Gratitude & Apology",
+        "introduction": "Introduction",
+        "farewell": "Farewell"
+      },
+      "joshi": {
+        "function": "Function",
+        "title": "Sentence Connectors",
+        "subtitle": "Particles are like 'glue' that bind words together into a complete sentence.",
+        "extra_particles": "Other Important Particles"
+      }
     }
   },
-  "hero": {
-    "sticky": "Japanese Learning Portal",
-    "title": "LEARN JAPANESE",
-    "subtitle": "Choose your topic and start your Japanese adventure right now!",
-    "menuChapter": {
-      "one": "Characters & Numbers",
-      "two": "Vocabulary",
-      "three": "Grammar & Idioms"
+  "layout": {
+    "header": {
+      "title": "Japanese Learning Portal"
+    },
+    "footer": {
+      "slogan": "Let's Learn Japanese",
+      "bug_report": "Report Bug",
+      "contribute": "Contribute"
     }
   },
-  "footer": {
-    "slogan": "Let's Learn Japanese",
-    "bug": "Report Bug",
-    "contribute": "Contribute",
-    "copyright": "All Rights Reserved"
+  "home": {
+    "hero": {
+      "badge": "Japanese Learning Portal",
+      "title": "LEARN JAPANESE",
+      "subtitle": "Choose your topic and start your Japanese adventure right now!"
+    },
+    "sections": {
+      "basics": "Characters & Numbers",
+      "vocabulary": "Vocabulary",
+      "grammar": "Grammar & Idioms"
+    }
+  },
+  "topics": {
+    "scripts": {
+      "hiragana": {
+        "title": "Hiragana",
+        "desc": "Basic Japanese Letters",
+        "tag": "Basic"
+      },
+      "katakana": {
+        "title": "Katakana",
+        "desc": "Foreign Loanwords",
+        "tag": "Basic"
+      },
+      "kanji": {
+        "title": "Kanji",
+        "desc": "N5 - N1 Cards",
+        "tag": "Level Up"
+      }
+    },
+    "basics": {
+      "number": {
+        "title": "Numbers",
+        "desc": "Counting & Money",
+        "tag": "Logic"
+      },
+      "aisatsu": {
+        "title": "Greetings",
+        "desc": "Phrases & Chat",
+        "tag": "Hello"
+      },
+      "kotoba": {
+        "title": "Time & Directions",
+        "desc": "Colors, Time, Directions",
+        "tag": "Bento"
+      }
+    },
+    "vocabulary": {
+      "doushi": {
+        "title": "Verbs",
+        "desc": "Actions & Conjugation",
+        "tag": "Essential"
+      },
+      "keiyoushi": {
+        "title": "Adjectives",
+        "desc": "I-Adj & Na-Adj",
+        "tag": "Desc"
+      },
+      "mono": {
+        "title": "Objects",
+        "desc": "Daily Items",
+        "tag": "Things"
+      },
+      "shigoto": {
+        "title": "Professions",
+        "desc": "Jobs & Career",
+        "tag": "Career"
+      },
+      "tabemono": {
+        "title": "Food",
+        "desc": "Culinary & Taste",
+        "tag": "Menu"
+      },
+      "doubutsu": {
+        "title": "Animals",
+        "desc": "Land, Water, Air",
+        "tag": "Safari"
+      },
+      "norimono": {
+        "title": "Transport",
+        "desc": "Public Vehicles",
+        "tag": "Metro"
+      },
+      "tatemono": {
+        "title": "Buildings",
+        "desc": "Facilities & Places",
+        "tag": "City"
+      },
+      "kudamono": {
+        "title": "Fruits",
+        "desc": "Fresh Fruits",
+        "tag": "Fresh"
+      },
+      "shokubutsu": {
+        "title": "Plants",
+        "desc": "Trees & Flowers",
+        "tag": "Flora"
+      },
+      "byouki": {
+        "title": "Health",
+        "desc": "Illness & Injury",
+        "tag": "Medical"
+      },
+      "dogu": {
+        "title": "Tools",
+        "desc": "Carpentry & Home",
+        "tag": "Tools"
+      }
+    },
+    "grammar": {
+      "bunpou": {
+        "title": "Grammar",
+        "desc": "Basic Patterns",
+        "tag": "Rules"
+      },
+      "joshi": {
+        "title": "Particles",
+        "desc": "Wa, Ga, Wo, Ni, De",
+        "tag": "Joshi"
+      },
+      "kanyoku": {
+        "title": "Idioms",
+        "desc": "Proverbs & Phrases",
+        "tag": "Express"
+      }
+    },
+    "others": {
+      "home": {
+        "title": "Home"
+      },
+      "flashcard": {
+        "title": "Flashcards"
+      }
+    }
   }
 }

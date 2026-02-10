@@ -1,24 +1,21 @@
 <script setup lang="ts">
 import TabSwitcher from '@/components/common/nav/TabSwitcher.vue';
-import { computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { godan, ichidan, irregular } from '@/data/doushi';
 import { useRoute } from 'vue-router';
 import VerbCard from '@/components/common/card/VerbCard.vue';
 import IrregularCard from '@/components/common/card/IrregularCard.vue';
+import { usePagination } from '@/composables/usePagination';
 
 const doushiTabs = [
-    { label: 'Group 1 (Godan)', value: 'godan' },
-    { label: 'Group 2 (Ichidan)', value: 'ichidan' },
-    { label: 'Group 3 (Irregular)', value: 'irregular' }
+    { label: 'Godan (五段)', value: 'godan' },
+    { label: 'Ichidan (一段)', value: 'ichidan' },
+    { label: 'Fukisoku (不規則)', value: 'irregular' }
 ]
 
 const route = useRoute();
 const themeName = computed(() => route.meta.bgClass as string);
 const activeTab = ref<'godan' | 'ichidan' | 'irregular'>('godan');
-
-// --- LOGIC PAGINATION  ---
-const currentPage = ref(1);
-const itemsPerPage = 12;
 
 const currentData = computed(() => {
     if (activeTab.value === 'godan') return godan;
@@ -26,12 +23,13 @@ const currentData = computed(() => {
     return irregular;
 });
 
-const totalPages = computed(() => Math.ceil(currentData.value.length / itemsPerPage));
-const paginatedData = computed(() => {
-    return currentData.value.slice((currentPage.value - 1) * itemsPerPage, currentPage.value * itemsPerPage);
-});
-
-watch(activeTab, () => { currentPage.value = 1; });
+const {
+    currentPage,
+    paginatedData,
+    totalPages,
+    nextPage,
+    prevPage
+} = usePagination(currentData, 8);
 
 const btnStyle = computed(() => ({
     '--btn-bg': `var(--color-${themeName.value}-accent, #e11d48)`,
@@ -41,16 +39,6 @@ const btnStyle = computed(() => ({
 <template>
     <div class="max-w-6xl mx-auto px-3 sm:px-4 pb-12">
         <TabSwitcher :tabs="doushiTabs" v-model="activeTab" :theme="themeName" />
-
-        <div
-            class="max-w-3xl mx-auto bg-white border-4 border-dashed border-rose-dark rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 text-center shadow-sm">
-            <h3 class="font-black text-lg sm:text-xl text-rose-dark mb-1 sm:mb-2">💡 Tips Konjugasi</h3>
-            <p class="text-slate-600 font-medium text-xs sm:text-base leading-relaxed">
-                Bahasa Jepang punya 3 grup kata kerja. <br class="hidden sm:block">
-                <span class="text-slate-400">Abu-abu:</span> <b>Kamus</b>,
-                <span class="text-rose-300">Merah Muda:</span> <b>Masu</b>.
-            </p>
-        </div>
 
         <div class="animate-fade-in min-h-[300px]">
             <div v-if="activeTab !== 'irregular'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">

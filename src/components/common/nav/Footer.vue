@@ -16,7 +16,7 @@ const currentYear = new Date().getFullYear();
             </p>
 
             <p class="text-slate-400 font-bold text-[10px] uppercase mt-1 tracking-widest">
-                YOMU PROJECT • 日本語を学ぼう
+                YOMU PROJECT • {{ $t('layout.footer.slogan') }}
             </p>
 
             <div class="flex items-center justify-center gap-5 mt-5">
@@ -33,12 +33,12 @@ const currentYear = new Date().getFullYear();
                 class="flex items-center justify-center gap-3 text-[10px] font-bold tracking-wider uppercase text-slate-400 mt-5">
                 <a href="https://github.com/azuvicenna/yomu-japanese/issues" target="_blank"
                     class="hover:text-red-500 hover:underline decoration-2 underline-offset-4 transition-all">
-                    Lapor Bug
+                    {{ $t('layout.footer.bug_report') }}
                 </a>
                 <span class="text-slate-300">•</span>
                 <a href="https://github.com/azuvicenna/yomu-japanese" target="_blank"
                     class="hover:text-green-500 hover:underline decoration-2 underline-offset-4 transition-all">
-                    Kontribusi
+                    {{ $t('layout.footer.contribute') }}
                 </a>
             </div>
         </div>

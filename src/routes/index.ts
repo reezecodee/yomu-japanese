@@ -9,7 +9,7 @@ const router = createRouter({
       name: "Home",
       component: () => import("@/pages/Home.vue"),
       meta: {
-        title: "Beranda",
+        title: "topics.others.home.title",
         themeColor: "#ffdecc",
       },
     },
@@ -23,7 +23,7 @@ const router = createRouter({
           name: "Hiragana",
           component: () => import("@/pages/kana/Hiragana.vue"),
           meta: {
-            title: "Huruf Hiragana",
+            title: "topics.scripts.hiragana.title",
             bgClass: "peach",
             themeColor: "#ffdecc",
           },
@@ -33,7 +33,7 @@ const router = createRouter({
           name: "Katakana",
           component: () => import("@/pages/kana/Katakana.vue"),
           meta: {
-            title: "Huruf Katakana",
+            title: "topics.scripts.katakana.title",
             bgClass: "ice",
             themeColor: "#e0f7fa",
           },
@@ -43,7 +43,7 @@ const router = createRouter({
           name: "Kanji",
           component: () => import("@/pages/kana/Kanji.vue"),
           meta: {
-            title: "Kanji N5-N1",
+            title: "topics.scripts.kanji.title",
             bgClass: "lavender",
             themeColor: "#f3e8ff",
           },
@@ -53,7 +53,7 @@ const router = createRouter({
           name: "Suuji",
           component: () => import("@/pages/kana/Suuji.vue"),
           meta: {
-            title: "Angka (Suuji)",
+            title: "topics.basics.number.title",
             bgClass: "vanilla",
             themeColor: "#fffbeb",
           },
@@ -70,7 +70,7 @@ const router = createRouter({
           name: "Kotoba",
           component: () => import("@/pages/vocabulary/Kotoba.vue"),
           meta: {
-            title: "Kosakata (Kotoba)",
+            title: "topics.basics.kotoba.title",
             bgClass: "kotoba",
             themeColor: "#f3f4f6",
           },
@@ -80,7 +80,7 @@ const router = createRouter({
           name: "Doushi",
           component: () => import("@/pages/vocabulary/Doushi.vue"),
           meta: {
-            title: "Kata Kerja (Doushi)",
+            title: "topics.vocabulary.doushi.title",
             bgClass: "rose",
             themeColor: "#fff1f2",
           },
@@ -90,7 +90,7 @@ const router = createRouter({
           name: "Keiyoushi",
           component: () => import("@/pages/vocabulary/Keiyoushi.vue"),
           meta: {
-            title: "Kata Sifat (Keiyoushi)",
+            title: "topics.vocabulary.keiyoushi.title",
             bgClass: "aqua",
             themeColor: "#ecfeff",
           },
@@ -100,7 +100,7 @@ const router = createRouter({
           name: "Mono",
           component: () => import("@/pages/vocabulary/Mono.vue"),
           meta: {
-            title: "Benda (Mono)",
+            title: "topics.vocabulary.mono.title",
             bgClass: "ghost",
             themeColor: "#f8fafc",
           },
@@ -110,7 +110,7 @@ const router = createRouter({
           name: "Shigoto",
           component: () => import("@/pages/vocabulary/Shigoto.vue"),
           meta: {
-            title: "Profesi (Shigoto)",
+            title: "topics.vocabulary.shigoto.title",
             bgClass: "surface",
             themeColor: "#f1f5f9",
           },
@@ -120,7 +120,7 @@ const router = createRouter({
           name: "Tabemono",
           component: () => import("@/pages/vocabulary/Tabemono.vue"),
           meta: {
-            title: "Makanan (Tabemono)",
+            title: "topics.vocabulary.tabemono.title",
             bgClass: "apricot",
             themeColor: "#fff7ed",
           },
@@ -130,7 +130,7 @@ const router = createRouter({
           name: "Doubutsu",
           component: () => import("@/pages/vocabulary/Doubutsu.vue"),
           meta: {
-            title: "Hewan (Doubutsu)",
+            title: "topics.vocabulary.doubutsu.title",
             bgClass: "safari",
             themeColor: "#fffbeb",
           },
@@ -140,7 +140,7 @@ const router = createRouter({
           name: "Norimono",
           component: () => import("@/pages/vocabulary/Norimono.vue"),
           meta: {
-            title: "Transportasi (Norimono)",
+            title: "topics.vocabulary.norimono.title",
             bgClass: "metro",
             themeColor: "#f5f3ff",
           },
@@ -150,7 +150,7 @@ const router = createRouter({
           name: "Tatemono",
           component: () => import("@/pages/vocabulary/Tatemono.vue"),
           meta: {
-            title: "Bangunan (Tatemono)",
+            title: "topics.vocabulary.tatemono.title",
             bgClass: "concrete",
             themeColor: "#f1f5f9",
           },
@@ -160,7 +160,7 @@ const router = createRouter({
           name: "Kudamono",
           component: () => import("@/pages/vocabulary/Kudamono.vue"),
           meta: {
-            title: "Buah & Sayur (Kudamono)",
+            title: "topics.vocabulary.kudamono.title",
             bgClass: "berry",
             themeColor: "#fce7f3",
           },
@@ -170,7 +170,7 @@ const router = createRouter({
           name: "Shokubutsu",
           component: () => import("@/pages/vocabulary/Shokubutsu.vue"),
           meta: {
-            title: "Tanaman (Shokubutsu)",
+            title: "topics.vocabulary.shokubutsu.title",
             bgClass: "forest",
             themeColor: "#f0fdf4",
           },
@@ -180,7 +180,7 @@ const router = createRouter({
           name: "Byouki",
           component: () => import("@/pages/vocabulary/Byouki.vue"),
           meta: {
-            title: "Penyakit (Byouki)",
+            title: "topics.vocabulary.byouki.title",
             bgClass: "rose",
             themeColor: "#fff1f2",
           },
@@ -190,7 +190,7 @@ const router = createRouter({
           name: "Dōgu",
           component: () => import("@/pages/vocabulary/Dogu.vue"),
           meta: {
-            title: "Peralatan (Dōgu)",
+            title: "topics.vocabulary.dogu.title",
             bgClass: "orange",
             themeColor: "#f97316",
           },
@@ -207,7 +207,7 @@ const router = createRouter({
           name: "Aisatsu",
           component: () => import("@/pages/grammar/Aisatsu.vue"),
           meta: {
-            title: "Salam (Aisatsu)",
+            title: "topics.basics.aisatsu.title",
             bgClass: "sky",
             themeColor: "#f0f9ff",
           },
@@ -217,7 +217,7 @@ const router = createRouter({
           name: "Bunpou",
           component: () => import("@/pages/grammar/Bunpou.vue"),
           meta: {
-            title: "Tata Bahasa (Bunpou)",
+            title: "topics.grammar.bunpou.title",
             bgClass: "cool",
             themeColor: "#f0f4f8",
           },
@@ -227,7 +227,7 @@ const router = createRouter({
           name: "Joshi",
           component: () => import("@/pages/grammar/Joshi.vue"),
           meta: {
-            title: "Partikel (Joshi)",
+            title: "topics.grammar.joshi.title",
             bgClass: "mint",
             themeColor: "#dcfce7",
           },
@@ -244,7 +244,7 @@ const router = createRouter({
           name: "Flashcard",
           component: () => import("@/pages/memory-practice/Flashcard.vue"),
           meta: {
-            title: "Latihan Flashcard",
+            title: "topics.others.flashcard.title",
             bgClass: "indigo",
             themeColor: "#e0e7ff",
           },
@@ -261,16 +261,7 @@ const router = createRouter({
   },
 });
 
-const DEFAULT_TITLE = "Yomu Japanese";
-
 router.afterEach((to) => {
-  const pageTitle = to.meta.title;
-  if (pageTitle) {
-    document.title = `${pageTitle} - ${DEFAULT_TITLE}`;
-  } else {
-    document.title = DEFAULT_TITLE;
-  }
-
   const themeColor = (to.meta.themeColor as string) || "#ffffff";
   const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 

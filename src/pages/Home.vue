@@ -55,7 +55,7 @@ onUnmounted(() => {
                     class="inline-block transform -rotate-2 hover:rotate-0 transition duration-300 mb-4 cursor-default">
                     <span
                         class="bg-[var(--color-vanilla)] uppercase text-slate-800 border-4 border-white px-6 py-2 rounded-2xl font-extrabold text-lg shadow-[6px_6px_0px_rgba(0,0,0,0.1)]">
-                        {{ $t('hero.sticky') }}
+                        {{ $t('home.hero.badge') }}
                     </span>
                 </div>
 
@@ -66,7 +66,7 @@ onUnmounted(() => {
                 </h1>
 
                 <p class="text-xl font-bold text-slate-500 max-w-2xl mx-auto">
-                    {{ $t('hero.subtitle') }}
+                    {{ $t('home.hero.subtitle') }}
                 </p>
             </div>
         </header>
@@ -78,7 +78,7 @@ onUnmounted(() => {
                     <span class="text-3xl">✍️</span>
                     <h2
                         class="text-2xl font-black text-slate-700 uppercase tracking-wider border-b-4 border-white pb-1">
-                        {{ $t('hero.menuChapter.one') }}</h2>
+                        {{ $t('home.sections.basics') }}</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -91,7 +91,7 @@ onUnmounted(() => {
                     <span class="text-3xl">📚</span>
                     <h2
                         class="text-2xl font-black text-slate-700 uppercase tracking-wider border-b-4 border-white pb-1">
-                        {{ $t('hero.menuChapter.two') }}</h2>
+                        {{ $t('home.sections.vocabulary') }}</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -104,7 +104,7 @@ onUnmounted(() => {
                     <span class="text-3xl">🧩</span>
                     <h2
                         class="text-2xl font-black text-slate-700 uppercase tracking-wider border-b-4 border-white pb-1">
-                        {{ $t('hero.menuChapter.three') }}</h2>
+                        {{ $t('home.sections.grammar') }}</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

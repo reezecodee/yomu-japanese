@@ -8,9 +8,9 @@ import CharCard from '@/components/common/card/CharCard.vue';
 import { useRoute } from 'vue-router';
 
 const hiraganaTabs = [
-    { label: 'Seion', value: 'seion' },
-    { label: 'Dakuten', value: 'dakuten' },
-    { label: 'Yoon', value: 'yoon' }
+    { label: 'Seion (清音)', value: 'seion' },
+    { label: 'Dakuten (濁音)', value: 'dakuten' },
+    { label: 'Yoon (拗音)', value: 'yoon' }
 ]
 
 const route = useRoute();

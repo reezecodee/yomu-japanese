@@ -7,9 +7,9 @@ import { usePagination } from '@/composables/usePagination';
 import { PublicBuildings, Shops, Housing } from '@/data/tatemono';
 
 const buildingTabs = [
-    { label: 'Fasilitas (Shisetsu)', value: 'public' },
-    { label: 'Toko (Mise)', value: 'shops' },
-    { label: 'Rumah (Ie)', value: 'housing' },
+    { label: 'Shisetsu (施設)', value: 'public' },
+    { label: 'Mise (店)', value: 'shops' },
+    { label: 'Ie (家)', value: 'housing' },
 ]
 
 const route = useRoute();
@@ -22,12 +22,12 @@ const currentData = computed(() => {
     return Housing;
 });
 
-const { 
-  currentPage, 
-  paginatedData, 
-  totalPages, 
-  nextPage, 
-  prevPage 
+const {
+    currentPage,
+    paginatedData,
+    totalPages,
+    nextPage,
+    prevPage
 } = usePagination(currentData, 8);
 
 const btnStyle = computed(() => ({

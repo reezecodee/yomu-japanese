@@ -1,125 +1,173 @@
 {
-  "navMenu": {
-    "hiragana": {
-      "title": "Hiragana",
-      "desc": "Huruf dasar Jepang",
-      "tag": "Dasar"
+  "common": {
+    "actions": {
+      "back": "Kembali"
     },
-    "katakana": {
-      "title": "Katakana",
-      "desc": "Huruf kata asing",
-      "tag": "Dasar"
-    },
-    "kanji": {
-      "title": "Kanji",
-      "desc": "Kartu N5 - N1",
-      "tag": "Level Up"
-    },
-    "number": {
-      "title": "Angka",
-      "desc": "Hitungan & Uang",
-      "tag": "Logika"
-    },
-    "kotoba": {
-      "title": "Kotoba",
-      "desc": "Warna, Waktu, Arah",
-      "tag": "Bento"
-    },
-    "doushi": {
-      "title": "Kata Kerja",
-      "desc": "Konjugasi & Aksi",
-      "tag": "Penting"
-    },
-    "keiyoushi": {
-      "title": "Kata Sifat",
-      "desc": "I-Keiyoushi & Na-Keiyoushi",
-      "tag": "Deskripsi"
-    },
-    "mono": {
-      "title": "Benda",
-      "desc": "Benda Sehari-hari",
-      "tag": "Objek"
-    },
-    "shigoto": {
-      "title": "Profesi",
-      "desc": "Pekerjaan & Karir",
-      "tag": "Kartu Nama"
-    },
-    "tabemono": {
-      "title": "Makanan",
-      "desc": "Kuliner & Rasa",
-      "tag": "Menu"
-    },
-    "doubutsu": {
-      "title": "Hewan",
-      "desc": "Darat, Air, Udara",
-      "tag": "Safari"
-    },
-    "norimono": {
-      "title": "Transportasi",
-      "desc": "Kendaraan Umum",
-      "tag": "Metro"
-    },
-    "tatemono": {
-      "title": "Bangunan",
-      "desc": "Gedung & Fasilitas",
-      "tag": "Kota"
-    },
-    "kudamono": {
-      "title": "Buah",
-      "desc": "Buah-buahan Segar",
-      "tag": "Segar"
-    },
-    "shokubutsu": {
-      "title": "Tanaman",
-      "desc": "Pohon & Bunga",
-      "tag": "Flora"
-    },
-    "byouki": {
-      "title": "Kesehatan",
-      "desc": "Penyakit & Cedera",
-      "tag": "Medis"
-    },
-    "dogu": {
-      "title": "Peralatan",
-      "desc": "Alat Tukang & Rumah",
-      "tag": "Perkakas"
-    },
-    "bunpou": {
-      "title": "Tata Bahasa",
-      "desc": "Pola Kalimat Dasar",
-      "tag": "Bunpou"
-    },
-    "joshi": {
-      "title": "Partikel",
-      "desc": "Wa, Ga, Wo, Ni, De",
-      "tag": "Joshi"
-    },
-    "aisatsu": {
-      "title": "Salam",
-      "desc": "Sapaan & Obrolan",
-      "tag": "Aisatsu"
-    },
-    "kanyoku": {
-      "title": "Idiom",
-      "desc": "Peribahasa Jepang",
-      "tag": "Ekspresi"
+    "dictionary": {
+      "example_word": "Contoh Penggunaan",
+      "listen_word": "Dengarkan Kata",
+      "language": "Bahasa",
+      "display": "Tampilan",
+      "loading": "Memuat...",
+      "no_examples": "Belum ada contoh kata",
+      "aisatsu": {
+        "daily_greetings": "Salam Harian",
+        "at_home": "Di Rumah",
+        "thanks": "Terima Kasih",
+        "introduction": "Perkenalan",
+        "farewell": "Perpisahan"
+      },
+      "joshi": {
+        "function": "Fungsi",
+        "title": "Penghubung Kalimat",
+        "subtitle": "Partikel ibarat \"lem\" yang menyatukan kata-kata menjadi kalimat utuh.",
+        "extra_particles": "Partikel Penting Lainnya"
+      }
     }
   },
-  "hero": {
-    "sticky": "Portal Belajar Jepang",
-    "title": "BELAJAR BAHASA JEPANG",
-    "subtitle": "Pilih topik belajarmu dan mulailah petualangan bahasa Jepang sekarang juga!",
-    "menuChapter": {
-      "one": "Huruf & Angka",
-      "two": "Kosakata",
-      "three": "Tata Bahasa & Idiom"
+  "layout": {
+    "header": {
+      "title": "Portal Belajar Jepang"
+    },
+    "footer": {
+      "slogan": "Mari Belajar Bahasa Jepang",
+      "bug_report": "Lapor Bug",
+      "contribute": "Kontribusi"
     }
   },
-  "footer": {
-    "slogan": "Mari Belajar Bahasa Jepang",
-    "bug": "Lapor Bug",
-    "contribute": "Kontribusi",
-    "copyright": "Hak Cipta Dilindungi"
+  "home": {
+    "hero": {
+      "badge": "Portal Belajar Jepang",
+      "title": "BELAJAR BAHASA JEPANG",
+      "subtitle": "Pilih topik belajarmu dan mulailah petualangan bahasa Jepang sekarang juga!"
+    },
+    "sections": {
+      "basics": "Huruf & Angka",
+      "vocabulary": "Kosakata",
+      "grammar": "Tata Bahasa & Idiom"
+    }
+  },
+  "topics": {
+    "scripts": {
+      "hiragana": {
+        "title": "Hiragana",
+        "desc": "Huruf dasar Jepang",
+        "tag": "Dasar"
+      },
+      "katakana": {
+        "title": "Katakana",
+        "desc": "Huruf kata asing",
+        "tag": "Dasar"
+      },
+      "kanji": {
+        "title": "Kanji",
+        "desc": "Kartu N5 - N1",
+        "tag": "Level Up"
+      }
+    },
+    "basics": {
+      "number": {
+        "title": "Angka",
+        "desc": "Hitungan & Uang",
+        "tag": "Logika"
+      },
+      "aisatsu": {
+        "title": "Salam",
+        "desc": "Sapaan & Obrolan",
+        "tag": "Aisatsu"
+      },
+      "kotoba": {
+        "title": "Waktu & Arah",
+        "desc": "Warna, Waktu, Arah",
+        "tag": "Bento"
+      }
+    },
+    "vocabulary": {
+      "doushi": {
+        "title": "Kata Kerja",
+        "desc": "Konjugasi & Aksi",
+        "tag": "Penting"
+      },
+      "keiyoushi": {
+        "title": "Kata Sifat",
+        "desc": "I-Keiyoushi & Na-Keiyoushi",
+        "tag": "Deskripsi"
+      },
+      "mono": {
+        "title": "Benda",
+        "desc": "Benda Sehari-hari",
+        "tag": "Objek"
+      },
+      "shigoto": {
+        "title": "Profesi",
+        "desc": "Pekerjaan & Karir",
+        "tag": "Kartu Nama"
+      },
+      "tabemono": {
+        "title": "Makanan",
+        "desc": "Kuliner & Rasa",
+        "tag": "Menu"
+      },
+      "doubutsu": {
+        "title": "Hewan",
+        "desc": "Darat, Air, Udara",
+        "tag": "Safari"
+      },
+      "norimono": {
+        "title": "Transportasi",
+        "desc": "Kendaraan Umum",
+        "tag": "Metro"
+      },
+      "tatemono": {
+        "title": "Bangunan",
+        "desc": "Gedung & Fasilitas",
+        "tag": "Kota"
+      },
+      "kudamono": {
+        "title": "Buah",
+        "desc": "Buah-buahan Segar",
+        "tag": "Segar"
+      },
+      "shokubutsu": {
+        "title": "Tanaman",
+        "desc": "Pohon & Bunga",
+        "tag": "Flora"
+      },
+      "byouki": {
+        "title": "Kesehatan",
+        "desc": "Penyakit & Cedera",
+        "tag": "Medis"
+      },
+      "dogu": {
+        "title": "Peralatan",
+        "desc": "Alat Tukang & Rumah",
+        "tag": "Perkakas"
+      }
+    },
+    "grammar": {
+      "bunpou": {
+        "title": "Tata Bahasa",
+        "desc": "Pola Kalimat Dasar",
+        "tag": "Bunpou"
+      },
+      "joshi": {
+        "title": "Partikel",
+        "desc": "Wa, Ga, Wo, Ni, De",
+        "tag": "Joshi"
+      },
+      "kanyoku": {
+        "title": "Idiom",
+        "desc": "Peribahasa Jepang",
+        "tag": "Ekspresi"
+      }
+    },
+    "others": {
+      "home": {
+        "title": "Beranda"
+      },
+      "flashcard": {
+        "title": "Flashcard"
+      }
+    }
   }
 }

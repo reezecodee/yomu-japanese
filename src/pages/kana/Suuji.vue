@@ -8,10 +8,10 @@ import { playAudio } from '@/utils/audio';
 import { useSettings } from '@/composables/useSettings';
 
 const numberTabs = [
-    { label: 'Satuan (1-10)', value: 'basic' },
-    { label: 'Puluhan', value: 'tens' },
-    { label: 'Ratusan & Ribuan', value: 'hundreds' },
-    { label: 'Jutaan (Big!)', value: 'millions' },
+    { label: 'Kihon (基本)', value: 'basic' },
+    { label: 'Juudai (十台)', value: 'tens' },
+    { label: 'Hyaku・Sen (百・千)', value: 'hundreds' },
+    { label: 'Man・Oku (万・億)', value: 'millions' },
 ]
 
 const route = useRoute();

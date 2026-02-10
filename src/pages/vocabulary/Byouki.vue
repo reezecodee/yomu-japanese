@@ -7,9 +7,9 @@ import { usePagination } from '@/composables/usePagination';
 import { ShoujouItems, DiseaseItems, KegaItems } from '@/data/byouki';
 
 const diseaseTabs = [
-    { label: 'Penyakit (Byouki)', value: 'byouki' },
-    { label: 'Gejala (Shoujou)', value: 'shoujou' },
-    { label: 'Cedera (Kega)', value: 'injuries' },
+    { label: 'Byouki (病気)', value: 'byouki' },
+    { label: 'Shoujou (症状)', value: 'shoujou' },
+    { label: 'Kega (怪我)', value: 'injuries' },
 ]
 
 const route = useRoute();

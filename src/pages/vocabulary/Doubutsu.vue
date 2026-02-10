@@ -7,9 +7,9 @@ import { usePagination } from '@/composables/usePagination';
 import { LandAnimals, WaterAnimals, FlyingAnimals } from '@/data/doubutsu';
 
 const animalTabs = [
-    { label: 'Darat (Riku)', value: 'land' },
-    { label: 'Air (Mizu)', value: 'water' },
-    { label: 'Udara (Sora)', value: 'air' },
+    { label: 'Riku (陸)', value: 'land' },
+    { label: 'Mizu (水)', value: 'water' },
+    { label: 'Sora (空)', value: 'air' },
 ]
 
 const route = useRoute();

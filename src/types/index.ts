@@ -61,7 +61,8 @@ export type AdjectiveDetail = {
   kana: string;
   romaji: string;
   furigana: string;
-  meaning: string;
+  meaningId: string;
+  meaningEn: string;
   group: AdjectiveGroup;
 };
 
@@ -77,12 +78,19 @@ export type AdjectivePair = {
 export interface JoshiItem {
   kana: string;
   romaji: string;
-  label: string;
-  function: string;
+  labelId: string;
+  labelEn: string;
+  labelJa: string;
+  functionId: string;
+  functionEn: string;
+  functionJa: string;
   example: {
     jp: string;
+    furigana: string;
     ro: string;
     id: string;
+    en: string;
+    ja: string;
     highlight: string;
   };
 }
@@ -90,16 +98,22 @@ export interface JoshiItem {
 export interface JoshiExtraItem {
   kana: string;
   romaji: string;
-  desc: string;
+  descId: string;
+  descEn: string;
+  descJa: string;
   example_jp: string;
+  furigana: string;
   example_ro: string;
-  example_meaning: string;
+  example_meaningId: string;
+  example_meaningEn: string;
+  example_meaningJa: string;
 }
 
 export type VerbConjugation = {
   icon: string;
   rule: string;
-  meaning: string;
+  meaningId: string;
+  meaningEn: string;
   dictionary_form: string;
   furigana: string;
   romaji: string;
@@ -139,9 +153,11 @@ export type BubbleAlign = "left" | "right";
 export interface AisatsuItem {
   kana: string;
   romaji: string;
-  meaning: string;
+  meaningId: string;
+  meaningEn: string;
   align: BubbleAlign;
-  situation?: string;
+  situationId: string;
+  situationEn: string;
 }
 
 // ==========================================
